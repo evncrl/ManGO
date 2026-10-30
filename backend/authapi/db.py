@@ -539,7 +539,7 @@ def save_scan(
     analysis_result: Dict[str, Any]
 ) -> Optional[Dict[str, Any]]:
     """
-    Save a durian scan to the database
+    Save a mango scan to the database
     
     The new schema includes explicit classification fields so that
     analytics queries can be trivial counts instead of regexes on a
@@ -569,7 +569,7 @@ def save_scan(
             print(f"[DB] User not found: {user_id}")
             return None
         
-        # Determine durian variety and quality from analysis
+        # Determine mango variety and quality from analysis
         primary_class = analysis_result.get("primary_class", "Unknown")
         quality_score = analysis_result.get("quality_score", 0)
         confidence = analysis_result.get("primary_confidence", 0)

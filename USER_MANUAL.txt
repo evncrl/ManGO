@@ -1,9 +1,9 @@
 ================================================================================
-                    APPDURIAN USER MANUAL
+                    MangGO USER MANUAL
                    A Complete Guide to Getting Started
 ================================================================================
 
-Welcome to AppDurian! This manual will guide you through all the main features
+Welcome to MangGO! This manual will guide you through all the main features
 of our application. Whether you're new to the app or looking for help with a
 specific feature, you'll find step-by-step instructions below.
 
@@ -87,10 +87,10 @@ BROWSING PRODUCTS
 
 Step 1: From the home screen, tap the "Shop" tab or icon.
 
-Step 2: You'll see a list of available durian products and items.
+Step 2: You'll see a list of available mango products and items.
 
 Step 3: Use the category filters at the top to narrow down products:
-        - Filter by type (Fresh Durians, Processed, Frozen, etc.)
+        - Filter by type (Fresh Mangoes, Processed, Frozen, etc.)
         - Sort by price, rating, or newest arrivals
 
 Step 4: Tap on any product to view more details:
@@ -191,12 +191,12 @@ ASKING QUESTIONS
 Step 1: Type your question in the message box at the bottom.
 
 Examples of questions you can ask:
-        - "What are the health benefits of durians?"
-        - "How do I keep durians fresh?"
-        - "What's the difference between different durian varieties?"
-        - "How do I prepare durian?"
+        - "What are the health benefits of mangoes?"
+        - "How do I keep mangoes fresh?"
+        - "What's the difference between different mango varieties?"
+        - "How do I prepare mango?"
         - "What's in stock?"
-        - General questions about durians
+        - General questions about mangoes
 
 Step 2: Tap the "Send" button or press Enter.
 
@@ -209,7 +209,7 @@ CHATBOT FEATURES
 - Quick Replies: The chatbot may offer suggested responses. Tap any of them
   for quick answers.
 
-- Search Information: The chatbot can provide information about durian varieties,
+- Search Information: The chatbot can provide information about mango varieties,
   nutrition, storage, recipes, and more.
 
 - Product Assistance: Ask about available products, prices, and recommendations.
@@ -330,19 +330,19 @@ Step 2: Grant camera permissions if prompted (needed to use the camera).
 Step 3: The scanner interface will open showing your device's camera view.
 
 
-SCANNING A DURIAN
+SCANNING A MANGO
 -----------------
 
-Step 1: Hold your device steady and point the camera at a durian.
+Step 1: Hold your device steady and point the camera at a mango.
 
-Step 2: Make sure the durian is:
+Step 2: Make sure the mango is:
         - Well-lit (good lighting is important)
         - Clearly visible in the camera frame
         - Fully or mostly within the frame
 
 Step 3: Tap the "Capture" or "Scan" button.
 
-Step 4: The AI will analyze the durian and process the image.
+Step 4: The AI will analyze the mango and process the image.
 
 
 UNDERSTANDING YOUR SCAN RESULTS
@@ -350,7 +350,7 @@ UNDERSTANDING YOUR SCAN RESULTS
 
 After scanning, you'll receive a detailed analysis including:
 
-1. DURIAN VARIETY/TYPE
+1. MANGO VARIETY/TYPE
    - The identified species and variety
    - Confidence level of the identification
 
@@ -367,9 +367,8 @@ After scanning, you'll receive a detailed analysis including:
    - Warnings if detected
    - Safe to eat determinations
 
-5. SHAPE & SIZE ANALYSIS
+5. SHAPE ANALYSIS
    - Shape classification
-   - Estimated size
    - Physical characteristics
 
 6. COLOR ANALYSIS
@@ -396,17 +395,17 @@ SCANNER TIPS FOR BEST RESULTS
 -----------------------------
 
 - LIGHTING: Use natural or bright artificial light for best accuracy.
-  Avoid shadows on the durian.
+  Avoid shadows on the mango.
 
 - ANGLE: Take photos from multiple angles for better accuracy.
 
-- DISTANCE: Hold the camera 20-30 cm away from the durian.
+- DISTANCE: Hold the camera 20-30 cm away from the mango.
 
 - FOCUS: Make sure the image is sharp and in focus before scanning.
 
 - STEADINESS: Keep your hand steady or use a stand to prevent blurring.
 
-- BACKGROUND: Use a neutral background to make the durian stand out.
+- BACKGROUND: Use a neutral background to make the mango stand out.
 
 ================================================================================
 6. FREQUENTLY ASKED QUESTIONS & TROUBLESHOOTING
@@ -429,8 +428,8 @@ Q: Is my personal information safe?
 A: Yes! We use encryption and follow strict privacy policies. Your data is
    never shared with third parties without consent.
 
-Q: The scanner isn't recognizing my durian. What should I do?
-A: Ensure good lighting, clear focus, and that the entire durian is visible.
+Q: The scanner isn't recognizing my mango. What should I do?
+A: Ensure good lighting, clear focus, and that the entire mango is visible.
    Try taking multiple photos from different angles. The AI works best with
    clear, well-lit images.
 
@@ -446,9 +445,9 @@ Q: I have a payment issue. How do I get help?
 A: Contact our support team through the Settings/Help section of the app,
    or email our customer service team.
 
-Q: Can I chat with the chatbot about topics other than durians?
-A: The chatbot is optimized for durian-related questions. It may handle
-   general questions, but works best with product and durian-specific queries.
+Q: Can I chat with the chatbot about topics other than mangoes?
+A: The chatbot is optimized for mango-related questions. It may handle
+   general questions, but works best with product and mango-specific queries.
 
 Q: Why was my forum post removed?
 A: Posts may be removed if they violate community guidelines (spam, abuse,
@@ -456,7 +455,7 @@ A: Posts may be removed if they violate community guidelines (spam, abuse,
 
 ================================================================================
 
-Thank you for using AppDurian! We hope this manual helps you make the most of
+Thank you for using ManGO! We hope this manual helps you make the most of
 our application. If you have additional questions or need further assistance,
 please reach out to our customer support team through the app's Help section.
 

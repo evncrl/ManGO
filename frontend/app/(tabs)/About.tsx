@@ -162,7 +162,7 @@ export default function About() {
                 <Text style={styles.modernBadgeText}>EST. 2026</Text>
               </View>
               <Text style={styles.modernHeroTitle}>
-                ASSESSING DURIAN, {'\n'}
+                ASSESSING MANGO, {'\n'}
                 <Text style={styles.modernHeroTitleAccent}>THE RIGHT WAY.</Text>
               </Text>
               <Text style={styles.modernHeroSubtitle}>
@@ -181,7 +181,7 @@ export default function About() {
           </View>
           <Text style={styles.visionTitle}>Our Vision</Text>
           <Text style={styles.visionText}>
-            To create a durian quality assessment app that combines cutting-edge technology with user-centric design, empowering farmers, sellers, and enthusiasts worldwide to make informed decisions and elevate the durian experience.
+            To create a mango quality assessment app that combines cutting-edge technology with user-centric design, empowering farmers, sellers, and enthusiasts worldwide to make informed decisions and elevate the mango experience.
           </Text>
         </View>
 

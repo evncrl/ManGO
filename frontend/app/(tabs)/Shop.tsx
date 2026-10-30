@@ -155,7 +155,7 @@ export default function Shop() {
             >
                 <View style={shopStyles.header}>
                     <Text style={[shopStyles.title, { color: Palette.linenWhite }]}>ManGO Shop</Text>
-                    <Text style={[shopStyles.subtitle, { color: Palette.slate }]}>Premium durian varieties and artisan products.</Text>
+                    <Text style={[shopStyles.subtitle, { color: Palette.slate }]}>Premium mango varieties and artisan products.</Text>
                 </View>
 
                 <View style={shopStyles.section}>

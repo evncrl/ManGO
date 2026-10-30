@@ -78,7 +78,7 @@ def home():
     if request.method == "OPTIONS":
         return '', 200
     return jsonify({
-        "message": "Durian App API",
+        "message": "ManGO App API",
         "version": "2.0.0",
         "endpoints": {
             "auth": "/auth/*",
@@ -116,7 +116,7 @@ def internal_error(error):
 # ---------------------------
 
 if __name__ == "__main__":
-    print("🚀 Starting Durian App API v2.0.0")
+    print("🚀 Starting ManGO App API v2.0.0")
     print("📋 Available endpoints:")
     print("  🔐 Auth: /auth/*")
     print("  👤 Profile: /profile/*")

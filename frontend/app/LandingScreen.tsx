@@ -329,7 +329,7 @@ function Landing({ }: any) {
   const carouselData = [
     {
       id: "1",
-      title: "Know Your Durian Instantly",
+      title: "Know Your Mango Instantly",
       subtitle: "AI-powered quality analysis for damage, disease & export standards",
       image: require("../assets/images/durian-bg.jpg"),
     },
@@ -373,38 +373,38 @@ function Landing({ }: any) {
       id: 'mission',
       type: 'grid',
       title: "Our Mission",
-      subtitle: "Empowering durian farmers with cutting-edge AI for quality assurance and sustainable practices.",
+      subtitle: "Empowering mango farmers with cutting-edge AI for quality assurance and sustainable practices.",
       styleName: 'missionSection',
       titleStyle: { color: Palette.warmCopper },
       subtitleStyle: { color: Palette.linenWhite },
       data: [
         { title: "Precision Analysis", desc: "Our AI models are trained on thousands of samples for pinpoint accuracy.", icon: "flask-outline" },
         { title: "Farmer Empowerment", desc: "Supporting local growers with data-driven insights and fair market standards.", icon: "people-outline" },
-        { title: "Global Standards", desc: "Setting the benchmark for durian export quality with automated consistency.", icon: "globe-outline" },
+        { title: "Global Standards", desc: "Setting the benchmark for mango export quality with automated consistency.", icon: "globe-outline" },
       ]
     },
     {
       id: 'articles',
       type: 'scroll',
       title: "Latest Articles",
-      subtitle: "Stay informed with the newest trends and research in durian cultivation and AI.",
+      subtitle: "Stay informed with the newest trends and research in mango cultivation and AI.",
       styleName: 'featuredArticlesSection',
       titleStyle: { color: Palette.deepObsidian },
       subtitleStyle: { color: Palette.charcoalEspresso, opacity: 0.8, fontStyle: 'italic' },
       data: [
         {
           id: "1",
-          title: "Detection and Sizing of Durian using Zero-Shot Models",
+          title: "Detection of Mango using Zero-Shot Models",
           image: require("../assets/images/feature1.jpg"),
-          desc: "Detailed study on computerized automated detection and size estimation of durian fruits.",
+          desc: "Detailed study on computerized automated detection of mango fruits.",
           icon: "scan-outline",
           url: "https://ijtech.eng.ui.ac.id/article/view/6640"
         },
         {
           id: "2",
-          title: "AI-Based Durian Disease Detection",
+          title: "AI-Based Mango Disease Detection",
           image: require("../assets/images/feature2.jpg"),
-          desc: "Identification of durian leaf disease using Convolutional Neural Networks.",
+          desc: "Identification of mango leaf disease using Convolutional Neural Networks.",
           icon: "flask-outline",
           url: "https://www.researchgate.net/publication/370517327_Identification_of_Durian_Leaf_Disease_Using_Convolutional_Neural_Network"
         },
@@ -462,8 +462,6 @@ function Landing({ }: any) {
     return () => stopAutoScroll();
   }, [width]);
 
-  // handleScroll simplified as logic moved to scrollHandler if needed, 
-  // but we can keep it for simple state updates like showScrollTop
   useEffect(() => {
     const checkScroll = setInterval(() => {
       setShowScrollTop(scrollY.value > 200);
