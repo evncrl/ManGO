@@ -66,7 +66,7 @@ const AdminSidebar = ({ isVisible, onClose }: AdminSidebarProps) => {
 			<View style={styles.header}>
 				<View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
 					<View>
-						<Text style={styles.title}>Durianostics</Text>
+						<Text style={styles.title}>ManGO</Text>
 						<Text style={styles.subtitle}>ADMIN PANEL</Text>
 					</View>
 					{(isSmallScreen || Platform.OS !== 'web') && (

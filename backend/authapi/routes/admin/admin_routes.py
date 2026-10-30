@@ -250,7 +250,7 @@ def download_analytics_report():
         return send_file(
             pdf_buffer, 
             as_attachment=True, 
-            download_name=f"Durianostics_Report_{datetime.date.today()}.pdf", 
+            download_name=f"ManGO_Report_{datetime.date.today()}.pdf", 
             mimetype='application/pdf'
         )
     except Exception as e:

@@ -54,7 +54,7 @@ const Footer: React.FC<FooterProps> = ({
         <View style={[styles.brandSection, isWeb && { maxWidth: 300 }]}>
           <View style={styles.logoContainer}>
             <Ionicons name="leaf" size={28} color={Palette.deepObsidian} />
-            <Text style={styles.brandName}>Durianostics</Text>
+            <Text style={styles.brandName}>ManGO</Text>
           </View>
           <Text style={styles.brandTagline}>
             Quality Durian Detection & Export Management
@@ -84,7 +84,7 @@ const Footer: React.FC<FooterProps> = ({
           <Text style={styles.sectionTitle}>Contact Us</Text>
           <View style={styles.contactItem}>
             <Ionicons name="mail-outline" size={16} color={Palette.warmCopper} />
-            <Text style={styles.contactText}>support@durianostics.com</Text>
+            <Text style={styles.contactText}>support@ManGO.com</Text>
           </View>
           <View style={styles.contactItem}>
             <Ionicons name="call-outline" size={16} color={Palette.warmCopper} />
@@ -120,7 +120,7 @@ const Footer: React.FC<FooterProps> = ({
 
         {/* Copyright */}
         <Text style={styles.copyright}>
-          © {currentYear} Durianostics. All rights reserved.
+          © {currentYear} ManGO. All rights reserved.
         </Text>
 
         {/* Legal */}

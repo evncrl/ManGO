@@ -15,8 +15,8 @@ MAILTRAP_HOST = os.getenv("MAIL_HOST", "sandbox.smtp.mailtrap.io")
 MAILTRAP_PORT = int(os.getenv("MAIL_PORT", "2525"))
 MAILTRAP_USERNAME = os.getenv("MAIL_USERNAME", "")
 MAILTRAP_PASSWORD = os.getenv("MAIL_PASSWORD", "")
-FROM_EMAIL = os.getenv("MAIL_FROM_ADDRESS", "noreply@durianostics.com")
-FROM_NAME = os.getenv("MAIL_FROM_NAME", "Durianostics Admin")
+FROM_EMAIL = os.getenv("MAIL_FROM_ADDRESS", "noreply@mango.com")
+FROM_NAME = os.getenv("MAIL_FROM_NAME", "ManGO Admin")
 
 
 def send_checkout_email(
@@ -64,7 +64,7 @@ def send_checkout_email(
         <body style="font-family: Arial, sans-serif; background-color: #f9f9f9; padding: 20px;">
             <div style="max-width: 600px; margin: 0 auto; background: #ffffff; border-radius: 15px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
                 <div style="background-color: #A0522D; padding: 30px; text-align: center;">
-                    <h1 style="color: white; margin: 0; font-size: 26px;">Durianostics Receipt</h1>
+                    <h1 style="color: white; margin: 0; font-size: 26px;">ManGO Receipt</h1>
                 </div>
                 <div style="padding: 30px;">
                     <h2 style="color: #333; margin-top: 0;">Thank you for your purchase!! {user_name}!</h2>
@@ -139,24 +139,24 @@ def send_deactivation_email(user_email: str, user_name: str, reason: str) -> boo
     try:
         # Create message
         msg = MIMEMultipart("alternative")
-        msg["Subject"] = "Your Durianostics Account Has Been Deactivated"
+        msg["Subject"] = "Your ManGO Account Has Been Deactivated"
         msg["From"] = f"{FROM_NAME} <{FROM_EMAIL}>"
         msg["To"] = user_email
 
         text_content = f"""
 Hello {user_name},
 
-We regret to inform you that your Durianostics account has been deactivated by an administrator.
+We regret to inform you that your ManGO account has been deactivated by an administrator.
 
 Reason for deactivation:
 {reason}
 
-If you believe this action was taken in error or would like to appeal this decision, please contact our support team at support@durianostics.com.
+If you believe this action was taken in error or would like to appeal this decision, please contact our support team at support@mango.com.
 
 We apologize for any inconvenience this may cause.
 
 Best regards,
-The Durianostics Team
+The ManGO Team
         """
 
         html_content = f"""
@@ -217,28 +217,28 @@ The Durianostics Team
 </head>
 <body>
     <div class="header">
-        <h1>Durianostics</h1>
+        <h1>ManGO</h1>
     </div>
     <div class="content">
         <p>Hello <strong>{user_name}</strong>,</p>
         
-        <p>We regret to inform you that your Durianostics account has been <strong>deactivated</strong> by an administrator.</p>
+        <p>We regret to inform you that your ManGO account has been <strong>deactivated</strong> by an administrator.</p>
         
         <div class="reason-box">
             <h3>Reason for Deactivation:</h3>
             <p>{reason}</p>
         </div>
         
-        <p>If you believe this action was taken in error or would like to appeal this decision, please contact our support team at <a href="mailto:support@durianostics.com" class="appeal-link">support@durianostics.com</a>.</p>
+        <p>If you believe this action was taken in error or would like to appeal this decision, please contact our support team at <a href="mailto:support@mango.com" class="appeal-link">support@mango.com</a>.</p>
         
         <p>We apologize for any inconvenience this may cause.</p>
         
         <p>Best regards,<br>
-        <strong>The Durianostics Team</strong></p>
+        <strong>The ManGO Team</strong></p>
         
         <div class="footer">
-            <p>This is an automated message from Durianostics. Please do not reply directly to this email.</p>
-            <p>&copy; 2026 Durianostics. All rights reserved.</p>
+            <p>This is an automated message from ManGO. Please do not reply directly to this email.</p>
+            <p>&copy; 2026 ManGO. All rights reserved.</p>
         </div>
     </div>
 </body>
@@ -278,21 +278,21 @@ def send_reactivation_email(user_email: str, user_name: str) -> bool:
     """
     try:
         msg = MIMEMultipart("alternative")
-        msg["Subject"] = "Your Durianostics Account Has Been Reactivated"
+        msg["Subject"] = "Your ManGO Account Has Been Reactivated"
         msg["From"] = f"{FROM_NAME} <{FROM_EMAIL}>"
         msg["To"] = user_email
 
         text_content = f"""
 Hello {user_name},
 
-Great news! Your Durianostics account has been reactivated.
+Great news! Your ManGO account has been reactivated.
 
 You can now log in and access all features of the platform.
 
-If you have any questions, please contact our support team at support@durianostics.com.
+If you have any questions, please contact our support team at support@mango.com.
 
 Best regards,
-The Durianostics Team
+The ManGO Team
         """
 
         html_content = f"""
@@ -345,24 +345,24 @@ The Durianostics Team
 </head>
 <body>
     <div class="header">
-        <h1>Durianostics</h1>
+        <h1>ManGO</h1>
     </div>
     <div class="content">
         <p>Hello <strong>{user_name}</strong>,</p>
         
         <div class="success-box">
-            <p>Great news! Your Durianostics account has been <strong>reactivated</strong>.</p>
+            <p>Great news! Your ManGO account has been <strong>reactivated</strong>.</p>
         </div>
         
         <p>You can now log in and access all features of the platform.</p>
         
-        <p>If you have any questions, please contact our support team at <a href="mailto:support@durianostics.com">support@durianostics.com</a>.</p>
+        <p>If you have any questions, please contact our support team at <a href="mailto:support@mango.com">support@mango.com</a>.</p>
         
         <p>Best regards,<br>
-        <strong>The Durianostics Team</strong></p>
+        <strong>The ManGO Team</strong></p>
         
         <div class="footer">
-            <p>&copy; 2026 Durianostics. All rights reserved.</p>
+            <p>&copy; 2026 ManGO. All rights reserved.</p>
         </div>
     </div>
 </body>
@@ -426,7 +426,7 @@ def send_order_status_email(user_email: str, status: str, transaction_id: str, i
         <body style="font-family: Arial, sans-serif; background-color: #f9f9f9; padding: 20px;">
             <div style="max-width: 600px; margin: 0 auto; background: #ffffff; border-radius: 15px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
                 <div style="background-color: #A0522D; padding: 30px; text-align: center;">
-                    <h1 style="color: white; margin: 0; font-size: 26px;">Durianostics Update</h1>
+                    <h1 style="color: white; margin: 0; font-size: 26px;">ManGO Update</h1>
                 </div>
                 <div style="padding: 30px;">
                     <p>Order ID: <strong>{short_id}</strong></p>
@@ -483,10 +483,10 @@ def send_forum_delete_email(user_email: str, user_name: str, post_title: str) ->
                     <p>Hello <b>{user_name}</b>,</p>
                     <p>This is to inform you that your post titled <b>"{post_title}"</b> has been removed by our moderation team for violating community guidelines.</p>
                     <div style="background-color: #fff3e0; padding: 15px; border-left: 5px solid #ff9800; margin: 20px 0;">
-                        <p style="margin: 0;"><b>Note:</b> Please ensure all posts follow our Durianostics community standards to avoid account deactivation.</p>
+                        <p style="margin: 0;"><b>Note:</b> Please ensure all posts follow our ManGO community standards to avoid account deactivation.</p>
                     </div>
                     <p>If you have questions, please contact support.</p>
-                    <p>Best regards,<br>The Durianostics Team</p>
+                    <p>Best regards,<br>The ManGO Team</p>
                 </div>
             </div>
         </body>

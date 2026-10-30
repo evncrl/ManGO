@@ -99,11 +99,11 @@ export default function GenAnalytics() {
             if (Platform.OS === 'web') {
                 const url = window.URL.createObjectURL(blob);
                 const link = document.createElement('a');
-                link.href = url; link.setAttribute('download', 'Durianostics_Report.pdf');
+                link.href = url; link.setAttribute('download', 'ManGO_Report.pdf');
                 document.body.appendChild(link); link.click(); link.parentNode?.removeChild(link);
             } else {
                 const directory = FileSystem.documentDirectory || FileSystem.cacheDirectory;
-                const fileUri = directory + 'Durianostics_Report.pdf';
+                const fileUri = directory + 'ManGO_Report.pdf';
                 await Sharing.shareAsync(fileUri);
             }
         } catch (error) { alert("Failed to export report."); } finally { setExporting(false); }

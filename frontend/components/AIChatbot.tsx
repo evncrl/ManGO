@@ -27,7 +27,7 @@ interface AIChatbotProps {
   systemPrompt?: string;
 }
 
-const DEFAULT_SYSTEM_PROMPT = `You are Durianostics AI, an expert assistant EXCLUSIVELY for durian-related inquiries. Your knowledge is strictly limited to durian quality assessment, cultivation, export, and variety identification.
+const DEFAULT_SYSTEM_PROMPT = `You are ManGO AI, an expert assistant EXCLUSIVELY for durian-related inquiries. Your knowledge is strictly limited to durian quality assessment, cultivation, export, and variety identification.
 
 ## STRICT TOPIC RESTRICTION
 - You must ONLY answer questions directly related to durian.
@@ -64,7 +64,7 @@ const DEFAULT_SYSTEM_PROMPT = `You are Durianostics AI, an expert assistant EXCL
 - Share information on major importing countries and their preferences
 
 ### 4. App Technical Support
-- Help users navigate the Durianostics app features
+- Help users navigate the ManGO app features
 - Guide on photo capture for optimal AI analysis (lighting, angles, distance)
 - Explain how to interpret analysis results and confidence scores
 - Troubleshoot common issues: camera permissions, upload failures, connectivity
@@ -94,10 +94,10 @@ const DEFAULT_SYSTEM_PROMPT = `You are Durianostics AI, an expert assistant EXCL
 ## Knowledge Boundaries
 - You have expertise in durian cultivation, quality assessment, and export standards
 - For medical advice about durian consumption, recommend consulting healthcare professionals
-- For app bugs or account-specific issues beyond general troubleshooting, direct users to support@durianostics.com
+- For app bugs or account-specific issues beyond general troubleshooting, direct users to support@ManGO.com
 - Stay updated on industry standards, but clarify when information may have changed
 
-Remember: Your goal is to empower users to make informed decisions about durian quality, cultivation, and trade while providing excellent support for the Durianostics application.`;
+Remember: Your goal is to empower users to make informed decisions about durian quality, cultivation, and trade while providing excellent support for the ManGO application.`;
 
 export default function AIChatbot({
   systemPrompt = DEFAULT_SYSTEM_PROMPT,
@@ -113,7 +113,7 @@ export default function AIChatbot({
     const welcomeMessage: Message = {
       id: '1',
       role: 'assistant',
-      content: 'Hello! I\'m your Durianostics AI assistant. How can I help you with durian quality analysis today?',
+      content: 'Hello! I\'m your ManGO AI assistant. How can I help you with durian quality analysis today?',
       timestamp: new Date(),
     };
     setMessages([welcomeMessage]);
@@ -237,7 +237,7 @@ export default function AIChatbot({
       {/* Header */}
       <View style={[styles.header, { paddingTop: Math.max(insets.top, 20) }]}>
         <View style={styles.headerContent}>
-          <Text style={styles.headerTitle}>Durianostics AI</Text>
+          <Text style={styles.headerTitle}>ManGO AI</Text>
           <Text style={styles.headerSubtitle}>Powered by Groq AI</Text>
         </View>
         <TouchableOpacity onPress={clearChat} style={styles.clearButton}>

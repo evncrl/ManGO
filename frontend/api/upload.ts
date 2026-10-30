@@ -1,4 +1,3 @@
-// Durianostics API - File Upload
 // This file is currently a placeholder for the upload API logic.
 
 export const uploadFile = async (uri: string) => {

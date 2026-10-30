@@ -166,7 +166,7 @@ export default function About() {
                 <Text style={styles.modernHeroTitleAccent}>THE RIGHT WAY.</Text>
               </Text>
               <Text style={styles.modernHeroSubtitle}>
-                An app made with love by team Durianostics.
+                An app made with love by team ManGO.
               </Text>
             </View>
           </View>

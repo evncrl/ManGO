@@ -10,7 +10,7 @@ def draw_header(canvas, doc):
     """Repeating header logic for every page"""
     canvas.saveState()
     canvas.setFont('Helvetica-Bold', 10)
-    canvas.drawCentredString(letter[0]/2, letter[1] - 25, "DURIANOSTICS: Official Analytics Report")
+    canvas.drawCentredString(letter[0]/2, letter[1] - 25, "ManGO: Official Analytics Report")
     canvas.setFont('Helvetica-Oblique', 8)
     canvas.drawCentredString(letter[0]/2, letter[1] - 35, "AI-Powered Durian Quality Assurance System")
     canvas.drawRightString(letter[0] - 40, letter[1] - 35, f"Page {doc.page}")
@@ -39,7 +39,7 @@ def generate_analytics_pdf(data):
     
     insight_style = ParagraphStyle('InsightStyle', parent=styles['Normal'], fontSize=10, textColor=text_dark, leading=14, spaceBefore=10, spaceAfter=10)
 
-    elements.append(Paragraph("DURIANOSTICS REPORT", title_style))
+    elements.append(Paragraph("ManGO REPORT", title_style))
     elements.append(Paragraph(f"Generated on: {datetime.datetime.now().strftime('%B %d, %Y')}", sub_style))
     elements.append(HRFlowable(width="100%", thickness=1.5, color=primary_color, spaceAfter=20))
 

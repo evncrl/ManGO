@@ -330,7 +330,7 @@ export default function UniversalTopbar({ }: UniversalTopbarProps) {
                     onPress={() => handleNav('Landing')}
                 >
                     <Image source={require('../assets/images/icon.png')} style={styles.logo} />
-                    <Text style={styles.brandText}>Durianostics</Text>
+                    <Text style={styles.brandText}>ManGO</Text>
                 </TouchableOpacity>
 
                 {/* Desktop nav items */}

@@ -154,7 +154,7 @@ export default function Shop() {
                 scrollEventThrottle={16}
             >
                 <View style={shopStyles.header}>
-                    <Text style={[shopStyles.title, { color: Palette.linenWhite }]}>Durianostics Shop</Text>
+                    <Text style={[shopStyles.title, { color: Palette.linenWhite }]}>ManGO Shop</Text>
                     <Text style={[shopStyles.subtitle, { color: Palette.slate }]}>Premium durian varieties and artisan products.</Text>
                 </View>
 

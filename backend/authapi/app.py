@@ -12,8 +12,6 @@ load_dotenv()
 
 app = Flask(__name__)
 
-# ✅ PINALAKAS NA CORS SETUP
-# Tinanggal natin ang wildcard "*" sa origins at pinalitan ng supports_credentials para sa mas stable na connection
 CORS(app, resources={r"/*": {
     "origins": ["http://localhost:8081", "http://localhost:8082", "*"],
     "allow_headers": ["Content-Type", "Authorization", "X-Requested-With", "ngrok-skip-browser-warning", "X-User-Id", "Accept"],
@@ -74,8 +72,6 @@ def health():
         }
     })
 
-# ❌ TINANGGAL ANG @app.after_request DITO
-# Ang flask_cors na ang bahala sa lahat ng headers para hindi mag-duplicate at mag-error
 
 @app.route("/", methods=["GET", "OPTIONS"])
 def home():
