@@ -388,7 +388,7 @@ export default function LandingAuthModal({ }: LandingAuthModalProps) {
 const modalStyles = StyleSheet.create({
   modalOverlay: {
     flex: 1,
-    backgroundColor: 'rgba(12, 26, 16, 0.4)', // Deep Obsidian overlay
+    backgroundColor: 'rgba(28, 25, 23, 0.4)',
     justifyContent: 'center',
     alignItems: 'center',
   },
@@ -569,4 +569,3 @@ const modalStyles = StyleSheet.create({
     color: Palette.warmCopper,
   },
 });
-

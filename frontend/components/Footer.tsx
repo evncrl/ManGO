@@ -53,7 +53,7 @@ const Footer: React.FC<FooterProps> = ({
         {/* Brand */}
         <View style={[styles.brandSection, isWeb && { maxWidth: 300 }]}>
           <View style={styles.logoContainer}>
-            <Ionicons name="leaf" size={28} color={Palette.deepObsidian} />
+            <Ionicons name="leaf" size={28} color={Palette.leaf} />
             <Text style={styles.brandName}>ManGO</Text>
           </View>
           <Text style={styles.brandTagline}>
@@ -112,7 +112,7 @@ const Footer: React.FC<FooterProps> = ({
                 onPress={() => handleLink(social.url)}
                 accessibilityLabel={social.label}
               >
-                <Ionicons name={social.icon as any} size={20} color={Palette.deepObsidian} />
+                <Ionicons name={social.icon as any} size={20} color={Palette.charcoal} />
               </TouchableOpacity>
             ))}
           </View>
@@ -134,19 +134,19 @@ const Footer: React.FC<FooterProps> = ({
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: Palette.warmCopper,
+    backgroundColor: Palette.sand,
     paddingTop: 40,
     paddingBottom: 24,
     paddingHorizontal: 24,
   },
   compactContainer: {
-    backgroundColor: Palette.deepObsidian,
+    backgroundColor: Palette.sand,
     paddingVertical: 16,
     paddingHorizontal: 24,
     alignItems: 'center',
   },
   compactText: {
-    color: Palette.linenWhite,
+    color: Palette.body,
     fontSize: 12,
     fontFamily: Fonts.medium,
   },
@@ -168,12 +168,12 @@ const styles = StyleSheet.create({
   brandName: {
     fontSize: 24,
     fontFamily: Fonts.bold,
-    color: Palette.deepObsidian,
+    color: Palette.charcoal,
     letterSpacing: 0.5,
   },
   brandTagline: {
     fontSize: 14,
-    color: Palette.deepObsidian,
+    color: Palette.body,
     opacity: 0.8,
     lineHeight: 20,
     fontFamily: Fonts.regular,
@@ -185,7 +185,7 @@ const styles = StyleSheet.create({
   sectionTitle: {
     fontSize: 16,
     fontFamily: Fonts.bold,
-    color: Palette.deepObsidian,
+    color: Palette.charcoal,
     marginBottom: 16,
     textTransform: 'uppercase',
     letterSpacing: 1,
@@ -198,7 +198,7 @@ const styles = StyleSheet.create({
   },
   linkText: {
     fontSize: 14,
-    color: Palette.deepObsidian,
+    color: Palette.body,
     fontFamily: Fonts.medium,
   },
   contactSection: {
@@ -213,12 +213,12 @@ const styles = StyleSheet.create({
   },
   contactText: {
     fontSize: 14,
-    color: Palette.deepObsidian,
+    color: Palette.body,
     fontFamily: Fonts.regular,
   },
   divider: {
     height: 1,
-    backgroundColor: Palette.deepObsidian,
+    backgroundColor: Palette.border,
     opacity: 0.1,
     marginVertical: 24,
   },
@@ -234,20 +234,20 @@ const styles = StyleSheet.create({
     width: 40,
     height: 40,
     borderRadius: 20,
-    backgroundColor: 'rgba(12, 26, 16, 0.1)',
+    backgroundColor: Palette.surface,
     alignItems: 'center',
     justifyContent: 'center',
     borderWidth: 1,
-    borderColor: Palette.deepObsidian,
+    borderColor: Palette.border,
   },
   copyright: {
     fontSize: 14,
-    color: Palette.deepObsidian,
+    color: Palette.body,
     fontFamily: Fonts.semiBold,
   },
   legalText: {
     fontSize: 12,
-    color: Palette.deepObsidian,
+    color: Palette.body,
     opacity: 0.6,
     textAlign: 'center',
     fontFamily: Fonts.regular,
@@ -255,4 +255,3 @@ const styles = StyleSheet.create({
 });
 
 export default Footer;
-

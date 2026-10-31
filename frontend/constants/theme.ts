@@ -3,42 +3,49 @@
  * There are many other ways to style your app. For example, [Nativewind](https://www.nativewind.dev/), [Tamagui](https://tamagui.dev/), [unistyles](https://reactnativeunistyles.vercel.app), etc.
  */
 
-import { Platform } from 'react-native';
-
-const tintColorLight = '#354024'; // Kombu Green
-const tintColorDark = '#E5D7C4'; // Bone
-
 export const Palette = {
-  deepObsidian: '#0C1A10',
-  linenWhite: '#FAF9F6',
-  warmCopper: '#C1773E',
-  mutedSage: '#8E9775',
-  charcoalEspresso: '#2D241E',
-  stoneGray: '#E2E2E2',
+  canvas: '#FAF8F2',
+  surface: '#FFFFFF',
+  sand: '#F5EFE6',
+  border: '#F3E8D6',
+  mango: '#F59E0B',
+  mangoDark: '#D97706',
+  leaf: '#16A34A',
+  honey: '#FEF3C7',
+  honeyText: '#B45309',
+  charcoal: '#1C1917',
+  body: '#57534E',
+  muted: '#78716C',
+  deepObsidian: '#1C1917',
+  linenWhite: '#FAF8F2',
+  warmCopper: '#D97706',
+  mutedSage: '#16A34A',
+  charcoalEspresso: '#57534E',
+  stoneGray: '#F3E8D6',
   white: '#FFFFFF',
-  slate: '#94a3b8',
+  slate: '#78716C',
 };
 
 export const Colors = {
   light: {
-    text: Palette.charcoalEspresso,
-    background: Palette.linenWhite,
-    tint: Palette.warmCopper,
-    surface: Palette.white,
-    border: Palette.stoneGray,
-    icon: Palette.warmCopper,
-    tabIconDefault: Palette.mutedSage,
-    tabIconSelected: Palette.warmCopper,
+    text: Palette.charcoal,
+    background: Palette.canvas,
+    tint: Palette.mangoDark,
+    surface: Palette.surface,
+    border: Palette.border,
+    icon: Palette.mangoDark,
+    tabIconDefault: Palette.muted,
+    tabIconSelected: Palette.mangoDark,
   },
   dark: {
-    text: Palette.linenWhite,
-    background: Palette.deepObsidian,
-    tint: Palette.warmCopper,
-    surface: '#1A291A', // Darker green surface for depth
-    border: Palette.mutedSage,
-    icon: Palette.linenWhite,
-    tabIconDefault: Palette.mutedSage,
-    tabIconSelected: Palette.warmCopper,
+    text: Palette.charcoal,
+    background: Palette.canvas,
+    tint: Palette.mangoDark,
+    surface: Palette.surface,
+    border: Palette.border,
+    icon: Palette.mangoDark,
+    tabIconDefault: Palette.muted,
+    tabIconSelected: Palette.mangoDark,
   },
 };
 
@@ -48,4 +55,3 @@ export const Fonts = {
   semiBold: 'Montserrat_600SemiBold',
   bold: 'Montserrat_700Bold',
 };
-

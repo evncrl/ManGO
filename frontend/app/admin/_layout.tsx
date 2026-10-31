@@ -19,7 +19,7 @@ export default function AdminGatekeeperLayout() {
 
   if (loading) {
     return (
-      <View style={{ flex: 1, justifyContent: "center", alignItems: "center", backgroundColor: Palette.deepObsidian }}>
+      <View style={{ flex: 1, justifyContent: "center", alignItems: "center", backgroundColor: Palette.canvas }}>
         <ActivityIndicator size="large" color={Palette.warmCopper} />
       </View>
     );

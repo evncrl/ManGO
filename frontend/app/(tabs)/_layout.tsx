@@ -4,6 +4,7 @@ import { Slot, useRouter } from 'expo-router';
 import UniversalTopbar from '@/components/UniversalTopbar';
 import { useUser } from '@/contexts/UserContext'; 
 import Animated, { FadeInUp, FadeOutUp } from 'react-native-reanimated'; 
+import { Palette } from '@/constants/theme';
 
 export default function TabsLayout() {
   const { hasNewForumPosts, setHasNewForumPosts } = useUser();
@@ -43,7 +44,7 @@ export default function TabsLayout() {
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, flexDirection: 'column', backgroundColor: '#fff' },
+  container: { flex: 1, flexDirection: 'column', backgroundColor: Palette.canvas },
   content: { flex: 1 },
   notificationToast: {
     position: 'absolute',

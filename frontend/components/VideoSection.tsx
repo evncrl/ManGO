@@ -95,7 +95,7 @@ const styles = StyleSheet.create({
     },
     videoWrapper: {
         width: '100%', // Full width
-        backgroundColor: Palette.deepObsidian,
+        backgroundColor: Palette.surface,
         elevation: 5,
         shadowColor: "#000",
         shadowOffset: { width: 0, height: 4 },

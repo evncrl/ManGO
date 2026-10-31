@@ -10,27 +10,27 @@ const isLargeScreen = width >= 768;
    Design Tokens
 ===================== */
 const COLORS = {
-  primary: Palette.warmCopper,
-  primaryDark: Palette.deepObsidian,
-  primaryLight: Palette.mutedSage,
-  success: Palette.mutedSage,
+  primary: Palette.mangoDark,
+  primaryDark: Palette.charcoal,
+  primaryLight: Palette.leaf,
+  success: Palette.leaf,
   warning: '#f59e0b',
   danger: '#ef4444',
-  white: Palette.linenWhite,
+  white: Palette.surface,
   black: '#000000',
-  gray50: Palette.deepObsidian,
-  gray100: Palette.charcoalEspresso,
-  gray200: Palette.deepObsidian,
-  gray300: '#3f3f46',
-  gray400: Palette.slate,
-  gray500: Palette.mutedSage,
-  gray600: '#a1a1aa',
-  gray700: '#3f3f46',
-  gray800: Palette.charcoalEspresso,
-  gray900: Palette.linenWhite,
-  background: Palette.deepObsidian,
-  cardBackground: '#1A291A',
-  cardBorder: Palette.charcoalEspresso,
+  gray50: Palette.canvas,
+  gray100: Palette.sand,
+  gray200: Palette.border,
+  gray300: '#E7DED2',
+  gray400: Palette.body,
+  gray500: Palette.muted,
+  gray600: '#6B625A',
+  gray700: Palette.body,
+  gray800: Palette.border,
+  gray900: Palette.charcoal,
+  background: Palette.canvas,
+  cardBackground: Palette.surface,
+  cardBorder: Palette.border,
 } as const;
 
 const SPACING = {
@@ -58,13 +58,13 @@ const SHADOWS = Platform.select({
   ios: {
     shadowColor: COLORS.black,
     shadowOffset: { width: 0, height: 4 },
-    shadowOpacity: 0.3,
+    shadowOpacity: 0.06,
     shadowRadius: 8,
   },
   android: {
     elevation: 4,
   },
-  web: ({ boxShadow: '0 4px 8px rgba(0, 0, 0, 0.3)' } as any),
+  web: ({ boxShadow: '0 2px 8px rgba(28, 25, 23, 0.06)' } as any),
 }) as ViewStyle | undefined;
 
 /* =====================

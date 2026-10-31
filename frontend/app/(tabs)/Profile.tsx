@@ -57,14 +57,14 @@ const ProfileContent = ({
                 value={name}
                 onChangeText={setName}
                 placeholder="Enter your full name"
-                placeholderTextColor="#94a3b8"
+                placeholderTextColor={Palette.muted}
                 style={[styles.input, focusedInput === 'name' && styles.inputFocused]}
                 onFocus={() => setFocusedInput('name')}
                 onBlur={() => setFocusedInput(null)}
                 autoCapitalize="words"
                 editable={!saving}
               />
-              {focusedInput === 'name' && <View style={styles.inputIcon}><Feather name="user" size={20} color="#1b5e20" /></View>}
+              {focusedInput === 'name' && <View style={styles.inputIcon}><Feather name="user" size={20} color={Palette.leaf} /></View>}
             </View>
           </View>
 
@@ -75,7 +75,7 @@ const ProfileContent = ({
                 value={email}
                 onChangeText={setEmail}
                 placeholder="your.email@example.com"
-                placeholderTextColor="#94a3b8"
+                placeholderTextColor={Palette.muted}
                 style={[styles.input, focusedInput === 'email' && styles.inputFocused]}
                 onFocus={() => setFocusedInput('email')}
                 onBlur={() => setFocusedInput(null)}
@@ -83,7 +83,7 @@ const ProfileContent = ({
                 autoCapitalize="none"
                 editable={!saving}
               />
-              {focusedInput === 'email' && <View style={styles.inputIcon}><MaterialIcons name="email" size={20} color="#1b5e20" /></View>}
+              {focusedInput === 'email' && <View style={styles.inputIcon}><MaterialIcons name="email" size={20} color={Palette.leaf} /></View>}
             </View>
           </View>
 
@@ -180,8 +180,8 @@ export default function Profile() {
   };
 
   return (
-    <View style={{ flex: 1, backgroundColor: Palette.deepObsidian }}>
-      <StatusBar barStyle="light-content" />
+    <View style={{ flex: 1, backgroundColor: Palette.canvas }}>
+      <StatusBar barStyle="dark-content" />
       
       {isLargeScreen ? (
         /* --- WEB / DESKTOP VIEW --- */

@@ -6,7 +6,7 @@ const { width, height } = Dimensions.get('window');
 export const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: Palette.deepObsidian, 
+    backgroundColor: Palette.canvas,
   },
   scrollContent: {
     flexGrow: 1,
@@ -39,15 +39,15 @@ export const styles = StyleSheet.create({
   title: {
     fontSize: 28,
     fontFamily: Fonts.bold,
-    color: Palette.linenWhite, 
+    color: Palette.charcoal,
     letterSpacing: -0.5,
   },
 
   // Profile Card
   profileCard: {
-  backgroundColor: '#1A291A',
+  backgroundColor: Palette.surface,
   borderWidth: 1,
-  borderColor: Palette.deepObsidian,
+  borderColor: Palette.border,
 
   borderRadius: 16, 
   padding: 24,
@@ -58,8 +58,8 @@ export const styles = StyleSheet.create({
   
   shadowColor: '#000',
   shadowOffset: { width: 0, height: 10 },
-  shadowOpacity: 0.3,
-  shadowRadius: 20,
+  shadowOpacity: 0.06,
+  shadowRadius: 12,
   
   elevation: 8,
   },
@@ -80,7 +80,7 @@ export const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     borderWidth: 4,
-    borderColor: Palette.linenWhite,
+    borderColor: Palette.surface,
     shadowColor: Palette.warmCopper,
     shadowOffset: { width: 0, height: 4 },
     shadowOpacity: 0.2,
@@ -131,14 +131,14 @@ export const styles = StyleSheet.create({
   name: {
     fontSize: 26,
     fontFamily: Fonts.bold,
-    color: Palette.linenWhite,
+    color: Palette.charcoal,
     marginBottom: 6,
     textAlign: 'center',
     letterSpacing: -0.3,
   },
   email: {
     fontSize: 16,
-    color: Palette.linenWhite,
+    color: Palette.body,
     opacity: 0.8,
     marginBottom: 28,
     textAlign: 'center',
@@ -155,7 +155,7 @@ export const styles = StyleSheet.create({
   label: {
     fontSize: 13,
     fontFamily: Fonts.bold,
-    color: Palette.linenWhite,
+    color: Palette.charcoal,
     marginBottom: 8,
     textTransform: 'uppercase',
     letterSpacing: 1,
@@ -170,8 +170,8 @@ export const styles = StyleSheet.create({
     paddingHorizontal: 20,
     paddingVertical: 14,
     fontSize: 16,
-    backgroundColor: Palette.linenWhite,
-    color: Palette.deepObsidian,
+    backgroundColor: Palette.surface,
+    color: Palette.charcoal,
     fontFamily: Fonts.regular,
   },
   inputFocused: {
@@ -215,8 +215,8 @@ export const styles = StyleSheet.create({
     shadowRadius: 8,
   },
   saveButton: {
-    backgroundColor: '#2e7d32',
-    shadowColor: '#1b5e20',
+    backgroundColor: Palette.leaf,
+    shadowColor: Palette.leaf,
     shadowOffset: { width: 0, height: 4 },
     shadowOpacity: 0.3,
     shadowRadius: 8,
@@ -225,7 +225,7 @@ export const styles = StyleSheet.create({
   cancelButton: {
     backgroundColor: '#ffffff',
     borderWidth: 2,
-    borderColor: '#e2e8f0',
+    borderColor: Palette.border,
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.05,
@@ -264,27 +264,27 @@ export const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: Palette.deepObsidian, // Match dark theme
+    backgroundColor: Palette.canvas,
   },
   loadingText: {
     marginTop: 16,
     fontSize: 16,
-    color: Palette.linenWhite, 
+    color: Palette.body,
     fontFamily: Fonts.medium,
   },
 
   // Modal
   modalOverlay: {
     flex: 1,
-    backgroundColor: '#1A291A',
+    backgroundColor: 'rgba(28, 25, 23, 0.45)',
     justifyContent: 'center',
     alignItems: 'center',
     padding: 24,
   },
   modalContent: {
-    backgroundColor: '#1A291A',
+    backgroundColor: Palette.surface,
     borderWidth: 1,
-    borderColor: Palette.deepObsidian,
+    borderColor: Palette.border,
     borderRadius: 16,
     padding: 28,
     width: '100%',
@@ -306,7 +306,7 @@ export const styles = StyleSheet.create({
   modalTitle: {
     fontSize: 20,
     fontFamily: Fonts.bold,
-    color: '#1a365d',
+    color: Palette.charcoal,
     flex: 1,
     textAlign: 'center',
   },
@@ -331,10 +331,10 @@ export const styles = StyleSheet.create({
     elevation: 3,
   },
   modalButtonPrimary: {
-    backgroundColor: '#1b5e20',
+    backgroundColor: Palette.mangoDark,
   },
   modalButtonSecondary: {
-    backgroundColor: '#475569',
+    backgroundColor: Palette.sand,
   },
   modalCancelButton: {
     marginTop: 20,
@@ -345,7 +345,7 @@ export const styles = StyleSheet.create({
   statsContainer: {
     flexDirection: 'row',
     justifyContent: 'space-around',
-    backgroundColor: Palette.deepObsidian,
+    backgroundColor: Palette.surface,
     borderRadius: 16,
     padding: 20,
     marginBottom: 24,
@@ -357,12 +357,12 @@ export const styles = StyleSheet.create({
   statValue: {
     fontSize: 24,
     fontFamily: Fonts.bold,
-    color: Palette.linenWhite,
+    color: Palette.charcoal,
     marginBottom: 4,
   },
   statLabel: {
     fontSize: 12,
-    color: Palette.linenWhite,
+    color: Palette.body,
     opacity: 0.7,
     fontFamily: Fonts.medium,
     textTransform: 'uppercase',
@@ -381,7 +381,7 @@ export const styles = StyleSheet.create({
   verifiedBadge: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: 'rgba(255, 255, 255, 0.1)',
+    backgroundColor: Palette.honey,
     paddingHorizontal: 12,
     paddingVertical: 6,
     borderRadius: 20,
@@ -390,7 +390,7 @@ export const styles = StyleSheet.create({
   },
   verifiedText: {
     fontSize: 12,
-    color: Palette.linenWhite,
+    color: Palette.honeyText,
     fontFamily: Fonts.semiBold,
     marginLeft: 4,
   },
@@ -399,7 +399,7 @@ export const styles = StyleSheet.create({
   sectionHeader: {
     fontSize: 18,
     fontFamily: Fonts.bold,
-    color: Palette.linenWhite,
+    color: Palette.charcoal,
     marginBottom: 16,
     marginTop: 8,
   },
@@ -417,7 +417,7 @@ export const styles = StyleSheet.create({
   },
   emptyStateText: {
     fontSize: 16,
-    color: Palette.linenWhite,
+    color: Palette.body,
     opacity: 0.6,
     textAlign: 'center',
     fontFamily: Fonts.regular,
@@ -427,7 +427,7 @@ statsRow: {
   flexDirection: 'row',
   alignItems: 'center',
   justifyContent: 'space-around',
-  backgroundColor: 'rgba(255, 255, 255, 0.05)', // Subtle card effect
+  backgroundColor: Palette.surface,
   borderRadius: 16,
   paddingVertical: 15,
   marginVertical: 20,
@@ -443,8 +443,7 @@ statNumber: {
 statDivider: {
   width: 1,
   height: 30,
-  backgroundColor: 'rgba(255, 255, 255, 0.1)',
+  backgroundColor: Palette.border,
 },
 
 });
-

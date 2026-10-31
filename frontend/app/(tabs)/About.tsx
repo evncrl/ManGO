@@ -13,7 +13,7 @@ import {
 } from 'react-native';
 import Footer from '@/components/Footer';
 import { Ionicons } from '@expo/vector-icons';
-import { Fonts } from '@/constants/theme';
+import { Fonts, Palette } from '@/constants/theme';
 
 const { width } = Dimensions.get('window');
 
@@ -242,7 +242,7 @@ export default function About() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#0C1A10',
+    backgroundColor: Palette.canvas,
   },
   scrollContent: {
     flexGrow: 1,
@@ -264,7 +264,7 @@ const styles = StyleSheet.create({
   },
   modernHeroOverlay: {
     ...StyleSheet.absoluteFillObject,
-    backgroundColor: 'rgba(12, 26, 16, 0.85)',
+    backgroundColor: 'rgba(253, 248, 242, 0.88)',
     justifyContent: 'center',
     alignItems: 'center',
   },
@@ -302,16 +302,16 @@ const styles = StyleSheet.create({
     zIndex: 1,
   },
   modernBadge: {
-    backgroundColor: 'rgba(255, 255, 255, 0.1)',
+    backgroundColor: 'rgba(255, 255, 255, 0.82)',
     paddingHorizontal: 20,
     paddingVertical: 8,
     borderRadius: 20,
     borderWidth: 1,
-    borderColor: 'rgba(255, 255, 255, 0.2)',
+    borderColor: Palette.border,
     marginBottom: 24,
   },
   modernBadgeText: {
-    color: '#fff',
+    color: Palette.charcoal,
     fontSize: 12,
 
     fontFamily: Fonts.bold,
@@ -320,17 +320,17 @@ const styles = StyleSheet.create({
   modernHeroTitle: {
     fontSize: 52,
     fontFamily: Fonts.bold,
-    color: '#fff',
+    color: Palette.charcoal,
     textAlign: 'center',
     lineHeight: 60,
     marginBottom: 16,
   },
   modernHeroTitleAccent: {
-    color: '#4ECDC4',
+    color: Palette.mangoDark,
   },
   modernHeroSubtitle: {
     fontSize: 18,
-    color: 'rgba(255, 255, 255, 0.8)',
+    color: Palette.body,
     textAlign: 'center',
     maxWidth: 500,
   },
@@ -349,13 +349,13 @@ const styles = StyleSheet.create({
 
   // Vision Block
   visionBlock: {
-    backgroundColor: '#1A291A',
+    backgroundColor: Palette.surface,
     borderRadius: 24,
     padding: 40,
     marginBottom: 40,
     alignItems: 'center',
     borderWidth: 1,
-    borderColor: '#2D241E',
+    borderColor: Palette.border,
     ...Platform.select({
       ios: {
         shadowColor: '#000',
@@ -375,7 +375,7 @@ const styles = StyleSheet.create({
     width: 60,
     height: 60,
     borderRadius: 30,
-    backgroundColor: '#C1773E',
+    backgroundColor: Palette.mango,
     justifyContent: 'center',
     alignItems: 'center',
     marginBottom: 20,
@@ -387,14 +387,14 @@ const styles = StyleSheet.create({
   visionTitle: {
     fontSize: 32,
     fontFamily: Fonts.bold,
-    color: '#FAF9F6',
+    color: Palette.charcoal,
     marginBottom: 16,
     textAlign: 'center',
   },
   visionText: {
     fontSize: 16,
     lineHeight: 28,
-    color: '#94a3b8',
+    color: Palette.body,
     textAlign: 'center',
     maxWidth: 700,
   },
@@ -410,12 +410,12 @@ const styles = StyleSheet.create({
   metricBox: {
     flex: 1,
     minWidth: 180,
-    backgroundColor: '#1A291A',
+    backgroundColor: Palette.surface,
     borderRadius: 20,
     padding: 32,
     alignItems: 'center',
     borderWidth: 1,
-    borderColor: '#2D241E',
+    borderColor: Palette.border,
   },
   metricIconCircle: {
     width: 70,
@@ -431,12 +431,12 @@ const styles = StyleSheet.create({
   metricValue: {
     fontSize: 36,
     fontFamily: Fonts.bold,
-    color: '#FAF9F6',
+    color: Palette.charcoal,
     marginBottom: 8,
   },
   metricLabel: {
     fontSize: 13,
-    color: '#94a3b8',
+    color: Palette.body,
     textAlign: 'center',
     fontFamily: Fonts.semiBold,
   },
@@ -451,16 +451,16 @@ const styles = StyleSheet.create({
   teamHeaderLine: {
     flex: 1,
     height: 2,
-    backgroundColor: '#2D241E',
+    backgroundColor: Palette.border,
   },
   teamHeaderText: {
     fontSize: 32,
     fontFamily: Fonts.bold,
-    color: '#FAF9F6',
+    color: Palette.charcoal,
   },
   teamTagline: {
     fontSize: 18,
-    color: '#94a3b8',
+    color: Palette.body,
     textAlign: 'center',
     marginBottom: 40,
   },
@@ -471,12 +471,12 @@ const styles = StyleSheet.create({
     marginBottom: 60,
   },
   modernTeamCard: {
-    backgroundColor: '#1A291A',
+    backgroundColor: Palette.surface,
     borderRadius: 24,
     overflow: 'hidden',
     position: 'relative',
     borderWidth: 1,
-    borderColor: '#2D241E',
+    borderColor: Palette.border,
     ...Platform.select({
       ios: {
         shadowColor: '#000',
@@ -517,7 +517,7 @@ const styles = StyleSheet.create({
     borderRadius: 50,
     borderWidth: 4,
     padding: 4,
-    backgroundColor: '#1A291A',
+    backgroundColor: Palette.surface,
   },
   modernAvatar: {
     width: '100%',
@@ -532,7 +532,7 @@ const styles = StyleSheet.create({
     height: 20,
     borderRadius: 10,
     borderWidth: 3,
-    borderColor: '#1A291A',
+    borderColor: Palette.border,
   },
   modernMemberInfo: {
     flex: 1,
@@ -541,7 +541,7 @@ const styles = StyleSheet.create({
   modernMemberName: {
     fontSize: 24,
     fontFamily: Fonts.bold,
-    color: '#FAF9F6',
+    color: Palette.charcoal,
     marginBottom: 8,
   },
   modernRolePill: {
@@ -559,7 +559,7 @@ const styles = StyleSheet.create({
   modernMemberDesc: {
     fontSize: 14,
     lineHeight: 22,
-    color: '#94a3b8',
+    color: Palette.body,
     fontFamily: Fonts.regular,
   },
   modernSocialRow: {
@@ -568,19 +568,19 @@ const styles = StyleSheet.create({
     flexWrap: 'wrap',
     gap: 12,
     borderTopWidth: 1,
-    borderTopColor: '#2D241E',
+    borderTopColor: Palette.border,
     paddingTop: 20,
   },
   modernSocialButton: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: '#0C1A10',
+    backgroundColor: Palette.surface,
     paddingHorizontal: 16,
     paddingVertical: 10,
     borderRadius: 12,
     gap: 8,
     borderWidth: 1,
-    borderColor: '#2D241E',
+    borderColor: Palette.border,
     ...Platform.select({
       web: {
         cursor: 'pointer',
@@ -589,8 +589,8 @@ const styles = StyleSheet.create({
     }),
   },
   modernSocialButtonHovered: {
-    backgroundColor: '#C1773E',
-    borderColor: '#C1773E',
+    backgroundColor: Palette.mango,
+    borderColor: Palette.mango,
   },
   modernSocialIcon: {
     fontSize: 16,

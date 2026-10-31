@@ -315,7 +315,7 @@ export default function AIChatbot({
             multiline
             maxLength={500}
             editable={!isLoading}
-            placeholderTextColor="#94a3b8"
+            placeholderTextColor={Palette.muted}
           />
         </View>
         <TouchableOpacity
@@ -338,10 +338,10 @@ export default function AIChatbot({
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: Palette.deepObsidian,
+    backgroundColor: Palette.canvas,
   },
   header: {
-    backgroundColor: '#1A291A',
+    backgroundColor: Palette.surface,
     paddingHorizontal: 20,
     paddingBottom: 20,
     flexDirection: 'row',
@@ -355,20 +355,20 @@ const styles = StyleSheet.create({
   headerTitle: {
     fontSize: 24,
     fontFamily: Fonts.bold,
-    color: Palette.linenWhite,
+    color: Palette.charcoal,
     letterSpacing: -0.5,
   },
   headerSubtitle: {
     fontSize: 13,
     fontFamily: Fonts.medium,
-    color: Palette.slate,
+    color: Palette.body,
     marginTop: 2,
   },
   clearButton: {
     width: 40,
     height: 40,
     borderRadius: 20,
-    backgroundColor: '#1A291A',
+    backgroundColor: Palette.sand,
     justifyContent: 'center',
     alignItems: 'center',
   },
@@ -405,9 +405,11 @@ const styles = StyleSheet.create({
     }),
   },
   assistantMessage: {
-    backgroundColor: Palette.charcoalEspresso,
+    backgroundColor: Palette.surface,
     alignSelf: 'flex-start',
     borderBottomLeftRadius: 4,
+    borderWidth: 1,
+    borderColor: Palette.border,
   },
   messageHeader: {
     flexDirection: 'row',
@@ -420,18 +422,18 @@ const styles = StyleSheet.create({
     fontFamily: Fonts.bold,
     textTransform: 'uppercase',
     letterSpacing: 1,
-    color: Palette.slate,
+    color: Palette.body,
   },
   messageTime: {
     fontSize: 10,
     fontFamily: Fonts.medium,
-    color: Palette.slate,
+    color: Palette.muted,
   },
   messageContent: {
     fontSize: 16,
     lineHeight: 24,
     fontFamily: Fonts.regular,
-    color: Palette.linenWhite,
+    color: Palette.charcoal,
   },
   userMessageText: {
     color: '#FFFFFF',
@@ -444,18 +446,18 @@ const styles = StyleSheet.create({
   },
   loadingText: {
     fontSize: 14,
-    color: Palette.slate,
+    color: Palette.body,
     fontFamily: Fonts.medium,
   },
   suggestionsContainer: {
     paddingHorizontal: 20,
     paddingVertical: 16,
-    backgroundColor: '#1A291A',
+    backgroundColor: Palette.surface,
   },
   suggestionsTitle: {
     fontSize: 12,
     fontFamily: Fonts.bold,
-    color: Palette.slate,
+    color: Palette.body,
     textTransform: 'uppercase',
     letterSpacing: 1,
     marginBottom: 12,
@@ -466,48 +468,48 @@ const styles = StyleSheet.create({
     gap: 8,
   },
   suggestionButton: {
-    backgroundColor: Palette.charcoalEspresso,
+    backgroundColor: Palette.sand,
     paddingVertical: 10,
     paddingHorizontal: 16,
     borderRadius: 20,
     borderWidth: 1,
-    borderColor: '#3f3f46',
+    borderColor: Palette.border,
   },
   suggestionText: {
     fontSize: 13,
     fontFamily: Fonts.semiBold,
-    color: Palette.linenWhite,
+    color: Palette.charcoal,
   },
   inputContainer: {
     flexDirection: 'row',
     paddingHorizontal: 20,
     paddingTop: 12,
-    backgroundColor: '#1A291A',
+    backgroundColor: Palette.surface,
     alignItems: 'center',
     gap: 12,
   },
   inputWrapper: {
     flex: 1,
-    backgroundColor: Palette.charcoalEspresso,
+    backgroundColor: Palette.surface,
     borderRadius: 28,
     paddingHorizontal: 20,
     paddingVertical: 12,
     flexDirection: 'row',
     alignItems: 'center',
     borderWidth: 1,
-    borderColor: '#3f3f46',
+    borderColor: Palette.border,
   },
   input: {
     flex: 1,
     fontFamily: Fonts.regular,
     fontSize: 15,
-    color: Palette.linenWhite,
+    color: Palette.charcoal,
     maxHeight: 120,
     paddingTop: 0,
     paddingBottom: 0,
   },
   sendButton: {
-    backgroundColor: Palette.warmCopper,
+    backgroundColor: Palette.mangoDark,
     width: 48,
     height: 48,
     borderRadius: 24,
@@ -529,7 +531,6 @@ const styles = StyleSheet.create({
     }),
   },
   sendButtonDisabled: {
-    backgroundColor: Palette.charcoalEspresso,
+    backgroundColor: Palette.sand,
   },
 });
-

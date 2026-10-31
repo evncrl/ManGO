@@ -373,11 +373,11 @@ export default function Forum({ embedded = false }: ForumProps) {
 
   const getCategoryColor = (category: string) => {
     switch (category) {
-      case "Quality Issues": return { backgroundColor: "rgba(220, 38, 38, 0.15)", color: "#dc2626" };
-      case "Best Practices": return { backgroundColor: "rgba(37, 99, 235, 0.15)", color: "#2563eb" };
-      case "Export Tips": return { backgroundColor: "rgba(22, 163, 106, 0.15)", color: "#16a34a" };
-      case "General Discussion": return { backgroundColor: "rgba(142, 151, 117, 0.15)", color: "#8E9775" };
-      default: return { backgroundColor: "rgba(142, 151, 117, 0.15)", color: "#8E9775" };
+      case "Quality Issues": return { backgroundColor: "#FEF2F2", color: "#B91C1C" };
+      case "Best Practices": return { backgroundColor: "#EFF6FF", color: "#1D4ED8" };
+      case "Export Tips": return { backgroundColor: "#DCFCE7", color: "#15803D" };
+      case "General Discussion": return { backgroundColor: "#FEF3C7", color: "#B45309" };
+      default: return { backgroundColor: "#FEF3C7", color: "#B45309" };
     }
   };
 

@@ -295,14 +295,16 @@ export default function AuthModal({ visible, mode, onClose }: AuthModalProps) {
 const styles = StyleSheet.create({
   modalOverlay: {
     flex: 1,
-    backgroundColor: 'rgba(12, 26, 16, 0.6)',
+    backgroundColor: 'rgba(28, 25, 23, 0.45)',
     justifyContent: 'center',
     alignItems: 'center',
   },
   modalContent: {
     width: '90%',
     maxWidth: 440,
-    backgroundColor: '#1A291A',
+    backgroundColor: Palette.surface,
+    borderWidth: 1,
+    borderColor: Palette.border,
     borderRadius: 32,
     overflow: 'hidden',
     ...Platform.select({
@@ -335,14 +337,14 @@ const styles = StyleSheet.create({
   modalTitle: {
     fontSize: 28,
     fontFamily: Fonts.bold,
-    color: Palette.linenWhite,
+    color: Palette.charcoal,
     letterSpacing: -0.5,
   },
   closeButton: {
     width: 36,
     height: 36,
     borderRadius: 18,
-    backgroundColor: Palette.charcoalEspresso,
+    backgroundColor: Palette.sand,
     justifyContent: 'center',
     alignItems: 'center',
   },
@@ -354,7 +356,7 @@ const styles = StyleSheet.create({
     width: 100,
     height: 100,
     borderRadius: 50,
-    backgroundColor: Palette.charcoalEspresso,
+    backgroundColor: Palette.surface,
     justifyContent: 'center',
     alignItems: 'center',
     position: 'relative',
@@ -370,7 +372,7 @@ const styles = StyleSheet.create({
     width: 100,
     height: 100,
     borderRadius: 50,
-    backgroundColor: Palette.charcoalEspresso,
+    backgroundColor: Palette.surface,
     justifyContent: 'center',
     alignItems: 'center',
     borderWidth: 2,
@@ -388,7 +390,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     borderWidth: 3,
-    borderColor: '#1A291A',
+    borderColor: Palette.surface,
   },
   removePfpButton: {
     marginTop: 12,
@@ -404,7 +406,7 @@ const styles = StyleSheet.create({
   inputWrapper: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: Palette.charcoalEspresso,
+    backgroundColor: Palette.canvas,
     borderRadius: 16,
     marginBottom: 16,
     paddingHorizontal: 16,
@@ -419,7 +421,7 @@ const styles = StyleSheet.create({
     flex: 1,
     fontFamily: Fonts.medium,
     fontSize: 15,
-    color: Palette.linenWhite,
+    color: Palette.charcoal,
   },
   submitButton: {
     backgroundColor: Palette.warmCopper,

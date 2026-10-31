@@ -3,11 +3,12 @@ import { Fonts, Palette } from '@/constants/theme';
 
 const styles = StyleSheet.create({
   mapCard: {
-    backgroundColor: 'rgba(12, 26, 16, 0.7)', // Translucent obsidian
+    backgroundColor: Palette.surface,
     borderRadius: 24,
     padding: 24,
     margin: 16,
-    // Removed border for clean look
+    borderWidth: 1,
+    borderColor: Palette.border,
     elevation: 5,
   },
   mapControls: {
@@ -24,8 +25,7 @@ const styles = StyleSheet.create({
   mapSubtitle: {
     fontSize: 14,
     fontFamily: Fonts.regular,
-    color: Palette.linenWhite,
-    opacity: 0.7,
+    color: Palette.body,
   },
   controlButtons: {
     flexDirection: 'row',
@@ -35,14 +35,14 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
     paddingHorizontal: 16,
     borderRadius: 12,
-    backgroundColor: 'rgba(255, 255, 255, 0.1)',
+    backgroundColor: Palette.sand,
     marginRight: 8,
   },
   controlButtonActive: {
     backgroundColor: Palette.warmCopper,
   },
   controlButtonText: {
-    color: Palette.linenWhite,
+    color: Palette.charcoal,
     fontFamily: Fonts.semiBold,
   },
   mapViewport: {
@@ -50,7 +50,7 @@ const styles = StyleSheet.create({
     borderRadius: 12,
     overflow: 'hidden',
     marginBottom: 16,
-    backgroundColor: 'rgba(0,0,0,0.2)',
+    backgroundColor: Palette.canvas,
   },
   mapLoading: {
     flex: 1,
@@ -78,12 +78,12 @@ const styles = StyleSheet.create({
     marginTop: 20,
     padding: 16,
     borderRadius: 16,
-    backgroundColor: 'rgba(255, 255, 255, 0.05)',
+    backgroundColor: Palette.sand,
   },
   legendTitle: {
     fontSize: 15,
     fontFamily: Fonts.semiBold,
-    color: Palette.linenWhite,
+    color: Palette.charcoal,
     marginBottom: 10,
   },
   legendItems: {
@@ -103,10 +103,8 @@ const styles = StyleSheet.create({
   },
   legendText: {
     fontSize: 13,
-    color: Palette.linenWhite,
-    opacity: 0.8,
+    color: Palette.body,
   },
 });
 
 export default styles;
-
