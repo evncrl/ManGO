@@ -3,25 +3,20 @@
  * There are many other ways to style your app. For example, [Nativewind](https://www.nativewind.dev/), [Tamagui](https://tamagui.dev/), [unistyles](https://reactnativeunistyles.vercel.app), etc.
  */
 
-import { Platform } from 'react-native';
-
-const tintColorLight = '#354024'; // Kombu Green
-const tintColorDark = '#E5D7C4'; // Bone
-
 export const Palette = {
-  deepObsidian: '#0C1A10',
-  linenWhite: '#FAF9F6',
-  warmCopper: '#C1773E',
-  mutedSage: '#8E9775',
-  charcoalEspresso: '#2D241E',
-  stoneGray: '#E2E2E2',
+  deepObsidian: '#1F2937',
+  linenWhite: '#FAFAF8',
+  warmCopper: '#C2410C',
+  mutedSage: '#10B981',
+  charcoalEspresso: '#4B5563',
+  stoneGray: '#E5E7EB',
   white: '#FFFFFF',
-  slate: '#94a3b8',
+  slate: '#6B7280',
 };
 
 export const Colors = {
   light: {
-    text: Palette.charcoalEspresso,
+    text: Palette.deepObsidian,
     background: Palette.linenWhite,
     tint: Palette.warmCopper,
     surface: Palette.white,
@@ -31,13 +26,13 @@ export const Colors = {
     tabIconSelected: Palette.warmCopper,
   },
   dark: {
-    text: Palette.linenWhite,
-    background: Palette.deepObsidian,
+    text: '#F9FAFB',
+    background: '#111827',
     tint: Palette.warmCopper,
-    surface: '#1A291A', // Darker green surface for depth
-    border: Palette.mutedSage,
-    icon: Palette.linenWhite,
-    tabIconDefault: Palette.mutedSage,
+    surface: '#1F2937',
+    border: '#374151',
+    icon: '#F9FAFB',
+    tabIconDefault: '#9CA3AF',
     tabIconSelected: Palette.warmCopper,
   },
 };
@@ -48,4 +43,3 @@ export const Fonts = {
   semiBold: 'Montserrat_600SemiBold',
   bold: 'Montserrat_700Bold',
 };
-

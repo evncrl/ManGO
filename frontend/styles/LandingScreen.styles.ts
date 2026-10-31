@@ -3,15 +3,14 @@ import { StyleSheet, Dimensions, Platform } from 'react-native';
 import { useResponsive } from '@/utils/platform';
 import { Fonts, Palette } from '@/constants/theme';
 
-// Modern Earthy 2.0 Refined Palette
 const colors = {
   primary: Palette.warmCopper,
   primaryDark: Palette.deepObsidian,
   primaryLight: Palette.mutedSage,
-  primaryGlow: Palette.linenWhite,
+  primaryGlow: Palette.charcoalEspresso,
 
   // Accent Colors
-  accent: Palette.charcoalEspresso,
+  accent: Palette.warmCopper,
   accentLight: Palette.stoneGray,
   accentDark: Palette.deepObsidian,
 
@@ -20,18 +19,18 @@ const colors = {
   secondaryLight: Palette.linenWhite,
 
   // Modern Neutral Palette
-  bgLight: '#F0EFEA', // Slightly deeper Linen
-  bgWhite: '#F0EFEA',
+  bgLight: Palette.linenWhite,
+  bgWhite: Palette.white,
   bgGray: Palette.stoneGray,
 
   // Refined Text Colors
   textDark: Palette.charcoalEspresso,
-  textMedium: Palette.deepObsidian,
+  textMedium: Palette.charcoalEspresso,
   textLight: Palette.slate,
   textWhite: Palette.white,
 
   // Border Colors
-  borderLight: Palette.linenWhite,
+  borderLight: '#F3F4F6',
   borderMedium: Palette.stoneGray,
   borderDark: Palette.mutedSage,
 };
@@ -80,12 +79,12 @@ export const useLandingStyles = () => {
     },
     safeArea: {
       flex: 1,
-      backgroundColor: colors.primaryDark, // Start with dark obsidian for a premium feel
+      backgroundColor: colors.bgLight,
     },
 
     container: {
       flex: 1,
-      backgroundColor: Palette.deepObsidian,
+      backgroundColor: colors.bgLight,
     },
 
     scrollContainer: {
@@ -100,14 +99,14 @@ export const useLandingStyles = () => {
       alignItems: 'center',
       paddingHorizontal: isSmall ? 12 : isWebPlatform && isLarge ? 40 : 20,
       paddingVertical: isSmall ? 14 : 18,
-      backgroundColor: colors.primaryDark,
-      borderBottomWidth: 2,
-      borderBottomColor: colors.primary,
-      elevation: 8,
-      shadowColor: colors.primary,
-      shadowOffset: { width: 0, height: 4 },
-      shadowOpacity: 0.2,
-      shadowRadius: 6,
+      backgroundColor: colors.bgWhite,
+      borderBottomWidth: 1,
+      borderBottomColor: colors.borderLight,
+      elevation: 1,
+      shadowColor: '#111827',
+      shadowOffset: { width: 0, height: 1 },
+      shadowOpacity: 0.06,
+      shadowRadius: 3,
       zIndex: 10,
     },
 
@@ -141,12 +140,12 @@ export const useLandingStyles = () => {
 
     // ========== NAVIGATION ==========
     nav: {
-      backgroundColor: colors.bgLight,
-      borderBottomWidth: 2,
+      backgroundColor: colors.bgWhite,
+      borderBottomWidth: 1,
       borderBottomColor: colors.borderMedium,
       paddingVertical: isSmall ? 10 : 14,
       elevation: 4,
-      boxShadow: '0 2px 4px rgba(22, 101, 52, 0.15)',
+      boxShadow: '0 1px 3px rgba(17,24,39,0.05)',
     },
 
     navScroll: {
@@ -160,8 +159,8 @@ export const useLandingStyles = () => {
       paddingHorizontal: isSmall ? 8 : 12,
       borderRadius: 20,
       backgroundColor: colors.bgWhite,
-      elevation: 2,
-      boxShadow: '0 1px 2px rgba(22, 101, 52, 0.1)',
+      elevation: 1,
+      boxShadow: '0 1px 3px rgba(17,24,39,0.05)',
     },
 
     navText: {
@@ -172,7 +171,7 @@ export const useLandingStyles = () => {
 
     // ========== HERO SECTION ==========
     heroSection: {
-      backgroundColor: Palette.deepObsidian,
+      backgroundColor: colors.bgWhite,
       width: '100%',
     },
 
@@ -198,7 +197,7 @@ export const useLandingStyles = () => {
     heroTitle: {
       fontFamily: Fonts.bold,
       fontSize: isSmall ? 28 : isWebPlatform && isLarge ? 56 : 40,
-      color: Palette.white,
+      color: Palette.deepObsidian,
       marginBottom: 12,
       textAlign: 'left',
       letterSpacing: -1,
@@ -208,7 +207,7 @@ export const useLandingStyles = () => {
     heroSubtitle: {
       fontFamily: Fonts.regular,
       fontSize: isSmall ? 15 : isWebPlatform && isLarge ? 20 : 18,
-      color: Palette.linenWhite,
+      color: colors.textMedium,
       lineHeight: isSmall ? 22 : isWebPlatform && isLarge ? 30 : 26,
       textAlign: 'left',
     },
@@ -219,14 +218,14 @@ export const useLandingStyles = () => {
       alignItems: 'center',
       paddingVertical: isSmall ? 16 : 20,
       gap: 10,
-      backgroundColor: Palette.deepObsidian,
+      backgroundColor: colors.bgWhite,
     },
 
     indicator: {
       height: 10,
       borderRadius: 5,
       elevation: 2,
-      boxShadow: '0 1px 2px rgba(22, 101, 52, 0.3)',
+      boxShadow: '0 1px 3px rgba(17,24,39,0.06)',
     },
 
     heroButtons: {
@@ -237,7 +236,7 @@ export const useLandingStyles = () => {
       paddingHorizontal: isSmall ? 16 : isWebPlatform && isLarge ? 40 : 24,
       paddingBottom: verticalScale(28),
       paddingTop: verticalScale(12),
-      backgroundColor: Palette.deepObsidian,
+      backgroundColor: colors.bgLight,
     },
 
     // ========== BUTTONS ==========
@@ -249,7 +248,7 @@ export const useLandingStyles = () => {
       alignItems: 'center',
       justifyContent: 'center',
       elevation: 6,
-      boxShadow: '0 4px 8px rgba(22, 101, 52, 0.3)',
+      boxShadow: '0 2px 6px rgba(17,24,39,0.12)',
       transform: [{ scale: 1 }],
     },
 
@@ -276,9 +275,6 @@ export const useLandingStyles = () => {
 
     primaryButtonText: {
       color: colors.textWhite,
-      textShadowColor: 'rgba(0, 0, 0, 0.2)',
-      textShadowOffset: { width: 1, height: 1 },
-      textShadowRadius: 2,
     },
 
     secondaryButtonText: {
@@ -327,8 +323,8 @@ export const useLandingStyles = () => {
       borderRadius: 20,
       overflow: 'hidden',
       elevation: 8,
-      boxShadow: '0 4px 10px rgba(22, 101, 52, 0.2)',
-      borderWidth: 3,
+      boxShadow: '0 2px 8px rgba(17,24,39,0.06)',
+      borderWidth: 1,
       borderColor: colors.borderMedium,
       marginBottom: isSmall ? 16 : 0,
     },
@@ -338,7 +334,7 @@ export const useLandingStyles = () => {
       height: isSmall ? 240 : isWebPlatform && isLarge ? 280 : 260,
       overflow: 'hidden',
       backgroundColor: colors.bgLight,
-      borderBottomWidth: 3,
+      borderBottomWidth: 1,
       borderBottomColor: colors.primaryLight,
     },
 
@@ -391,8 +387,8 @@ export const useLandingStyles = () => {
       justifyContent: 'center',
       alignItems: 'center',
       elevation: 6,
-      boxShadow: '0 4px 6px rgba(6, 78, 59, 0.25)',
-      borderWidth: 2,
+      boxShadow: '0 2px 6px rgba(17,24,39,0.12)',
+      borderWidth: 1,
       borderColor: colors.primaryLight,
     },
 
@@ -421,10 +417,10 @@ export const useLandingStyles = () => {
       right: 0,
       backgroundColor: colors.bgWhite,
       borderRadius: 12,
-      borderWidth: 2,
+      borderWidth: 1,
       borderColor: colors.primaryLight,
       elevation: 8,
-      boxShadow: '0 4px 6px rgba(22, 101, 52, 0.2)',
+      boxShadow: '0 2px 6px rgba(17,24,39,0.08)',
       overflow: 'hidden',
       minWidth: 120,
     },
@@ -509,7 +505,7 @@ export const useLandingStyles = () => {
     // ========== MODAL ==========
     modalOverlay: {
       flex: 1,
-      backgroundColor: 'rgba(27, 94, 32, 0.75)',
+      backgroundColor: 'rgba(17, 24, 39, 0.35)',
       justifyContent: 'center',
       alignItems: 'center',
       padding: isSmall ? 16 : 20,
@@ -523,8 +519,8 @@ export const useLandingStyles = () => {
       maxWidth: isWebPlatform && isLarge ? 520 : 420,
       maxHeight: isSmall ? '90%' : '85%',
       elevation: 12,
-      boxShadow: '0 8px 16px rgba(22, 101, 52, 0.4)',
-      borderWidth: 3,
+      boxShadow: '0 2px 8px rgba(17,24,39,0.08)',
+      borderWidth: 1,
       borderColor: colors.primaryLight,
     },
 
@@ -548,7 +544,7 @@ export const useLandingStyles = () => {
       backgroundColor: colors.bgLight,
       color: colors.textDark,
       elevation: 2,
-      boxShadow: '0 2px 4px rgba(22, 101, 52, 0.1)',
+      boxShadow: '0 1px 3px rgba(17,24,39,0.05)',
     },
 
     // ========== PROFILE PICTURE SECTION ==========
@@ -584,7 +580,7 @@ export const useLandingStyles = () => {
       borderWidth: 4,
       borderColor: colors.primaryLight,
       elevation: 6,
-      boxShadow: '0 4px 8px rgba(22, 101, 52, 0.3)',
+      boxShadow: '0 2px 6px rgba(17,24,39,0.08)',
     },
 
     placeholderImage: {
@@ -609,7 +605,7 @@ export const useLandingStyles = () => {
       position: 'absolute',
       top: -8,
       right: -8,
-      backgroundColor: colors.primaryDark,
+      backgroundColor: '#DC2626',
       width: 32,
       height: 32,
       borderRadius: 16,
@@ -691,14 +687,14 @@ export const useLandingStyles = () => {
     videoSection: {
       paddingHorizontal: 0, // Full width for video
       paddingVertical: 0,
-      backgroundColor: Palette.deepObsidian,
+      backgroundColor: colors.bgLight,
       alignItems: 'center',
       marginBottom: 40,
     },
     missionSection: {
       paddingHorizontal: isWebPlatform && isLarge ? 80 : 24,
       paddingVertical: 80,
-      backgroundColor: colors.primaryDark, // Vibrant Obsidian Background
+      backgroundColor: colors.bgLight,
     },
     missionCardsContainer: {
       flexDirection: 'row',
@@ -711,14 +707,14 @@ export const useLandingStyles = () => {
       width: 64,
       height: 64,
       borderRadius: 18,
-      backgroundColor: 'rgba(22, 101, 52, 0.1)',
+      backgroundColor: '#FEF3C7',
       justifyContent: 'center',
       alignItems: 'center',
       marginBottom: 20,
     },
     card: {
       width: isWebPlatform && isLarge ? '30%' : '100%',
-      backgroundColor: 'rgba(255, 255, 255, 0.05)', // Glassmorphic effect on dark bg
+      backgroundColor: colors.bgWhite,
       borderRadius: 24,
       padding: 32,
       // Removed border for a clean borderless look

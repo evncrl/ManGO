@@ -166,7 +166,7 @@ export default function Profile() {
 
   if (loading || userLoading) {
     return (
-      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: '#020d08' }}>
+      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: Palette.linenWhite }}>
         <ActivityIndicator size="large" color={Palette.warmCopper} />
       </View>
     );
@@ -180,7 +180,7 @@ export default function Profile() {
   };
 
   return (
-    <View style={{ flex: 1, backgroundColor: Palette.deepObsidian }}>
+    <View style={{ flex: 1, backgroundColor: Palette.linenWhite }}>
       <StatusBar barStyle="light-content" />
       
       {isLargeScreen ? (

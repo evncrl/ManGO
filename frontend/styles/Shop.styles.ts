@@ -11,13 +11,13 @@ export const colors = {
     primaryDark: Palette.deepObsidian,
     primaryLight: Palette.mutedSage,
     accent: Palette.warmCopper,
-    bgLight: Palette.deepObsidian,
-    bgWhite: '#1A291A',
-    textDark: Palette.linenWhite,
-    textMedium: Palette.slate,
-    textLight: Palette.mutedSage,
-    borderLight: Palette.charcoalEspresso,
-    borderMedium: Palette.charcoalEspresso,
+    bgLight: Palette.linenWhite,
+    bgWhite: Palette.white,
+    textDark: Palette.deepObsidian,
+    textMedium: Palette.charcoalEspresso,
+    textLight: Palette.slate,
+    borderLight: '#F3F4F6',
+    borderMedium: Palette.stoneGray,
 };
 
 export const shopStyles = StyleSheet.create({
@@ -70,15 +70,15 @@ export const shopStyles = StyleSheet.create({
         overflow: 'hidden',
         ...Platform.select({
             web: {
-                boxShadow: '0 10px 25px rgba(0,0,0,0.05)',
+                boxShadow: '0 1px 3px rgba(17,24,39,0.06)',
                 transition: 'transform 0.3s ease',
             },
             default: {
-                elevation: 8,
+                elevation: 2,
                 shadowColor: '#000',
                 shadowOffset: { width: 0, height: 4 },
-                shadowOpacity: 0.1,
-                shadowRadius: 12,
+                shadowOpacity: 0.06,
+                shadowRadius: 8,
             }
         }),
     },
@@ -161,4 +161,3 @@ export const shopStyles = StyleSheet.create({
         alignItems: 'center',
     },
 });
-

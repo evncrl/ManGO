@@ -95,12 +95,12 @@ const styles = StyleSheet.create({
     },
     videoWrapper: {
         width: '100%', // Full width
-        backgroundColor: Palette.deepObsidian,
+        backgroundColor: Palette.white,
         elevation: 5,
         shadowColor: "#000",
         shadowOffset: { width: 0, height: 4 },
-        shadowOpacity: 0.3,
-        shadowRadius: 5,
+        shadowOpacity: 0.08,
+        shadowRadius: 8,
     },
     loadingContainer: {
         ...StyleSheet.absoluteFillObject,

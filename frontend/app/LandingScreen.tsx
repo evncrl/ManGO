@@ -100,7 +100,7 @@ const HeroItem = ({ item, scrollY, width, floatStyle }: any) => {
   });
 
   return (
-    <View style={{ width, backgroundColor: Palette.deepObsidian, overflow: 'hidden' }}>
+    <View style={{ width, backgroundColor: Palette.linenWhite, overflow: 'hidden' }}>
       <View style={{ position: "relative" }}>
         <Animated.View style={parallaxStyle}>
           <AnimatedImage
@@ -110,7 +110,7 @@ const HeroItem = ({ item, scrollY, width, floatStyle }: any) => {
           />
         </Animated.View>
         <LinearGradient
-          colors={['transparent', 'rgba(12, 26, 16, 0.3)', 'rgba(12, 26, 16, 0.9)']}
+          colors={['rgba(250, 250, 248, 0)', 'rgba(250, 250, 248, 0.72)', 'rgba(250, 250, 248, 0.98)']}
           style={styles.heroTextOverlay}
           start={{ x: 0, y: 0 }}
           end={{ x: 0, y: 1 }}
@@ -118,13 +118,13 @@ const HeroItem = ({ item, scrollY, width, floatStyle }: any) => {
           <Animated.View style={floatStyle}>
             <Animated.Text
               entering={FadeInDown.duration(800).delay(400)}
-              style={[styles.heroTitle, { color: Palette.white }]}
+              style={[styles.heroTitle, { color: Palette.deepObsidian }]}
             >
               {item.title}
             </Animated.Text>
             <Animated.Text
               entering={FadeInDown.duration(800).delay(600)}
-              style={[styles.heroSubtitle, { color: Palette.linenWhite }]}
+              style={[styles.heroSubtitle, { color: Palette.charcoalEspresso }]}
             >
               {item.subtitle}
             </Animated.Text>
@@ -512,4 +512,3 @@ function Landing({ }: any) {
 }
 
 export default Landing;
-

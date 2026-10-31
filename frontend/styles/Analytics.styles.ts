@@ -16,21 +16,21 @@ const COLORS = {
   success: Palette.mutedSage,
   warning: '#f59e0b',
   danger: '#ef4444',
-  white: Palette.linenWhite,
+  white: Palette.white,
   black: '#000000',
-  gray50: Palette.deepObsidian,
-  gray100: Palette.charcoalEspresso,
-  gray200: Palette.deepObsidian,
-  gray300: '#3f3f46',
+  gray50: Palette.linenWhite,
+  gray100: '#F9FAFB',
+  gray200: Palette.stoneGray,
+  gray300: '#D1D5DB',
   gray400: Palette.slate,
-  gray500: Palette.mutedSage,
-  gray600: '#a1a1aa',
-  gray700: '#3f3f46',
-  gray800: Palette.charcoalEspresso,
-  gray900: Palette.linenWhite,
-  background: Palette.deepObsidian,
-  cardBackground: '#1A291A',
-  cardBorder: Palette.charcoalEspresso,
+  gray500: Palette.slate,
+  gray600: Palette.charcoalEspresso,
+  gray700: '#374151',
+  gray800: '#1F2937',
+  gray900: '#111827',
+  background: Palette.linenWhite,
+  cardBackground: Palette.white,
+  cardBorder: Palette.stoneGray,
 } as const;
 
 const SPACING = {
@@ -58,13 +58,13 @@ const SHADOWS = Platform.select({
   ios: {
     shadowColor: COLORS.black,
     shadowOffset: { width: 0, height: 4 },
-    shadowOpacity: 0.3,
+    shadowOpacity: 0.06,
     shadowRadius: 8,
   },
   android: {
     elevation: 4,
   },
-  web: ({ boxShadow: '0 4px 8px rgba(0, 0, 0, 0.3)' } as any),
+  web: ({ boxShadow: '0 1px 3px rgba(17,24,39,0.06)' } as any),
 }) as ViewStyle | undefined;
 
 /* =====================
@@ -121,7 +121,7 @@ export const useAnalyticsStyles = () => {
       width: 36,
       height: 36,
       borderRadius: BORDER_RADIUS.sm,
-      backgroundColor: COLORS.gray800,
+      backgroundColor: COLORS.gray200,
       justifyContent: 'center',
       alignItems: 'center',
       borderWidth: 1,
@@ -206,7 +206,7 @@ export const useAnalyticsStyles = () => {
     },
 
     metricBadge: {
-      backgroundColor: 'rgba(39, 174, 96, 0.2)',
+      backgroundColor: '#ECFDF5',
       paddingHorizontal: SPACING.sm,
       paddingVertical: SPACING.xs,
       borderRadius: BORDER_RADIUS.sm,
@@ -221,7 +221,7 @@ export const useAnalyticsStyles = () => {
     metricValue: {
       fontSize: isSmallScreen ? 28 : 32,
       fontFamily: Fonts.bold,
-      color: COLORS.white,
+      color: COLORS.gray900,
       marginBottom: SPACING.xs,
       letterSpacing: 0.5,
     },
@@ -242,7 +242,7 @@ export const useAnalyticsStyles = () => {
     /* Progress Bar */
     progressBar: {
       height: 6,
-      backgroundColor: COLORS.gray800,
+      backgroundColor: COLORS.gray200,
       borderRadius: BORDER_RADIUS.sm,
       marginTop: SPACING.sm,
       overflow: 'hidden',
@@ -276,7 +276,7 @@ export const useAnalyticsStyles = () => {
     sectionTitle: {
       fontSize: isSmallScreen ? 18 : 20,
       fontFamily: Fonts.bold,
-      color: COLORS.white,
+      color: COLORS.gray900,
       marginBottom: SPACING.lg,
       letterSpacing: 0.3,
     },
@@ -395,7 +395,7 @@ export const useAnalyticsStyles = () => {
     distributionRange: {
       fontSize: isSmallScreen ? 14 : 15,
       fontFamily: Fonts.bold,
-      color: COLORS.white,
+      color: COLORS.gray900,
     },
 
     distributionCount: {
@@ -406,7 +406,7 @@ export const useAnalyticsStyles = () => {
 
     distributionBarContainer: {
       height: 8,
-      backgroundColor: COLORS.gray800,
+      backgroundColor: COLORS.gray200,
       borderRadius: BORDER_RADIUS.sm,
       overflow: 'hidden',
     },
@@ -449,7 +449,7 @@ export const useAnalyticsStyles = () => {
       width: 44,
       height: 44,
       borderRadius: BORDER_RADIUS.md,
-      backgroundColor: COLORS.gray800,
+      backgroundColor: COLORS.gray100,
       justifyContent: 'center',
       alignItems: 'center',
     },
@@ -465,7 +465,7 @@ export const useAnalyticsStyles = () => {
     scanVariety: {
       fontSize: isSmallScreen ? 14 : 15,
       fontFamily: Fonts.semiBold,
-      color: COLORS.white,
+      color: COLORS.gray900,
       marginBottom: 2,
     },
 
@@ -487,7 +487,7 @@ export const useAnalyticsStyles = () => {
     },
 
     scanStatusBadge: {
-      backgroundColor: 'rgba(39, 174, 96, 0.2)',
+      backgroundColor: '#ECFDF5',
       paddingHorizontal: SPACING.sm,
       paddingVertical: SPACING.xs,
       borderRadius: BORDER_RADIUS.sm,

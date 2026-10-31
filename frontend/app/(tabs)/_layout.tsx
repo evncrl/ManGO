@@ -4,6 +4,7 @@ import { Slot, useRouter } from 'expo-router';
 import UniversalTopbar from '@/components/UniversalTopbar';
 import { useUser } from '@/contexts/UserContext'; 
 import Animated, { FadeInUp, FadeOutUp } from 'react-native-reanimated'; 
+import { Palette } from '@/constants/theme';
 
 export default function TabsLayout() {
   const { hasNewForumPosts, setHasNewForumPosts } = useUser();
@@ -43,22 +44,22 @@ export default function TabsLayout() {
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, flexDirection: 'column', backgroundColor: '#fff' },
+  container: { flex: 1, flexDirection: 'column', backgroundColor: Palette.linenWhite },
   content: { flex: 1 },
   notificationToast: {
     position: 'absolute',
     top: 80, 
     left: 20,
     right: 20,
-    backgroundColor: '#16a34a', 
+    backgroundColor: '#059669',
     borderRadius: 12,
     padding: 16,
     zIndex: 999,
     elevation: 10,
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 4 },
-    shadowOpacity: 0.3,
-    shadowRadius: 4,
+    shadowOpacity: 0.12,
+    shadowRadius: 12,
   },
   toastContent: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' },
   toastText: { color: '#fff', fontWeight: 'bold', fontSize: 14 },

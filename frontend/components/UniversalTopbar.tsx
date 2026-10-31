@@ -15,10 +15,10 @@ import { useRouter, usePathname } from 'expo-router';
 import { useUser } from '@/contexts/UserContext';
 import { useAuthUI } from '@/contexts/AuthUIContext';
 import { Ionicons } from '@expo/vector-icons';
-import { Fonts, Colors, Palette } from '@/constants/theme';
+import { Fonts, Palette } from '@/constants/theme';
 import { useCart } from '@/contexts/CartContext';
 
-// ✅ 1. STYLES DEFINITION (Dapat mauna para kilala ng components sa baba)
+// ✅ 1. STYLES DEFINITION
 const styles = StyleSheet.create({
     wrapper: {
         zIndex: 100,
@@ -29,17 +29,17 @@ const styles = StyleSheet.create({
     topbar: {
         flexDirection: 'row',
         alignItems: 'center',
-        backgroundColor: Palette.deepObsidian,
+        backgroundColor: Palette.white,
         paddingHorizontal: 16,
         paddingVertical: 10,
         height: 64,
         ...Platform.select({
             web: {
-                boxShadow: '0 4px 12px rgba(0,0,0,0.05)',
+                boxShadow: '0 1px 3px rgba(17,24,39,0.06)',
             },
             default: {
-                elevation: 3,
-                boxShadow: '0 2px 8px rgba(0,0,0,0.08)',
+                elevation: 1,
+                boxShadow: '0 1px 3px rgba(17,24,39,0.06)',
             },
         }),
     },
@@ -73,7 +73,7 @@ const styles = StyleSheet.create({
         borderRadius: 12,
     },
     navItemActive: {
-        backgroundColor: 'rgba(255, 255, 255, 0.1)',
+        backgroundColor: '#FEF3C7',
     },
     navLabel: {
         fontFamily: Fonts.medium,
@@ -82,7 +82,7 @@ const styles = StyleSheet.create({
     },
     navLabelActive: {
         fontFamily: Fonts.bold,
-        color: Palette.linenWhite,
+        color: Palette.deepObsidian,
     },
     rightSection: {
         flexDirection: 'row',
@@ -129,22 +129,22 @@ const styles = StyleSheet.create({
     hamburger: {
         padding: 8,
         borderRadius: 12,
-        backgroundColor: 'rgba(255, 255, 255, 0.05)',
+        backgroundColor: '#F3F4F6',
     },
     hamburgerIcon: {
-        color: Palette.linenWhite,
+        color: Palette.deepObsidian,
         fontSize: 20,
         fontFamily: Fonts.bold,
     },
     mobileMenu: {
-        backgroundColor: Palette.deepObsidian,
+        backgroundColor: Palette.white,
         paddingHorizontal: 12,
         paddingVertical: 12,
         borderTopWidth: 1,
-        borderTopColor: 'rgba(255, 255, 255, 0.1)',
+        borderTopColor: '#F3F4F6',
         ...Platform.select({
             web: {
-                boxShadow: '0 8px 16px rgba(0,0,0,0.3)',
+                boxShadow: '0 8px 16px rgba(17,24,39,0.08)',
             },
             default: {
                 elevation: 10,
@@ -160,7 +160,7 @@ const styles = StyleSheet.create({
         marginBottom: 4,
     },
     mobileItemActive: {
-        backgroundColor: 'rgba(255, 255, 255, 0.1)',
+        backgroundColor: '#FEF3C7',
     },
     mobileItemLabel: {
         color: Palette.slate,
@@ -190,11 +190,11 @@ const styles = StyleSheet.create({
         paddingVertical: 16,
         paddingHorizontal: 16,
         borderTopWidth: 1,
-        borderTopColor: 'rgba(255, 255, 255, 0.1)',
+        borderTopColor: '#E5E7EB',
         marginTop: 8,
     },
     mobileProfileName: {
-        color: Palette.linenWhite,
+        color: Palette.deepObsidian,
         fontSize: 16,
         fontFamily: Fonts.semiBold,
         marginLeft: 12,
@@ -225,7 +225,7 @@ const styles = StyleSheet.create({
         borderRadius: 4,
         backgroundColor: '#ef4444',
         borderWidth: 1,
-        borderColor: Palette.deepObsidian,
+        borderColor: Palette.white,
     }
 });
 
@@ -322,7 +322,7 @@ export default function UniversalTopbar({ }: UniversalTopbarProps) {
     };
 
     return (
-        <View style={[styles.wrapper, { paddingTop: Platform.OS === 'web' ? 0 : insets.top, backgroundColor: Palette.deepObsidian }]}>
+        <View style={[styles.wrapper, { paddingTop: Platform.OS === 'web' ? 0 : insets.top, backgroundColor: Palette.white }]}>
             <View style={styles.topbar}>
                 {/* Brand */}
                 <TouchableOpacity

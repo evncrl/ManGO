@@ -39,8 +39,8 @@ export default function CartScreen() {
 
   if (userLoading) {
     return (
-      <View style={[styles.container, { justifyContent: 'center', alignItems: 'center', backgroundColor: Palette.deepObsidian }]}>
-        <Text style={{ color: Palette.linenWhite }}>Loading user profile...</Text>
+      <View style={[styles.container, { justifyContent: 'center', alignItems: 'center', backgroundColor: Palette.linenWhite }]}>
+        <Text style={{ color: Palette.deepObsidian }}>Loading user profile...</Text>
       </View>
     );
   }
@@ -125,7 +125,7 @@ export default function CartScreen() {
   };
 
   return (
-    <View style={[styles.container, { backgroundColor: Palette.deepObsidian }]}>
+    <View style={[styles.container, { backgroundColor: Palette.linenWhite }]}>
       <Text style={styles.heading}>Checkout</Text>
 
       {cart.length === 0 ? (
@@ -261,36 +261,36 @@ export default function CartScreen() {
 
 const styles = StyleSheet.create({
   container: { flex: 1, padding: 24 },
-  heading: { fontFamily: Fonts.bold, fontSize: 28, marginBottom: 24, color: Palette.linenWhite },
-  emptyText: { fontFamily: Fonts.medium, fontSize: 16, textAlign: 'center', color: Palette.slate },
-  card: { flexDirection: 'row', alignItems: 'center', backgroundColor: Palette.charcoalEspresso, padding: 16, borderRadius: 16, marginBottom: 16 },
+  heading: { fontFamily: Fonts.bold, fontSize: 28, marginBottom: 24, color: Palette.deepObsidian },
+  emptyText: { fontFamily: Fonts.medium, fontSize: 16, textAlign: 'center', color: Palette.charcoalEspresso },
+  card: { flexDirection: 'row', alignItems: 'center', backgroundColor: Palette.white, padding: 16, borderRadius: 16, marginBottom: 16, borderWidth: 1, borderColor: Palette.stoneGray },
   image: { width: 64, height: 64, borderRadius: 12, marginRight: 16 },
   cardContent: { flex: 1 },
-  productName: { fontFamily: Fonts.semiBold, fontSize: 16, color: Palette.linenWhite },
-  productPrice: { fontFamily: Fonts.medium, fontSize: 14, color: Palette.slate, marginTop: 4 },
+  productName: { fontFamily: Fonts.semiBold, fontSize: 16, color: Palette.deepObsidian },
+  productPrice: { fontFamily: Fonts.medium, fontSize: 14, color: Palette.charcoalEspresso, marginTop: 4 },
   quantityRow: { flexDirection: 'row', alignItems: 'center', marginTop: 8 },
   quantityBtn: { backgroundColor: Palette.warmCopper, width: 28, height: 28, borderRadius: 8, justifyContent: 'center', alignItems: 'center' },
   quantityText: { color: '#fff', fontFamily: Fonts.bold, fontSize: 18 },
-  quantityNumber: { color: Palette.linenWhite, marginHorizontal: 12, fontFamily: Fonts.semiBold },
-  footer: { position: 'absolute', bottom: 0, left: 0, right: 0, padding: 24, backgroundColor: Palette.deepObsidian, borderTopWidth: 1, borderTopColor: 'rgba(255,255,255,0.1)' },
-  total: { fontFamily: Fonts.bold, fontSize: 22, marginBottom: 12, color: Palette.linenWhite },
+  quantityNumber: { color: Palette.deepObsidian, marginHorizontal: 12, fontFamily: Fonts.semiBold },
+  footer: { position: 'absolute', bottom: 0, left: 0, right: 0, padding: 24, backgroundColor: Palette.white, borderTopWidth: 1, borderTopColor: Palette.stoneGray },
+  total: { fontFamily: Fonts.bold, fontSize: 22, marginBottom: 12, color: Palette.deepObsidian },
   payButton: { paddingVertical: 14, borderRadius: 12, justifyContent: 'center', alignItems: 'center' },
   payButtonText: { color: '#fff', fontFamily: Fonts.bold, fontSize: 16 },
-  modalOverlay: { flex: 1, backgroundColor: 'rgba(0,0,0,0.8)', justifyContent: 'center', alignItems: 'center' },
-  modalContainer: { width: '90%', backgroundColor: Palette.charcoalEspresso, borderRadius: 20, padding: 24 },
-  modalTitle: { fontFamily: Fonts.bold, fontSize: 22, marginBottom: 15, color: Palette.linenWhite },
-  inputLabel: { color: Palette.slate, fontSize: 12, marginBottom: 5, fontFamily: Fonts.medium, marginTop: 10 },
-  input: { backgroundColor: 'rgba(255,255,255,0.05)', borderRadius: 10, padding: 12, color: '#fff', fontFamily: Fonts.regular, borderWidth: 1, borderColor: 'rgba(255,255,255,0.1)' },
+  modalOverlay: { flex: 1, backgroundColor: 'rgba(17,24,39,0.35)', justifyContent: 'center', alignItems: 'center' },
+  modalContainer: { width: '90%', backgroundColor: Palette.white, borderRadius: 20, padding: 24 },
+  modalTitle: { fontFamily: Fonts.bold, fontSize: 22, marginBottom: 15, color: Palette.deepObsidian },
+  inputLabel: { color: Palette.charcoalEspresso, fontSize: 12, marginBottom: 5, fontFamily: Fonts.medium, marginTop: 10 },
+  input: { backgroundColor: '#F9FAFB', borderRadius: 10, padding: 12, color: Palette.deepObsidian, fontFamily: Fonts.regular, borderWidth: 1, borderColor: Palette.stoneGray },
   paymentRow: { flexDirection: 'row', gap: 8, marginTop: 10 },
-  methodBtn: { flex: 1, paddingVertical: 10, borderRadius: 8, borderWidth: 1, borderColor: Palette.slate, alignItems: 'center' },
+  methodBtn: { flex: 1, paddingVertical: 10, borderRadius: 8, borderWidth: 1, borderColor: Palette.stoneGray, alignItems: 'center' },
   methodBtnActive: { backgroundColor: Palette.warmCopper, borderColor: Palette.warmCopper },
-  methodText: { color: Palette.slate, fontFamily: Fonts.semiBold, fontSize: 12 },
+  methodText: { color: Palette.charcoalEspresso, fontFamily: Fonts.semiBold, fontSize: 12 },
   methodTextActive: { color: '#fff' },
   modalActionRow: { flexDirection: 'row', gap: 10, marginTop: 25 },
-  confirmBox: { marginTop: 15, padding: 12, backgroundColor: 'rgba(255,255,255,0.05)', borderRadius: 10 },
-  confirmLabel: { color: Palette.slate, fontSize: 11, textTransform: 'uppercase' },
-  confirmValue: { color: Palette.linenWhite, fontSize: 14, marginTop: 2 },
-  receiptRow: { flexDirection: 'row', justifyContent: 'space-between', paddingVertical: 8, borderBottomWidth: 1, borderBottomColor: 'rgba(255,255,255,0.05)' },
-  receiptTotal: { fontFamily: Fonts.bold, fontSize: 18, marginTop: 15, color: Palette.linenWhite, textAlign: 'right' },
-  modalItemText: { fontFamily: Fonts.medium, fontSize: 14, color: Palette.linenWhite }, // ✅ FIXED DUPLICATE KEY ISSUE
+  confirmBox: { marginTop: 15, padding: 12, backgroundColor: '#FEF3C7', borderRadius: 10 },
+  confirmLabel: { color: Palette.charcoalEspresso, fontSize: 11, textTransform: 'uppercase' },
+  confirmValue: { color: Palette.deepObsidian, fontSize: 14, marginTop: 2 },
+  receiptRow: { flexDirection: 'row', justifyContent: 'space-between', paddingVertical: 8, borderBottomWidth: 1, borderBottomColor: Palette.stoneGray },
+  receiptTotal: { fontFamily: Fonts.bold, fontSize: 18, marginTop: 15, color: Palette.deepObsidian, textAlign: 'right' },
+  modalItemText: { fontFamily: Fonts.medium, fontSize: 14, color: Palette.deepObsidian },
 });

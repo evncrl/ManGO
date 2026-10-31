@@ -3,62 +3,56 @@ import { Fonts, Palette } from '@/constants/theme';
 
 const { width: SCREEN_WIDTH, height: SCREEN_HEIGHT } = Dimensions.get('window');
  
-// Modern Earthy 2.0 - Dark Community Theme
 const colors = {
-  // Primary - Warm Copper
   primary: Palette.warmCopper,
   primaryDark: Palette.deepObsidian,
   primaryLight: Palette.mutedSage,
-  primaryGlow: Palette.deepObsidian,
+  primaryGlow: Palette.linenWhite,
 
-  // Accent Colors
   accent: Palette.warmCopper,
   accentDark: Palette.charcoalEspresso,
-  accentLight: Palette.deepObsidian,
+  accentLight: '#FEF3C7',
 
   // Category Colors
   qualityRed: '#dc2626',
-  qualityRedBg: 'rgba(220, 38, 38, 0.15)',
+  qualityRedBg: '#FEF2F2',
   practiceBlue: '#2563eb',
-  practiceBlueBg: 'rgba(37, 99, 235, 0.15)',
-  exportGreen: Palette.deepObsidian,
-  exportGreenBg: '#1A291A',
-  discussionGray: Palette.linenWhite,
-  discussionGrayBg: Palette.charcoalEspresso,
+  practiceBlueBg: '#EFF6FF',
+  exportGreen: '#047857',
+  exportGreenBg: '#ECFDF5',
+  discussionGray: Palette.charcoalEspresso,
+  discussionGrayBg: '#F3F4F6',
 
-  // Neutrals (Dark Mode)
-  white: Palette.linenWhite,
-  gray50: Palette.deepObsidian,
-  gray100: Palette.charcoalEspresso,
-  gray200: '#1A291A',
-  gray300: '#3f3f46',
+  white: Palette.white,
+  gray50: Palette.linenWhite,
+  gray100: '#F9FAFB',
+  gray200: Palette.stoneGray,
+  gray300: '#D1D5DB',
   gray400: Palette.slate,
-  gray500: Palette.mutedSage,
-  gray600: '#a1a1aa',
-  gray700: '#3f3f46',
-  gray800: Palette.charcoalEspresso,
-  gray900: Palette.linenWhite,
+  gray500: Palette.slate,
+  gray600: Palette.charcoalEspresso,
+  gray700: '#374151',
+  gray800: Palette.deepObsidian,
+  gray900: '#111827',
 
   // Status Colors
-  success: Palette.mutedSage,
+  success: '#047857',
   warning: '#f59e0b',
   error: '#ef4444',
   info: Palette.warmCopper,
 
   // Overlays
-  overlay: 'rgba(12, 26, 16, 0.5)',
-  overlayLight: 'rgba(12, 26, 16, 0.3)',
-  overlayDark: 'rgba(12, 26, 16, 0.7)',
-  glassWhite: 'rgba(26, 41, 26, 0.95)',
+  overlay: 'rgba(17, 24, 39, 0.5)',
+  overlayLight: 'rgba(17, 24, 39, 0.3)',
+  overlayDark: 'rgba(17, 24, 39, 0.7)',
+  glassWhite: 'rgba(255, 255, 255, 0.95)',
 
-  // Gradient Colors
-  gradientStart: Palette.deepObsidian,
+  gradientStart: Palette.warmCopper,
   gradientMid: Palette.mutedSage,
-  gradientEnd: Palette.charcoalEspresso,
+  gradientEnd: Palette.deepObsidian,
 
-  // Dark Mode Surface Colors
-  cardBg: '#1A291A',
-  surfaceBg: '#152015',
+  cardBg: Palette.white,
+  surfaceBg: Palette.linenWhite,
 };
 
 // Responsive sizing

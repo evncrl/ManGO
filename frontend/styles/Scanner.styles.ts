@@ -165,7 +165,7 @@ export const useScannerStyles = () => {
 
       alignItems: 'center',
 
-      backgroundColor: COLORS.black,
+      backgroundColor: Palette.linenWhite,
 
       padding: SPACING.xl,
 
@@ -175,7 +175,7 @@ export const useScannerStyles = () => {
 
     permissionText: {
       fontFamily: Fonts.medium,
-      color: COLORS.white,
+      color: COLORS.textDark,
       fontSize: isSmallScreen ? 16 : 18,
       marginBottom: SPACING.lg,
       textAlign: 'center',
@@ -189,7 +189,7 @@ export const useScannerStyles = () => {
 
       paddingHorizontal: isSmallScreen ? 20 : SPACING.xxl,
 
-      backgroundColor: COLORS.primaryDark,
+      backgroundColor: COLORS.primary,
 
       borderRadius: 12,
 

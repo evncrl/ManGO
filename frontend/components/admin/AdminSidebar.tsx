@@ -89,7 +89,7 @@ const AdminSidebar = ({ isVisible, onClose }: AdminSidebarProps) => {
 							<Ionicons
 								name={item.icon}
 								size={22}
-								color={isActive ? Palette.white : Palette.slate}
+								color={isActive ? Palette.warmCopper : Palette.slate}
 								style={styles.icon}
 							/>
 							<Text style={[styles.itemText, isActive && styles.activeItemText]}>
@@ -121,12 +121,12 @@ export default AdminSidebar;
 const styles = StyleSheet.create({
 	sidebar: {
 		width: 260,
-		backgroundColor: Palette.deepObsidian,
+		backgroundColor: Palette.white,
 		paddingVertical: 40,
 		paddingHorizontal: 20,
 		minHeight: '100%',
 		borderRightWidth: 1,
-		borderRightColor: 'rgba(255,255,255,0.05)',
+		borderRightColor: Palette.stoneGray,
 	},
 	mobileSidebar: {
 		position: 'absolute',
@@ -167,7 +167,7 @@ const styles = StyleSheet.create({
 		marginBottom: 8,
 	},
 	activeItem: {
-		backgroundColor: Palette.warmCopper,
+		backgroundColor: '#FEF3C7',
 	},
 	icon: {
 		marginRight: 14,
@@ -178,13 +178,13 @@ const styles = StyleSheet.create({
 		fontFamily: Fonts.medium,
 	},
 	activeItemText: {
-		color: Palette.white,
+		color: Palette.warmCopper,
 		fontFamily: Fonts.bold,
 	},
 	// ✅ BAGONG STYLES PARA SA LOGOUT
 	footer: {
 		borderTopWidth: 1,
-		borderTopColor: 'rgba(255,255,255,0.05)',
+		borderTopColor: Palette.stoneGray,
 		paddingTop: 20,
 		marginTop: 20,
 	},

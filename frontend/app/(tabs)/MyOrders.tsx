@@ -148,24 +148,24 @@ export default function MyOrders() {
 }
 
 const styles = StyleSheet.create({
-    container: { flex: 1, backgroundColor: Palette.deepObsidian, padding: 20 },
-    title: { fontSize: 24, fontFamily: Fonts.bold, color: Palette.warmCopper, marginBottom: 20 },
-    orderCard: { backgroundColor: Palette.charcoalEspresso, borderRadius: 16, padding: 16, marginBottom: 15 },
+    container: { flex: 1, backgroundColor: Palette.linenWhite, padding: 20 },
+    title: { fontSize: 24, fontFamily: Fonts.bold, color: Palette.deepObsidian, marginBottom: 20 },
+    orderCard: { backgroundColor: Palette.white, borderRadius: 16, padding: 16, marginBottom: 15, borderWidth: 1, borderColor: Palette.stoneGray },
     orderHeader: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: 12 },
     orderId: { color: Palette.slate, fontSize: 12, fontFamily: Fonts.medium },
     statusBadge: { paddingHorizontal: 10, paddingVertical: 4, borderRadius: 8 },
     statusText: { fontSize: 11, fontFamily: Fonts.bold },
     itemRow: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: 6 },
-    productItem: { color: Palette.linenWhite, fontSize: 14, fontFamily: Fonts.medium },
+    productItem: { color: Palette.deepObsidian, fontSize: 14, fontFamily: Fonts.medium },
     smallRateBtn: { backgroundColor: Palette.warmCopper, paddingHorizontal: 12, paddingVertical: 5, borderRadius: 6 },
     smallRateText: { color: '#fff', fontSize: 11, fontFamily: Fonts.bold },
-    orderFooter: { flexDirection: 'row', justifyContent: 'space-between', marginTop: 15, borderTopWidth: 1, borderTopColor: 'rgba(255,255,255,0.05)', paddingTop: 10 },
+    orderFooter: { flexDirection: 'row', justifyContent: 'space-between', marginTop: 15, borderTopWidth: 1, borderTopColor: Palette.stoneGray, paddingTop: 10 },
     dateText: { color: Palette.slate, fontSize: 12 },
     totalPrice: { color: Palette.warmCopper, fontFamily: Fonts.bold, fontSize: 16 },
     emptyText: { color: Palette.slate, textAlign: 'center', marginTop: 50 },
     
     // MODAL STYLES
-    modalOverlay: { flex: 1, backgroundColor: 'rgba(0,0,0,0.8)', justifyContent: 'center', alignItems: 'center' },
+    modalOverlay: { flex: 1, backgroundColor: 'rgba(17,24,39,0.35)', justifyContent: 'center', alignItems: 'center' },
     modalContent: { backgroundColor: '#fff', width: '85%', padding: 25, borderRadius: 24 },
     modalTitle: { fontSize: 20, fontFamily: Fonts.bold, color: Palette.charcoalEspresso, marginBottom: 20 },
     modalLabel: { fontSize: 14, color: '#666', marginBottom: 10, fontFamily: Fonts.medium },

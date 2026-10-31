@@ -14,7 +14,7 @@ import {
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { Ionicons } from '@expo/vector-icons';
 import { API_URL } from '@/config/appconf';
-import { Fonts, Colors, Palette } from '@/constants/theme';
+import { Fonts, Palette } from '@/constants/theme';
 
 interface Message {
   id: string;
@@ -338,10 +338,10 @@ export default function AIChatbot({
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: Palette.deepObsidian,
+    backgroundColor: Palette.linenWhite,
   },
   header: {
-    backgroundColor: '#1A291A',
+    backgroundColor: Palette.white,
     paddingHorizontal: 20,
     paddingBottom: 20,
     flexDirection: 'row',
@@ -355,7 +355,7 @@ const styles = StyleSheet.create({
   headerTitle: {
     fontSize: 24,
     fontFamily: Fonts.bold,
-    color: Palette.linenWhite,
+    color: Palette.deepObsidian,
     letterSpacing: -0.5,
   },
   headerSubtitle: {
@@ -368,7 +368,7 @@ const styles = StyleSheet.create({
     width: 40,
     height: 40,
     borderRadius: 20,
-    backgroundColor: '#1A291A',
+    backgroundColor: '#F3F4F6',
     justifyContent: 'center',
     alignItems: 'center',
   },
@@ -405,9 +405,11 @@ const styles = StyleSheet.create({
     }),
   },
   assistantMessage: {
-    backgroundColor: Palette.charcoalEspresso,
+    backgroundColor: Palette.white,
     alignSelf: 'flex-start',
     borderBottomLeftRadius: 4,
+    borderWidth: 1,
+    borderColor: '#E5E7EB',
   },
   messageHeader: {
     flexDirection: 'row',
@@ -431,7 +433,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
     lineHeight: 24,
     fontFamily: Fonts.regular,
-    color: Palette.linenWhite,
+    color: Palette.deepObsidian,
   },
   userMessageText: {
     color: '#FFFFFF',
@@ -450,7 +452,7 @@ const styles = StyleSheet.create({
   suggestionsContainer: {
     paddingHorizontal: 20,
     paddingVertical: 16,
-    backgroundColor: '#1A291A',
+    backgroundColor: Palette.white,
   },
   suggestionsTitle: {
     fontSize: 12,
@@ -466,42 +468,42 @@ const styles = StyleSheet.create({
     gap: 8,
   },
   suggestionButton: {
-    backgroundColor: Palette.charcoalEspresso,
+    backgroundColor: '#FEF3C7',
     paddingVertical: 10,
     paddingHorizontal: 16,
     borderRadius: 20,
     borderWidth: 1,
-    borderColor: '#3f3f46',
+    borderColor: '#FDE68A',
   },
   suggestionText: {
     fontSize: 13,
     fontFamily: Fonts.semiBold,
-    color: Palette.linenWhite,
+    color: Palette.deepObsidian,
   },
   inputContainer: {
     flexDirection: 'row',
     paddingHorizontal: 20,
     paddingTop: 12,
-    backgroundColor: '#1A291A',
+    backgroundColor: Palette.white,
     alignItems: 'center',
     gap: 12,
   },
   inputWrapper: {
     flex: 1,
-    backgroundColor: Palette.charcoalEspresso,
+    backgroundColor: '#F9FAFB',
     borderRadius: 28,
     paddingHorizontal: 20,
     paddingVertical: 12,
     flexDirection: 'row',
     alignItems: 'center',
     borderWidth: 1,
-    borderColor: '#3f3f46',
+    borderColor: '#E5E7EB',
   },
   input: {
     flex: 1,
     fontFamily: Fonts.regular,
     fontSize: 15,
-    color: Palette.linenWhite,
+    color: Palette.deepObsidian,
     maxHeight: 120,
     paddingTop: 0,
     paddingBottom: 0,
@@ -529,7 +531,6 @@ const styles = StyleSheet.create({
     }),
   },
   sendButtonDisabled: {
-    backgroundColor: Palette.charcoalEspresso,
+    backgroundColor: Palette.slate,
   },
 });
-

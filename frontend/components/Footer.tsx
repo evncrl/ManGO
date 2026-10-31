@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, Linking, Platform } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
-import { Fonts, Palette, Colors } from '@/constants/theme';
+import { Fonts, Palette } from '@/constants/theme';
 import { useResponsive } from '@/utils/platform';
 
 interface FooterProps {
@@ -134,19 +134,19 @@ const Footer: React.FC<FooterProps> = ({
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: Palette.warmCopper,
+    backgroundColor: '#F3F4F6',
     paddingTop: 40,
     paddingBottom: 24,
     paddingHorizontal: 24,
   },
   compactContainer: {
-    backgroundColor: Palette.deepObsidian,
+    backgroundColor: '#F3F4F6',
     paddingVertical: 16,
     paddingHorizontal: 24,
     alignItems: 'center',
   },
   compactText: {
-    color: Palette.linenWhite,
+    color: Palette.deepObsidian,
     fontSize: 12,
     fontFamily: Fonts.medium,
   },
@@ -234,11 +234,11 @@ const styles = StyleSheet.create({
     width: 40,
     height: 40,
     borderRadius: 20,
-    backgroundColor: 'rgba(12, 26, 16, 0.1)',
+    backgroundColor: '#FEF3C7',
     alignItems: 'center',
     justifyContent: 'center',
     borderWidth: 1,
-    borderColor: Palette.deepObsidian,
+    borderColor: Palette.stoneGray,
   },
   copyright: {
     fontSize: 14,
@@ -255,4 +255,3 @@ const styles = StyleSheet.create({
 });
 
 export default Footer;
-
