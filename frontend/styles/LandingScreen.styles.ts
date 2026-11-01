@@ -167,7 +167,7 @@ export const useLandingStyles = () => {
     navText: {
       fontSize: isSmall ? 14 : 15,
       fontFamily: Fonts.bold,
-      color: colors.primary,
+      color: Palette.charcoal,
     },
 
     // ========== HERO SECTION ==========
@@ -275,14 +275,11 @@ export const useLandingStyles = () => {
     },
 
     primaryButtonText: {
-      color: colors.textWhite,
-      textShadowColor: 'rgba(0, 0, 0, 0.2)',
-      textShadowOffset: { width: 1, height: 1 },
-      textShadowRadius: 2,
+      color: Palette.charcoal,
     },
 
     secondaryButtonText: {
-      color: colors.primary,
+      color: Palette.charcoal,
       fontFamily: Fonts.bold,
     },
 
@@ -296,7 +293,7 @@ export const useLandingStyles = () => {
     sectionTitle: {
       fontFamily: Fonts.bold,
       fontSize: isSmall ? 24 : isWebPlatform && isLarge ? 42 : 32,
-      color: Palette.warmCopper,
+      color: Palette.charcoal,
       marginBottom: verticalScale(12),
       textAlign: 'center',
       letterSpacing: -0.5,
@@ -351,7 +348,7 @@ export const useLandingStyles = () => {
     teamName: {
       fontFamily: Fonts.bold,
       fontSize: isSmall ? 17 : 18,
-      color: colors.primary,
+      color: Palette.charcoal,
       textAlign: 'center',
       marginTop: 16,
       paddingHorizontal: 12,
@@ -397,7 +394,7 @@ export const useLandingStyles = () => {
     },
 
     scrollTopButtonText: {
-      color: colors.textWhite,
+      color: Palette.charcoal,
       fontSize: isSmall ? 18 : 22,
       fontFamily: Fonts.bold,
       marginTop: -2,
@@ -440,7 +437,7 @@ export const useLandingStyles = () => {
     authDropdownText: {
       fontSize: 14,
       fontFamily: Fonts.bold,
-      color: colors.primary,
+      color: Palette.charcoal,
       textAlign: 'left',
     },
 
@@ -482,7 +479,7 @@ export const useLandingStyles = () => {
     contactSection: {
       paddingHorizontal: isSmall ? 16 : isWebPlatform && isLarge ? 80 : 24,
       paddingVertical: verticalScale(40),
-      backgroundColor: colors.primary,
+      backgroundColor: Palette.charcoal,
       alignItems: 'center',
     },
 
@@ -531,7 +528,7 @@ export const useLandingStyles = () => {
     modalTitle: {
       fontFamily: Fonts.bold,
       fontSize: isSmall ? 26 : isWebPlatform && isLarge ? 32 : 28,
-      color: colors.primary,
+      color: Palette.charcoal,
       marginBottom: verticalScale(24),
       textAlign: 'center',
       letterSpacing: -0.5,
@@ -565,7 +562,7 @@ export const useLandingStyles = () => {
     sectionLabel: {
       fontFamily: Fonts.semiBold,
       fontSize: isSmall ? 15 : 16,
-      color: colors.primary,
+      color: Palette.charcoal,
       marginBottom: 16,
       alignSelf: 'flex-start',
       width: '100%',
@@ -663,7 +660,7 @@ export const useLandingStyles = () => {
 
     imageButtonText: {
       fontFamily: Fonts.semiBold,
-      color: colors.textWhite,
+      color: Palette.charcoal,
       fontSize: isSmall ? 14 : 15,
     },
 
@@ -728,7 +725,7 @@ export const useLandingStyles = () => {
     cardTitle: {
       fontFamily: Fonts.bold,
       fontSize: 22,
-      color: colors.primary,
+      color: Palette.charcoal,
       marginBottom: 12,
     },
     cardDesc: {

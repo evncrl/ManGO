@@ -114,9 +114,9 @@ export default function DurianHeatmap(props: HeatmapProps) {
         colorbar: {
           title: {
             text: 'Production (relative)',
-            font: { color: '#fff' }
+            font: { color: '#1C1917' }
           },
-          tickfont: { color: '#fff' },
+          tickfont: { color: '#1C1917' },
           titleside: 'right'
         }
       };
@@ -135,9 +135,9 @@ export default function DurianHeatmap(props: HeatmapProps) {
           colorbar: {
             title: {
               text: 'Production (MT)',
-              font: { color: '#fff' }
+              font: { color: '#1C1917' }
             },
-            tickfont: { color: '#fff' },
+            tickfont: { color: '#1C1917' },
             titleside: 'right'
           },
           opacity: 0.8
@@ -154,8 +154,8 @@ export default function DurianHeatmap(props: HeatmapProps) {
 
     const layout = {
       title: {
-        text: 'Philippines Durian Production',
-        font: { size: 20, family: 'Montserrat, sans-serif', color: '#fff' }
+        text: 'Philippines Mango Production & Distribution',
+        font: { size: 20, family: 'Montserrat, sans-serif', color: '#1C1917' }
       },
       autosize: true,
       paper_bgcolor: 'rgba(0,0,0,0)',
@@ -218,7 +218,7 @@ export default function DurianHeatmap(props: HeatmapProps) {
       {/* Map Controls */}
       <View style={styles.mapControls}>
         <View style={styles.mapTitleSection}>
-          <Text style={styles.mapTitle}>Philippines Durian Production</Text>
+          <Text style={styles.mapTitle}>Philippines Mango Production &amp; Distribution</Text>
           <Text style={styles.mapSubtitle}>
             {mapMode === 'heatmap'
               ? 'Heat map visualization of production intensity'
@@ -252,7 +252,7 @@ export default function DurianHeatmap(props: HeatmapProps) {
           ) : (
             <View style={styles.mapLoading}>
               <ActivityIndicator size="large" color="#15803d" />
-              <Text style={styles.mapLoadingText}>Loading Durian Production Map...</Text>
+              <Text style={styles.mapLoadingText}>Loading Mango Production Map...</Text>
             </View>
           )
         ) : (
@@ -295,4 +295,3 @@ export default function DurianHeatmap(props: HeatmapProps) {
 
 // Export the data for use in other components
 export { DURIAN_DATA };
-

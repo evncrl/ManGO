@@ -26,6 +26,7 @@ import { useResponsive } from '@/utils/platform';
 import Footer from '@/components/Footer';
 import { useUser } from '@/contexts/UserContext';
 import DurianHeatmap from '@/components/DurianHeatmap';
+import { API_URL } from '@/config/appconf';
 import { LinearGradient } from 'expo-linear-gradient';
 import { useAuthUI } from '@/contexts/AuthUIContext';
 import { Ionicons } from '@expo/vector-icons';
@@ -39,6 +40,87 @@ import { ScrollReveal } from '@/components/ui/ScrollReveal';
 import { AnimatedImage } from '@/components/ui/AnimatedImage';
 import { VideoSection } from '@/components/VideoSection';
 import { interpolate, useDerivedValue, withRepeat, withSequence, withDelay, withTiming } from "react-native-reanimated";
+
+interface LandingArticle {
+  id: string;
+  title: string;
+  desc: string;
+  image: { uri: string };
+  icon: keyof typeof Ionicons.glyphMap;
+  url?: string;
+}
+
+const MANGO_IMAGE_URL =
+  'https://images.unsplash.com/photo-1553279768-865429fa0078?auto=format&fit=crop&w=1200&q=85';
+
+const FALLBACK_ARTICLES: LandingArticle[] = [
+  {
+    id: 'mango-ai-defect-detection',
+    title: 'AI-Powered Carabao Mango Defect Detection',
+    desc: 'How computer vision can help identify surface defects and support consistent mango grading.',
+    image: { uri: MANGO_IMAGE_URL },
+    icon: 'scan-outline',
+  },
+  {
+    id: 'mango-export-standards',
+    title: 'PNS/BAFS Export Standards for Fresh Mangoes',
+    desc: 'A practical overview of quality, handling, and post-harvest requirements for export-ready mangoes.',
+    image: {
+      uri: 'https://images.unsplash.com/photo-1553279768-865429fa0078?auto=format&fit=crop&w=900&q=85&sat=-15',
+    },
+    icon: 'shield-checkmark-outline',
+  },
+  {
+    id: 'mango-anthracnose-management',
+    title: 'Managing Mango Anthracnose & Stem-End Rot',
+    desc: 'Learn about common mango diseases and integrated practices that protect fruit quality.',
+    image: {
+      uri: 'https://images.unsplash.com/photo-1553279768-865429fa0078?auto=format&fit=crop&w=900&q=85&hue=15',
+    },
+    icon: 'leaf-outline',
+  },
+];
+
+const isRecord = (value: unknown): value is Record<string, unknown> =>
+  typeof value === 'object' && value !== null;
+
+const parseArticles = (payload: unknown): LandingArticle[] => {
+  const records = Array.isArray(payload)
+    ? payload
+    : isRecord(payload) && Array.isArray(payload.articles)
+      ? payload.articles
+      : [];
+
+  return records.flatMap((record, index) => {
+    if (!isRecord(record) || typeof record.title !== 'string' || !record.title.trim()) {
+      return [];
+    }
+
+    const description =
+      typeof record.description === 'string'
+        ? record.description
+        : typeof record.desc === 'string'
+          ? record.desc
+          : '';
+    const imageValue = record.imageUrl ?? record.image_url ?? record.image;
+    const imageUrl =
+      typeof imageValue === 'string'
+        ? imageValue
+        : isRecord(imageValue) && typeof imageValue.url === 'string'
+          ? imageValue.url
+          : MANGO_IMAGE_URL;
+    const url = typeof record.url === 'string' ? record.url : undefined;
+
+    return [{
+      id: String(record.id ?? `article-${index}`),
+      title: record.title.trim(),
+      desc: description,
+      image: { uri: imageUrl },
+      icon: 'newspaper-outline',
+      ...(url ? { url } : {}),
+    }];
+  });
+};
 
 const AnimatedIndicator = ({ index, currentIndex }: { index: number, currentIndex: number }) => {
   const animatedStyle = useAnimatedStyle(() => {
@@ -291,6 +373,7 @@ function Landing({ }: any) {
   const { openAuthModal } = useAuthUI();
   const [plotlyLoaded, setPlotlyLoaded] = useState(false);
   const [showScrollTop, setShowScrollTop] = useState(false);
+  const [articles, setArticles] = useState<LandingArticle[]>(FALLBACK_ARTICLES);
 
   // Animation Values
   const scrollY = useSharedValue(0);
@@ -323,6 +406,27 @@ function Landing({ }: any) {
   const floatStyle = useAnimatedStyle(() => ({
     transform: [{ translateY: interpolate(floatValue.value, [0, 1], [0, -10]) }],
   }));
+
+  useEffect(() => {
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), 8000);
+
+    fetch(`${API_URL}/api/articles?topic=mango`, { signal: controller.signal })
+      .then(async (response) => {
+        if (!response.ok) return;
+        const fetchedArticles = parseArticles(await response.json());
+        if (fetchedArticles.length > 0) setArticles(fetchedArticles);
+      })
+      .catch(() => {
+        // Keep the local mango article cards when the optional endpoint is unavailable.
+      })
+      .finally(() => clearTimeout(timeout));
+
+    return () => {
+      clearTimeout(timeout);
+      controller.abort();
+    };
+  }, []);
   // Remove all local modal/auth state and handlers
 
 
@@ -331,19 +435,19 @@ function Landing({ }: any) {
       id: "1",
       title: "Know Your Mango Instantly",
       subtitle: "AI-powered quality analysis for damage, disease & export standards",
-      image: require("../assets/images/durian-bg.jpg"),
+      image: { uri: MANGO_IMAGE_URL },
     },
     {
       id: "2",
       title: "Fast & Accurate Analysis",
       subtitle: "Get instant AI-powered quality assessment in seconds",
-      image: require("../assets/images/durian-bg1.jpg"),
+      image: { uri: MANGO_IMAGE_URL },
     },
     {
       id: "3",
       title: "Early Detection Matters",
       subtitle: "Identify damage and disease before it's too late",
-      image: require("../assets/images/durian-bg2.jpg"),
+      image: { uri: MANGO_IMAGE_URL },
     },
   ];
 
@@ -365,9 +469,9 @@ function Landing({ }: any) {
       videoId: 'EXK6yQCQ93Q',
       styleName: 'videoSection', // Ensure this style exists or use inline
       title: "Watch Our Story",
-      subtitle: "Discover the journey behind our durian quality assurance.",
-      titleStyle: { color: '#F0F0F0', textAlign: 'center', marginTop: 40 },
-      subtitleStyle: { color: '#F0F0F0', textAlign: 'center', marginBottom: 20 },
+      subtitle: "Discover the journey behind our mango quality assurance and AI grading.",
+      titleStyle: { color: '#1C1917', textAlign: 'center', marginTop: 40 },
+      subtitleStyle: { color: '#57534E', textAlign: 'center', marginBottom: 20 },
     },
     {
       id: 'mission',
@@ -375,7 +479,7 @@ function Landing({ }: any) {
       title: "Our Mission",
       subtitle: "Empowering mango farmers with cutting-edge AI for quality assurance and sustainable practices.",
       styleName: 'missionSection',
-      titleStyle: { color: Palette.warmCopper },
+      titleStyle: { color: Palette.charcoal },
       subtitleStyle: { color: Palette.body },
       data: [
         { title: "Precision Analysis", desc: "Our AI models are trained on thousands of samples for pinpoint accuracy.", icon: "flask-outline" },
@@ -390,33 +494,8 @@ function Landing({ }: any) {
       subtitle: "Stay informed with the newest trends and research in mango cultivation and AI.",
       styleName: 'featuredArticlesSection',
       titleStyle: { color: Palette.deepObsidian },
-      subtitleStyle: { color: Palette.charcoalEspresso, opacity: 0.8, fontStyle: 'italic' },
-      data: [
-        {
-          id: "1",
-          title: "Detection of Mango using Zero-Shot Models",
-          image: require("../assets/images/feature1.jpg"),
-          desc: "Detailed study on computerized automated detection of mango fruits.",
-          icon: "scan-outline",
-          url: "https://ijtech.eng.ui.ac.id/article/view/6640"
-        },
-        {
-          id: "2",
-          title: "AI-Based Mango Disease Detection",
-          image: require("../assets/images/feature2.jpg"),
-          desc: "Identification of mango leaf disease using Convolutional Neural Networks.",
-          icon: "flask-outline",
-          url: "https://www.researchgate.net/publication/370517327_Identification_of_Durian_Leaf_Disease_Using_Convolutional_Neural_Network"
-        },
-        {
-          id: "3",
-          title: "Non-Destructive Fruit Quality Assessment",
-          image: require("../assets/images/feature3.jpg"),
-          desc: "Evaluating post-harvest traits to set quality standards for international markets.",
-          icon: "shield-checkmark-outline",
-          url: "https://www.researchgate.net/publication/370517328_Computer_Vision-Based_Non-invasive_Sweetness_Assessment_of_Mangifera_Indica_L_Fruit_Using_K-means_Clustering_and_CNN"
-        },
-      ]
+      subtitleStyle: { color: Palette.charcoalEspresso, fontStyle: 'italic' },
+      data: articles,
     },
     {
       id: 'heatmap',

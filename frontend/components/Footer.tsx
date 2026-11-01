@@ -40,7 +40,7 @@ const Footer: React.FC<FooterProps> = ({
     return (
       <View style={styles.compactContainer}>
         <Text style={styles.compactText}>
-          © {currentYear} DurianApp. All rights reserved.
+          © {currentYear} ManGO. All rights reserved.
         </Text>
       </View>
     );
@@ -57,7 +57,7 @@ const Footer: React.FC<FooterProps> = ({
             <Text style={styles.brandName}>ManGO</Text>
           </View>
           <Text style={styles.brandTagline}>
-            Quality Durian Detection & Export Management
+            Philippine Mango Quality Detection & Export Management
           </Text>
         </View>
 
@@ -125,7 +125,7 @@ const Footer: React.FC<FooterProps> = ({
 
         {/* Legal */}
         <Text style={styles.legalText}>
-          Empowering Philippine Durian Farmers & Exporters
+          Empowering Philippine Mango Farmers & Exporters
         </Text>
       </View>
     </View>
@@ -174,7 +174,6 @@ const styles = StyleSheet.create({
   brandTagline: {
     fontSize: 14,
     color: Palette.body,
-    opacity: 0.8,
     lineHeight: 20,
     fontFamily: Fonts.regular,
   },
@@ -248,7 +247,6 @@ const styles = StyleSheet.create({
   legalText: {
     fontSize: 12,
     color: Palette.body,
-    opacity: 0.6,
     textAlign: 'center',
     fontFamily: Fonts.regular,
   },

@@ -20,7 +20,7 @@ const styles = StyleSheet.create({
   mapTitle: {
     fontSize: 22,
     fontFamily: Fonts.bold,
-    color: Palette.warmCopper,
+    color: Palette.charcoal,
   },
   mapSubtitle: {
     fontSize: 14,
@@ -69,7 +69,7 @@ const styles = StyleSheet.create({
     padding: 24,
   },
   mapPlaceholderText: {
-    color: '#888',
+    color: Palette.body,
     fontSize: 15,
     textAlign: 'center',
     marginBottom: 8,

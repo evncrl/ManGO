@@ -7,14 +7,13 @@ import {
   TouchableOpacity,
   StyleSheet,
   Platform,
-  Alert,
   ActivityIndicator,
   KeyboardAvoidingView,
 } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { Ionicons } from '@expo/vector-icons';
 import { API_URL } from '@/config/appconf';
-import { Fonts, Colors, Palette } from '@/constants/theme';
+import { Fonts, Palette } from '@/constants/theme';
 
 interface Message {
   id: string;
@@ -23,85 +22,7 @@ interface Message {
   timestamp: Date;
 }
 
-interface AIChatbotProps {
-  systemPrompt?: string;
-}
-
-const DEFAULT_SYSTEM_PROMPT = `You are ManGO AI, an expert assistant EXCLUSIVELY for durian-related inquiries. Your knowledge is strictly limited to durian quality assessment, cultivation, export, and variety identification.
-
-## STRICT TOPIC RESTRICTION
-- You must ONLY answer questions directly related to durian.
-- If a user asks about general knowledge, other fruits, coding, politics, sports, or life advice, you MUST politely decline and offer to help with durian instead.
-- Rejection message example: "I apologize, but I am specifically designed to assist with durian quality analysis and cultivation. Do you have any questions about durian?"
-
-## Core Responsibilities
-- Analyze durian characteristics (ripeness, flesh color, texture, and aroma).
-- Provide grading guidance (Premium, Grade A, B, C).
-- Guide users on cultivation best practices (soil pH, fertilization, pest control).
-- Assist with export standards and marketplace information for durian.
-
-### 1. Durian Quality Assessment & Grading
-- Analyze durian characteristics including ripeness, flesh color, texture, and aroma
-- Provide grading based on standard quality metrics (Premium, Grade A, Grade B, Grade C)
-- Explain quality indicators: creamy texture, bitter-sweet balance, custard-like consistency
-- Identify common defects: overripeness, underripeness, fermentation, pest damage
-- Guide users on visual cues: stem condition, shell color, sound when tapped
-- Assess based on popular varieties: Musang King, D24, Black Thorn, Red Prawn, etc.
-
-### 2. Cultivation & Best Practices
-- Advise on optimal growing conditions: climate, soil pH (5.5-6.5), drainage
-- Recommend fertilization schedules and nutrient requirements (NPK ratios)
-- Provide pest and disease management strategies (Phytophthora, fruit borers)
-- Guide on pruning, grafting techniques, and tree maintenance
-- Share harvesting timing and techniques for peak quality
-- Suggest post-harvest handling to maintain freshness
-
-### 3. Export & Market Information
-- Explain export standards and quality requirements by country (China, USA, EU)
-- Provide insights on market pricing trends and demand
-- Guide on packaging, storage, and shipping best practices
-- Advise on certifications needed: phytosanitary, organic, food safety
-- Share information on major importing countries and their preferences
-
-### 4. App Technical Support
-- Help users navigate the ManGO app features
-- Guide on photo capture for optimal AI analysis (lighting, angles, distance)
-- Explain how to interpret analysis results and confidence scores
-- Troubleshoot common issues: camera permissions, upload failures, connectivity
-- Assist with account management and data export
-
-### 5. Variety Identification & Characteristics
-- Identify durian varieties from descriptions or images
-- Compare characteristics between varieties (taste profile, appearance, price range)
-- Recommend varieties based on user preferences or market demand
-- Provide historical and cultural context for different cultivars
-
-## Communication Style
-- Be **concise** but thorough - prioritize actionable information
-- Use **simple, clear language** - avoid unnecessary jargon, but explain technical terms when needed
-- Be **professional and courteous** at all times
-- **Structure responses** with bullet points or numbered lists for complex information
-- Provide **specific, practical advice** rather than general statements
-- When uncertain, acknowledge limitations and suggest alternative resources
-
-## Response Guidelines
-- For quality assessment: Ask for specific details (variety, appearance, smell, texture) if not provided
-- For technical issues: Gather device info, app version, and specific error messages
-- For cultivation advice: Consider user's location, climate, and experience level
-- Always prioritize food safety and quality standards
-- Include relevant warnings about spoilage, food safety, or harmful practices when applicable
-
-## Knowledge Boundaries
-- You have expertise in durian cultivation, quality assessment, and export standards
-- For medical advice about durian consumption, recommend consulting healthcare professionals
-- For app bugs or account-specific issues beyond general troubleshooting, direct users to support@ManGO.com
-- Stay updated on industry standards, but clarify when information may have changed
-
-Remember: Your goal is to empower users to make informed decisions about durian quality, cultivation, and trade while providing excellent support for the ManGO application.`;
-
-export default function AIChatbot({
-  systemPrompt = DEFAULT_SYSTEM_PROMPT,
-}: AIChatbotProps) {
+export default function AIChatbot() {
   const insets = useSafeAreaInsets();
   const [messages, setMessages] = useState<Message[]>([]);
   const [inputText, setInputText] = useState('');
@@ -113,7 +34,7 @@ export default function AIChatbot({
     const welcomeMessage: Message = {
       id: '1',
       role: 'assistant',
-      content: 'Hello! I\'m your ManGO AI assistant. How can I help you with durian quality analysis today?',
+      content: 'Hello! I\'m your ManGO Assistant. How can I help you with Philippine mangoes today?',
       timestamp: new Date(),
     };
     setMessages([welcomeMessage]);
@@ -134,33 +55,40 @@ export default function AIChatbot({
     setIsLoading(true);
 
     try {
-      // Prepare messages for API
-      const apiMessages = [
-        { role: 'system', content: systemPrompt },
-        ...messages.map(msg => ({
-          role: msg.role,
-          content: msg.content,
-        })),
-        { role: 'user', content: userMessage.content },
-      ];
-
       const response = await fetch(`${API_URL}/chatbot/chat`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          messages: apiMessages,
+          messages: [
+            ...messages.map(({ role, content }) => ({ role, content })),
+            { role: 'user', content: userMessage.content },
+          ],
         }),
       });
 
+      const data = await response.json().catch(() => null);
+
       if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
+        const serverMessage =
+          data && typeof data.error === 'string' ? data.error : undefined;
+        if (response.status === 404) {
+          throw new Error(
+            'Chat endpoint not found (404). Check EXPO_PUBLIC_API_URL and confirm the backend is running.',
+          );
+        }
+        if (response.status >= 500) {
+          throw new Error(
+            serverMessage || `Chatbot server error (${response.status}). Please try again later.`,
+          );
+        }
+        throw new Error(
+          serverMessage || `Chatbot request failed (HTTP ${response.status}).`,
+        );
       }
 
-      const data = await response.json();
-
-      if (data.success && data.message) {
+      if (data?.success && typeof data.message === 'string') {
         const filteredContent = data.message.replace(/\*/g, '').trim();
         const assistantMessage: Message = {
           id: (Date.now() + 1).toString(),
@@ -170,7 +98,10 @@ export default function AIChatbot({
         };
         setMessages(prev => [...prev, assistantMessage]);
       } else {
-        throw new Error(data.error || 'Invalid response from server');
+        throw new Error(
+          (data && typeof data.error === 'string' && data.error) ||
+            'Invalid response from server',
+        );
       }
     } catch (error) {
       console.error('Error sending message:', error);
@@ -178,8 +109,11 @@ export default function AIChatbot({
       let errorMessage = 'Sorry, I encountered an error. ';
 
       if (error instanceof Error) {
-        if (error.message.includes('Failed to fetch')) {
-          errorMessage += 'Network error. Please check your connection.';
+        if (
+          error.message.includes('Failed to fetch') ||
+          error.message.toLowerCase().includes('network')
+        ) {
+          errorMessage += `Cannot reach the chatbot server at ${API_URL}. Check your connection, EXPO_PUBLIC_API_URL, and that the backend is running.`;
         } else {
           errorMessage += error.message;
         }
@@ -211,17 +145,17 @@ export default function AIChatbot({
     const welcomeMessage: Message = {
       id: Date.now().toString(),
       role: 'assistant',
-      content: 'Chat cleared. How can I help you with durian quality analysis?',
+      content: 'Chat cleared. How can I help you with Philippine mangoes?',
       timestamp: new Date(),
     };
     setMessages([welcomeMessage]);
   };
 
   const suggestedQuestions = [
-    'How do I assess durian quality?',
-    'What are the best durian varieties?',
-    'How to store durians properly?',
-    'Durian export requirements?',
+    'How do I assess mango quality?',
+    'What are common mango pests and diseases?',
+    'How should I care for a mango tree?',
+    'What are Philippine mango export standards?',
   ];
 
   const handleSuggestedQuestion = (question: string) => {
@@ -308,7 +242,7 @@ export default function AIChatbot({
         <View style={styles.inputWrapper}>
           <TextInput
             style={styles.input}
-            placeholder="Ask anything about durians..."
+            placeholder="Ask about mangoes or ManGO app features..."
             value={inputText}
             onChangeText={setInputText}
             onSubmitEditing={sendMessage}
