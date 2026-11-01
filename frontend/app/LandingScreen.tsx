@@ -45,9 +45,12 @@ interface LandingArticle {
   id: string;
   title: string;
   desc: string;
-  image: { uri: string };
+  image_url: string;
   icon: keyof typeof Ionicons.glyphMap;
-  url?: string;
+  source_url: string;
+  published_date?: string | null;
+  category: string;
+  source?: string;
 }
 
 const MANGO_IMAGE_URL =
@@ -55,34 +58,66 @@ const MANGO_IMAGE_URL =
 
 const FALLBACK_ARTICLES: LandingArticle[] = [
   {
-    id: 'mango-ai-defect-detection',
-    title: 'AI-Powered Carabao Mango Defect Detection',
-    desc: 'How computer vision can help identify surface defects and support consistent mango grading.',
-    image: { uri: MANGO_IMAGE_URL },
-    icon: 'scan-outline',
+    id: 'da-bafs-mango-standards',
+    title: 'Enhancing the Philippine Mango Industry through S&T Interventions',
+    desc: 'DOST-PCAARRD highlights science and technology interventions to strengthen the Philippine mango industry.',
+    image_url: MANGO_IMAGE_URL,
+    icon: 'flask-outline',
+    source_url: 'https://www.pcaarrd.dost.gov.ph/index.php/quick-information-dispatch/3313-enhancing-the-philippine-mango-industry-through-s-t-interventions',
+    category: 'Research',
+    source: 'DOST-PCAARRD',
   },
   {
-    id: 'mango-export-standards',
-    title: 'PNS/BAFS Export Standards for Fresh Mangoes',
-    desc: 'A practical overview of quality, handling, and post-harvest requirements for export-ready mangoes.',
-    image: {
-      uri: 'https://images.unsplash.com/photo-1553279768-865429fa0078?auto=format&fit=crop&w=900&q=85&sat=-15',
-    },
+    id: 'pcaarrd-mango-research',
+    title: 'Philippine National Standard for Fresh Mangoes (PNS/BAFS 07:2021)',
+    desc: 'DA-BAFS grading and quality specifications for fresh mangoes.',
+    image_url: MANGO_IMAGE_URL,
     icon: 'shield-checkmark-outline',
+    source_url: 'https://bafs.da.gov.ph/bafs_admin/admin_page/pns_file/PNS%20BAFS%2007-2021%20-%20Fresh%20Mangoes%20-%20Grading%20and%20Quality%20Specifications.pdf',
+    category: 'Standards & Export',
+    source: 'DA-BAFS',
   },
   {
-    id: 'mango-anthracnose-management',
-    title: 'Managing Mango Anthracnose & Stem-End Rot',
-    desc: 'Learn about common mango diseases and integrated practices that protect fruit quality.',
-    image: {
-      uri: 'https://images.unsplash.com/photo-1553279768-865429fa0078?auto=format&fit=crop&w=900&q=85&hue=15',
-    },
+    id: 'da-mango-industry-boost',
+    title: 'DA initiatives to revive and boost Philippine mango exports',
+    desc: 'Department of Agriculture initiatives to strengthen mango production and exports in the Philippines.',
+    image_url: MANGO_IMAGE_URL,
     icon: 'leaf-outline',
+    source_url: 'https://www.da.gov.ph/da-leads-initiatives-to-boost-mango-industry/',
+    category: 'Markets',
+    source: 'Department of Agriculture',
   },
 ];
 
 const isRecord = (value: unknown): value is Record<string, unknown> =>
   typeof value === 'object' && value !== null;
+
+const isExternalUrl = (value: unknown): value is string => {
+  if (typeof value !== 'string') return false;
+  try {
+    const protocol = new URL(value).protocol;
+    return protocol === 'https:';
+  } catch {
+    return false;
+  }
+};
+
+const handleOpenArticle = async (url?: string) => {
+  if (!isExternalUrl(url)) return;
+
+  try {
+    if (Platform.OS === 'web') {
+      window.open(url, '_blank', 'noopener,noreferrer');
+      return;
+    }
+
+    if (await Linking.canOpenURL(url)) {
+      await Linking.openURL(url);
+    }
+  } catch (error) {
+    console.error('Failed to open article URL:', error);
+  }
+};
 
 const parseArticles = (payload: unknown): LandingArticle[] => {
   const records = Array.isArray(payload)
@@ -102,22 +137,32 @@ const parseArticles = (payload: unknown): LandingArticle[] => {
         : typeof record.desc === 'string'
           ? record.desc
           : '';
-    const imageValue = record.imageUrl ?? record.image_url ?? record.image;
+    const imageValue = record.image_url ?? record.imageUrl ?? record.image;
     const imageUrl =
       typeof imageValue === 'string'
         ? imageValue
         : isRecord(imageValue) && typeof imageValue.url === 'string'
           ? imageValue.url
           : MANGO_IMAGE_URL;
-    const url = typeof record.url === 'string' ? record.url : undefined;
+    const safeImageUrl = isExternalUrl(imageUrl) ? imageUrl : MANGO_IMAGE_URL;
+    const sourceUrl = isExternalUrl(record.source_url)
+      ? record.source_url
+      : isExternalUrl(record.url)
+        ? record.url
+        : undefined;
+    if (!sourceUrl) return [];
 
     return [{
       id: String(record.id ?? `article-${index}`),
       title: record.title.trim(),
       desc: description,
-      image: { uri: imageUrl },
+      image_url: safeImageUrl,
       icon: 'newspaper-outline',
-      ...(url ? { url } : {}),
+      source_url: sourceUrl,
+      published_date:
+        typeof record.published_date === 'string' ? record.published_date : null,
+      category: typeof record.category === 'string' ? record.category : 'Mango News',
+      ...(typeof record.source === 'string' ? { source: record.source } : {}),
     }];
   });
 };
@@ -311,17 +356,22 @@ const DynamicSection = ({ section, scrollY, width, plotlyLoaded, setPlotlyLoaded
           {section.data.map((article: any, index: number) => (
             <ScrollReveal key={article.id} scrollY={scrollY} index={index}>
               <InteractiveCard
-                style={styles.articleCard}
-                onPress={() => article.url && Linking.openURL(article.url)}
+                style={[
+                  styles.articleCard,
+                  Platform.OS === 'web' && { cursor: 'pointer' },
+                ]}
+                onPress={() => handleOpenArticle(article.source_url)}
               >
                 <AnimatedImage
-                  source={article.image}
+                  source={{ uri: article.image_url }}
                   style={styles.articleImage}
                   entering={FadeInDown.duration(600).delay(200 + index * 100)}
+                  onPress={() => handleOpenArticle(article.source_url)}
                 />
                 <View style={styles.articleContent}>
+                  <Text style={styles.articleCategory}>{article.category}</Text>
                   <View style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 8 }}>
-                    <Ionicons name={article.icon} size={16} color={Palette.warmCopper} style={{ marginRight: 6 }} />
+                    <Ionicons name={article.icon} size={16} color={Palette.charcoal} style={{ marginRight: 6 }} />
                     <Text style={styles.articleTitle} numberOfLines={1}>{article.title}</Text>
                   </View>
                   <Text style={styles.articleDesc} numberOfLines={3}>{article.desc}</Text>
@@ -409,9 +459,9 @@ function Landing({ }: any) {
 
   useEffect(() => {
     const controller = new AbortController();
-    const timeout = setTimeout(() => controller.abort(), 8000);
+    const timeout = setTimeout(() => controller.abort(), 12000);
 
-    fetch(`${API_URL}/api/articles?topic=mango`, { signal: controller.signal })
+    fetch(`${API_URL}/news/mango-articles?limit=6`, { signal: controller.signal })
       .then(async (response) => {
         if (!response.ok) return;
         const fetchedArticles = parseArticles(await response.json());

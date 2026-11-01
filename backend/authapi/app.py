@@ -42,6 +42,7 @@ from routes.auth_routes import auth_bp
 from routes.admin.admin_routes import admin_bp
 from routes.scanner_routes import scanner_bp
 from routes.chatbot_routes import chatbot_bp
+from routes.news_routes import news_bp
 from routes.shop_routes import shop_bp
 from routes.transaction_routes import bp as transaction_bp
 
@@ -52,6 +53,7 @@ app.register_blueprint(auth_bp, url_prefix='/auth')
 app.register_blueprint(admin_bp, url_prefix='/admin')
 app.register_blueprint(scanner_bp, url_prefix='/scanner')
 app.register_blueprint(chatbot_bp, url_prefix='/chatbot')
+app.register_blueprint(news_bp, url_prefix='/news')
 app.register_blueprint(shop_bp, url_prefix='/shop')
 app.register_blueprint(transaction_bp, url_prefix='/api')   
 

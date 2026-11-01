@@ -247,7 +247,7 @@ export default function DurianScanResult() {
             <View style={styles.card}>
               <View style={styles.noDetection}>
                 <Ionicons name="alert-circle-outline" size={64} color="#E74C3C" />
-                <Text style={styles.noDetectionTitle}>No Durian Detected</Text>
+                <Text style={styles.noDetectionTitle}>No Mango Detected</Text>
               </View>
             </View>
           )}

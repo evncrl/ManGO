@@ -196,7 +196,7 @@ export default function Analytics() {
       <View style={styles.header}>
         <View>
           <Text style={styles.headerTitle}>Analytics</Text>
-          <Text style={styles.headerSubtitle}>Durian Quality Insights</Text>
+          <Text style={styles.headerSubtitle}>Mango Quality Insights</Text>
         </View>
       </View>
 

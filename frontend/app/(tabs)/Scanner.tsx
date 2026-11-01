@@ -340,7 +340,7 @@ export default function Scanner() {
               style={styles.instructionsContainer}
             >
               <Text style={styles.instructionsText}>
-                <Ionicons name="scan-circle-outline" size={20} color="#fff" /> Position durian in frame
+                <Ionicons name="scan-circle-outline" size={20} color="#fff" /> Position mango in frame
               </Text>
               <Text style={styles.instructionsSubtext}>
                 Ensure good lighting for best results
@@ -408,7 +408,7 @@ export default function Scanner() {
               ) : (
                 <>
                   <Ionicons name="scan" size={20} color="#fff" style={{ marginRight: 8 }} />
-                  <Text style={styles.captureText}>Analyze Durian</Text>
+                  <Text style={styles.captureText}>Analyze Mango</Text>
                 </>
               )}
             </TouchableOpacity>
@@ -446,7 +446,7 @@ export default function Scanner() {
         }}>
           <ActivityIndicator size="large" color="#27AE60" />
           <Text style={{ color: '#fff', marginTop: 16, fontSize: 18, fontFamily: Fonts.semiBold }}>
-            🔍 Analyzing durian...
+            🔍 Analyzing mango...
           </Text>
           <Text style={{ color: '#ccc', marginTop: 8, fontSize: 14 }}>
             Please wait while AI processes the image

@@ -677,6 +677,18 @@ export const useLandingStyles = () => {
       marginBottom: 4,
       letterSpacing: -0.2,
     },
+    articleCategory: {
+      alignSelf: 'flex-start',
+      marginBottom: 10,
+      paddingHorizontal: 10,
+      paddingVertical: 4,
+      borderRadius: 12,
+      overflow: 'hidden',
+      backgroundColor: Palette.honey,
+      color: Palette.charcoal,
+      fontFamily: Fonts.semiBold,
+      fontSize: 12,
+    },
     articleDesc: {
       fontFamily: Fonts.regular,
       fontSize: isSmall ? 13 : 15,

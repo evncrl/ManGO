@@ -12,7 +12,7 @@ def draw_header(canvas, doc):
     canvas.setFont('Helvetica-Bold', 10)
     canvas.drawCentredString(letter[0]/2, letter[1] - 25, "ManGO: Official Analytics Report")
     canvas.setFont('Helvetica-Oblique', 8)
-    canvas.drawCentredString(letter[0]/2, letter[1] - 35, "AI-Powered Durian Quality Assurance System")
+    canvas.drawCentredString(letter[0]/2, letter[1] - 35, "AI-Powered Mango Quality Assurance System")
     canvas.drawRightString(letter[0] - 40, letter[1] - 35, f"Page {doc.page}")
     canvas.setStrokeColor(colors.lightgrey)
     canvas.setLineWidth(0.5)
