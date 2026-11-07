@@ -10,27 +10,27 @@ const isLargeScreen = width >= 768;
    Design Tokens
 ===================== */
 const COLORS = {
-  primary: Palette.warmCopper,
-  primaryDark: Palette.deepObsidian,
-  primaryLight: Palette.mutedSage,
-  success: Palette.mutedSage,
+  primary: Palette.mangoDark,
+  primaryDark: Palette.charcoal,
+  primaryLight: Palette.leaf,
+  success: Palette.leaf,
   warning: '#f59e0b',
   danger: '#ef4444',
-  white: Palette.white,
+  white: Palette.surface,
   black: '#000000',
-  gray50: Palette.linenWhite,
-  gray100: '#F9FAFB',
-  gray200: Palette.stoneGray,
-  gray300: '#D1D5DB',
-  gray400: Palette.slate,
-  gray500: Palette.slate,
-  gray600: Palette.charcoalEspresso,
-  gray700: '#374151',
-  gray800: '#1F2937',
-  gray900: '#111827',
-  background: Palette.linenWhite,
-  cardBackground: Palette.white,
-  cardBorder: Palette.stoneGray,
+  gray50: Palette.canvas,
+  gray100: Palette.sand,
+  gray200: Palette.border,
+  gray300: '#E7DED2',
+  gray400: Palette.body,
+  gray500: Palette.muted,
+  gray600: '#6B625A',
+  gray700: Palette.body,
+  gray800: Palette.border,
+  gray900: Palette.charcoal,
+  background: Palette.canvas,
+  cardBackground: Palette.surface,
+  cardBorder: Palette.border,
 } as const;
 
 const SPACING = {
@@ -64,7 +64,7 @@ const SHADOWS = Platform.select({
   android: {
     elevation: 4,
   },
-  web: ({ boxShadow: '0 1px 3px rgba(17,24,39,0.06)' } as any),
+  web: ({ boxShadow: '0 2px 8px rgba(28, 25, 23, 0.06)' } as any),
 }) as ViewStyle | undefined;
 
 /* =====================
@@ -121,7 +121,7 @@ export const useAnalyticsStyles = () => {
       width: 36,
       height: 36,
       borderRadius: BORDER_RADIUS.sm,
-      backgroundColor: COLORS.gray200,
+      backgroundColor: COLORS.gray800,
       justifyContent: 'center',
       alignItems: 'center',
       borderWidth: 1,
@@ -206,7 +206,7 @@ export const useAnalyticsStyles = () => {
     },
 
     metricBadge: {
-      backgroundColor: '#ECFDF5',
+      backgroundColor: 'rgba(39, 174, 96, 0.2)',
       paddingHorizontal: SPACING.sm,
       paddingVertical: SPACING.xs,
       borderRadius: BORDER_RADIUS.sm,
@@ -221,7 +221,7 @@ export const useAnalyticsStyles = () => {
     metricValue: {
       fontSize: isSmallScreen ? 28 : 32,
       fontFamily: Fonts.bold,
-      color: COLORS.gray900,
+      color: COLORS.primaryDark,
       marginBottom: SPACING.xs,
       letterSpacing: 0.5,
     },
@@ -236,13 +236,13 @@ export const useAnalyticsStyles = () => {
     metricSubtext: {
       fontSize: 12,
       fontFamily: Fonts.regular,
-      color: COLORS.gray500,
+      color: COLORS.gray400,
     },
 
     /* Progress Bar */
     progressBar: {
       height: 6,
-      backgroundColor: COLORS.gray200,
+      backgroundColor: COLORS.gray800,
       borderRadius: BORDER_RADIUS.sm,
       marginTop: SPACING.sm,
       overflow: 'hidden',
@@ -276,7 +276,7 @@ export const useAnalyticsStyles = () => {
     sectionTitle: {
       fontSize: isSmallScreen ? 18 : 20,
       fontFamily: Fonts.bold,
-      color: COLORS.gray900,
+      color: COLORS.primaryDark,
       marginBottom: SPACING.lg,
       letterSpacing: 0.3,
     },
@@ -340,7 +340,7 @@ export const useAnalyticsStyles = () => {
     chartBarLabel: {
       fontSize: 11,
       fontFamily: Fonts.semiBold,
-      color: COLORS.gray500,
+      color: COLORS.gray400,
       marginTop: SPACING.sm,
     },
 
@@ -395,18 +395,18 @@ export const useAnalyticsStyles = () => {
     distributionRange: {
       fontSize: isSmallScreen ? 14 : 15,
       fontFamily: Fonts.bold,
-      color: COLORS.gray900,
+      color: COLORS.primaryDark,
     },
 
     distributionCount: {
       fontSize: 13,
       fontFamily: Fonts.medium,
-      color: COLORS.gray400,
+      color: COLORS.gray700,
     },
 
     distributionBarContainer: {
       height: 8,
-      backgroundColor: COLORS.gray200,
+      backgroundColor: COLORS.gray800,
       borderRadius: BORDER_RADIUS.sm,
       overflow: 'hidden',
     },
@@ -420,7 +420,7 @@ export const useAnalyticsStyles = () => {
     distributionPercentage: {
       fontSize: 12,
       fontFamily: Fonts.semiBold,
-      color: COLORS.gray500,
+      color: COLORS.gray400,
     },
 
     /* =====================
@@ -449,7 +449,7 @@ export const useAnalyticsStyles = () => {
       width: 44,
       height: 44,
       borderRadius: BORDER_RADIUS.md,
-      backgroundColor: COLORS.gray100,
+      backgroundColor: COLORS.gray800,
       justifyContent: 'center',
       alignItems: 'center',
     },
@@ -465,14 +465,14 @@ export const useAnalyticsStyles = () => {
     scanVariety: {
       fontSize: isSmallScreen ? 14 : 15,
       fontFamily: Fonts.semiBold,
-      color: COLORS.gray900,
+      color: COLORS.primaryDark,
       marginBottom: 2,
     },
 
     scanTime: {
       fontSize: 12,
       fontFamily: Fonts.regular,
-      color: COLORS.gray500,
+      color: COLORS.gray400,
     },
 
     scanMetrics: {
@@ -487,7 +487,7 @@ export const useAnalyticsStyles = () => {
     },
 
     scanStatusBadge: {
-      backgroundColor: '#ECFDF5',
+      backgroundColor: 'rgba(39, 174, 96, 0.2)',
       paddingHorizontal: SPACING.sm,
       paddingVertical: SPACING.xs,
       borderRadius: BORDER_RADIUS.sm,

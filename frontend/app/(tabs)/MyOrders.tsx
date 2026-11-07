@@ -38,7 +38,7 @@ export default function MyOrders() {
     useEffect(() => { fetchMyOrders(); }, [user]);
 
     const submitReview = async () => {
-        if (!comment.trim()) return Alert.alert("Wait", "Please write a short comment about your durian.");
+        if (!comment.trim()) return Alert.alert("Wait", "Please write a short comment about your mango order.");
         try {
             const res = await axios.post(`${API_URL}/shop/reviews`, {
                 user_id: user?.id,
@@ -126,7 +126,7 @@ export default function MyOrders() {
                         <TextInput 
                             style={styles.input} 
                             multiline 
-                            placeholder="How was your durian experience? Share your thoughts!" 
+                            placeholder="How was your mango order? Share your thoughts!"
                             placeholderTextColor="#999"
                             value={comment}
                             onChangeText={setComment} 
@@ -148,31 +148,31 @@ export default function MyOrders() {
 }
 
 const styles = StyleSheet.create({
-    container: { flex: 1, backgroundColor: Palette.linenWhite, padding: 20 },
-    title: { fontSize: 24, fontFamily: Fonts.bold, color: Palette.deepObsidian, marginBottom: 20 },
-    orderCard: { backgroundColor: Palette.white, borderRadius: 16, padding: 16, marginBottom: 15, borderWidth: 1, borderColor: Palette.stoneGray },
+    container: { flex: 1, backgroundColor: Palette.canvas, padding: 20 },
+    title: { fontSize: 24, fontFamily: Fonts.bold, color: Palette.charcoal, marginBottom: 20 },
+    orderCard: { backgroundColor: Palette.surface, borderWidth: 1, borderColor: Palette.border, borderRadius: 16, padding: 16, marginBottom: 15 },
     orderHeader: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: 12 },
-    orderId: { color: Palette.slate, fontSize: 12, fontFamily: Fonts.medium },
+    orderId: { color: Palette.body, fontSize: 12, fontFamily: Fonts.medium },
     statusBadge: { paddingHorizontal: 10, paddingVertical: 4, borderRadius: 8 },
     statusText: { fontSize: 11, fontFamily: Fonts.bold },
     itemRow: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: 6 },
-    productItem: { color: Palette.deepObsidian, fontSize: 14, fontFamily: Fonts.medium },
+    productItem: { color: Palette.charcoal, fontSize: 14, fontFamily: Fonts.medium },
     smallRateBtn: { backgroundColor: Palette.warmCopper, paddingHorizontal: 12, paddingVertical: 5, borderRadius: 6 },
     smallRateText: { color: '#fff', fontSize: 11, fontFamily: Fonts.bold },
-    orderFooter: { flexDirection: 'row', justifyContent: 'space-between', marginTop: 15, borderTopWidth: 1, borderTopColor: Palette.stoneGray, paddingTop: 10 },
-    dateText: { color: Palette.slate, fontSize: 12 },
-    totalPrice: { color: Palette.warmCopper, fontFamily: Fonts.bold, fontSize: 16 },
-    emptyText: { color: Palette.slate, textAlign: 'center', marginTop: 50 },
+    orderFooter: { flexDirection: 'row', justifyContent: 'space-between', marginTop: 15, borderTopWidth: 1, borderTopColor: Palette.border, paddingTop: 10 },
+    dateText: { color: Palette.body, fontSize: 12 },
+    totalPrice: { color: Palette.mangoDark, fontFamily: Fonts.bold, fontSize: 16 },
+    emptyText: { color: Palette.body, textAlign: 'center', marginTop: 50 },
     
     // MODAL STYLES
-    modalOverlay: { flex: 1, backgroundColor: 'rgba(17,24,39,0.35)', justifyContent: 'center', alignItems: 'center' },
-    modalContent: { backgroundColor: '#fff', width: '85%', padding: 25, borderRadius: 24 },
+    modalOverlay: { flex: 1, backgroundColor: 'rgba(28,25,23,0.45)', justifyContent: 'center', alignItems: 'center' },
+    modalContent: { backgroundColor: Palette.surface, borderWidth: 1, borderColor: Palette.border, width: '85%', padding: 25, borderRadius: 24 },
     modalTitle: { fontSize: 20, fontFamily: Fonts.bold, color: Palette.charcoalEspresso, marginBottom: 20 },
     modalLabel: { fontSize: 14, color: '#666', marginBottom: 10, fontFamily: Fonts.medium },
     starRow: { flexDirection: 'row', gap: 8, marginBottom: 20, justifyContent: 'center' },
     input: { backgroundColor: '#f8f9fa', borderRadius: 12, padding: 15, height: 100, textAlignVertical: 'top', fontSize: 14, borderWidth: 1, borderColor: '#eee', marginBottom: 20 },
     modalButtons: { flexDirection: 'row', gap: 12 },
-    submitBtn: { flex: 2, backgroundColor: Palette.warmCopper, padding: 15, borderRadius: 12, alignItems: 'center' },
+    submitBtn: { flex: 2, backgroundColor: Palette.mangoDark, padding: 15, borderRadius: 12, alignItems: 'center' },
     submitBtnText: { color: '#fff', fontFamily: Fonts.bold, fontSize: 14 },
     cancelBtn: { flex: 1, backgroundColor: '#f1f5f9', padding: 15, borderRadius: 12, alignItems: 'center' },
     cancelBtnText: { color: Palette.slate, fontFamily: Fonts.bold, fontSize: 14 }

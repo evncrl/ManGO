@@ -4,55 +4,58 @@ import { Fonts, Palette } from '@/constants/theme';
 const { width: SCREEN_WIDTH, height: SCREEN_HEIGHT } = Dimensions.get('window');
  
 const colors = {
-  primary: Palette.warmCopper,
-  primaryDark: Palette.deepObsidian,
-  primaryLight: Palette.mutedSage,
-  primaryGlow: Palette.linenWhite,
+  primary: Palette.mangoDark,
+  primaryDark: Palette.charcoal,
+  primaryLight: Palette.leaf,
+  primaryGlow: Palette.sand,
 
-  accent: Palette.warmCopper,
-  accentDark: Palette.charcoalEspresso,
-  accentLight: '#FEF3C7',
+  // Accent Colors
+  accent: Palette.mangoDark,
+  accentDark: Palette.charcoal,
+  accentLight: Palette.sand,
 
   // Category Colors
   qualityRed: '#dc2626',
-  qualityRedBg: '#FEF2F2',
+  qualityRedBg: 'rgba(220, 38, 38, 0.15)',
   practiceBlue: '#2563eb',
-  practiceBlueBg: '#EFF6FF',
-  exportGreen: '#047857',
-  exportGreenBg: '#ECFDF5',
-  discussionGray: Palette.charcoalEspresso,
-  discussionGrayBg: '#F3F4F6',
+  practiceBlueBg: 'rgba(37, 99, 235, 0.15)',
+  exportGreen: Palette.leaf,
+  exportGreenBg: '#DCFCE7',
+  discussionGray: Palette.body,
+  discussionGrayBg: Palette.sand,
 
-  white: Palette.white,
-  gray50: Palette.linenWhite,
-  gray100: '#F9FAFB',
-  gray200: Palette.stoneGray,
-  gray300: '#D1D5DB',
-  gray400: Palette.slate,
-  gray500: Palette.slate,
-  gray600: Palette.charcoalEspresso,
-  gray700: '#374151',
-  gray800: Palette.deepObsidian,
-  gray900: '#111827',
+  white: Palette.surface,
+  gray50: Palette.canvas,
+  gray100: Palette.sand,
+  gray200: Palette.border,
+  gray300: '#E7DED2',
+  gray400: Palette.muted,
+  gray500: Palette.body,
+  gray600: '#6B625A',
+  gray700: Palette.body,
+  gray800: '#E7DED2',
+  gray900: Palette.charcoal,
 
   // Status Colors
-  success: '#047857',
+  success: Palette.leaf,
   warning: '#f59e0b',
   error: '#ef4444',
   info: Palette.warmCopper,
 
   // Overlays
-  overlay: 'rgba(17, 24, 39, 0.5)',
-  overlayLight: 'rgba(17, 24, 39, 0.3)',
-  overlayDark: 'rgba(17, 24, 39, 0.7)',
-  glassWhite: 'rgba(255, 255, 255, 0.95)',
+  overlay: 'rgba(28, 25, 23, 0.45)',
+  overlayLight: 'rgba(28, 25, 23, 0.25)',
+  overlayDark: 'rgba(28, 25, 23, 0.6)',
+  glassWhite: 'rgba(255, 255, 255, 0.96)',
 
-  gradientStart: Palette.warmCopper,
-  gradientMid: Palette.mutedSage,
-  gradientEnd: Palette.deepObsidian,
+  // Gradient Colors
+  gradientStart: Palette.canvas,
+  gradientMid: Palette.sand,
+  gradientEnd: Palette.surface,
 
-  cardBg: Palette.white,
-  surfaceBg: Palette.linenWhite,
+  // Dark Mode Surface Colors
+  cardBg: Palette.surface,
+  surfaceBg: Palette.canvas,
 };
 
 // Responsive sizing
@@ -192,7 +195,7 @@ const styles = StyleSheet.create({
   },
 
   categoryTabActive: {
-    backgroundColor: colors.primary,
+    backgroundColor: Palette.honey,
   },
 
   categoryTabText: {
@@ -202,7 +205,7 @@ const styles = StyleSheet.create({
   },
 
   categoryTabTextActive: {
-    color: colors.white,
+    color: Palette.honeyText,
   },
 
   // ========== STATS BAR ==========
@@ -224,7 +227,7 @@ const styles = StyleSheet.create({
   statValue: {
     fontSize: scale(20),
     fontFamily: Fonts.bold,
-    color: colors.primary,
+    color: Palette.honeyText,
     marginBottom: 4,
   },
 
@@ -551,14 +554,14 @@ const styles = StyleSheet.create({
   },
 
   categoryOptionActive: {
-    backgroundColor: colors.primary,
-    borderColor: colors.primary,
+    backgroundColor: Palette.honey,
+    borderColor: Palette.honey,
   },
 
   categoryOptionText: {
     fontSize: scale(13),
     fontFamily: Fonts.semiBold,
-    color: colors.gray700,
+    color: Palette.honeyText,
   },
 
   // ========== MODAL FOOTER ==========

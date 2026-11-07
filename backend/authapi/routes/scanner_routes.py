@@ -8,10 +8,10 @@ import uuid
 
 # Use local YOLO model (your trained model)
 from ai.yolo_detector import get_yolo_detector
-from ai.durian_color import get_durian_color
-from ai.durian_desease import get_durian_disease
-from ai.durian_size import get_durian_size
-from ai.durian_shape import get_durian_shape
+from ai.mango_color import get_mango_color
+from ai.mango_disease import get_mango_disease
+from ai.mango_size import get_mango_size
+from ai.mango_shape import get_mango_shape
 from handlers.cloudinary_handler import CloudinaryScan
 from db import (
     save_scan, get_user_scans, get_scan_by_id, delete_scan,
@@ -31,7 +31,7 @@ def health_check():
     test_result = detector.test_connection()
     
     return jsonify({
-        "service": "Durian Scanner API",
+        "service": "Mango Scanner API",
         "model": str(detector.model_path.name) if detector.model_path else "Not loaded",
         "model_type": "Local YOLO (custom trained)",
         "available": detector.available,
@@ -75,7 +75,7 @@ def test_endpoint():
 
 @scanner_bp.route("/detect", methods=["POST", "OPTIONS"])
 @cross_origin(origin="*", headers=["Content-Type", "Authorization", "X-Requested-With", "ngrok-skip-browser-warning", "X-User-Id"])
-def detect_durians():
+def detect_mangoes():
     if request.method == "OPTIONS":
         return '', 200
     try:
@@ -112,31 +112,30 @@ def detect_durians():
         detector = get_yolo_detector()
         result = detector.predict(temp_path)
         
-        # -- Durian Color --
-        print("[DEBUG] Calling get_durian_color with:", temp_path)
-        result["color"] = get_durian_color(temp_path)
+        # -- Mango Color --
+        print("[DEBUG] Calling get_mango_color with:", temp_path)
+        result["color"] = get_mango_color(temp_path)
         
-        # -- Durian Shape --
-        print("[DEBUG] Calling get_durian_shape with:", temp_path)
-        result["shape"] = get_durian_shape(temp_path)
+        # -- Mango Shape --
+        print("[DEBUG] Calling get_mango_shape with:", temp_path)
+        result["shape"] = get_mango_shape(temp_path)
         
-        # -- Durian Size --
-        result["size"] = get_durian_size(temp_path)
+        # -- Mango Size --
+        result["size"] = get_mango_size(temp_path)
 
-        # -- Durian Disease (added for explicit field)
+        # -- Mango Disease (added for explicit field)
         try:
-            disease_res = get_durian_disease(temp_path)
+            disease_res = get_mango_disease(temp_path)
             result["disease"] = disease_res
         except Exception as e:
             # non-critical, continue without disease data
             result["disease"] = {"success": False, "error": str(e)}
 
-        # ✅ GATEKEEPER LOGIC: Chinecheck natin kung may nadetect na durian
-        durian_detected = result.get("detection", {}).get("count", 0) > 0
+        # Keep scans with a positive mango detection.
+        mango_detected = result.get("detection", {}).get("count", 0) > 0
 
         # -- Cloudinary Save if needed --
-        # ✅ UPDATED CONDITION: Idinagdag ang 'durian_detected'
-        if result.get("success") and user_id and save_to_history and durian_detected:
+        if result.get("success") and user_id and save_to_history and mango_detected:
             try:
                 scan_id = str(uuid.uuid4())[:8]
                 cloudinary_data = CloudinaryScan.upload_scan_image_sync(temp_path, user_id, scan_id)
@@ -174,10 +173,10 @@ def detect_durians():
             except Exception as e:
                 result.update({"scan_saved": False, "save_error": str(e)})
         else:
-            # ✅ Pag walang durian, ise-set natin ang result flags para sa frontend
+            # Set the result flags when no mango is detected.
             result["scan_saved"] = False
-            if not durian_detected:
-                result["message"] = "No durian detected; scan not saved to history."
+            if not mango_detected:
+                result["message"] = "No mangoes detected; scan not saved to history."
         
         os.unlink(temp_path)
         if result.get("success"):
@@ -230,7 +229,7 @@ def classify_disease():
             temp_path = tmp.name
 
         # Run your disease model
-        result = get_durian_disease(temp_path)
+        result = get_mango_disease(temp_path)
 
         os.unlink(temp_path)
 
@@ -343,7 +342,7 @@ def get_analytics(user_id):
             "image_url": scan.get("image_url"),
             "thumbnail_url": scan.get("thumbnail_url"),
             "created_at": scan.get("created_at").isoformat() if scan.get("created_at") else None,
-            "durian_count": scan.get("durian_count", 0),
+            "mango_count": scan.get("mango_count", 0),
             "confidence": scan.get("confidence", 0),
             "color": scan.get("color_classification"),
             "size": scan.get("size_classification"),

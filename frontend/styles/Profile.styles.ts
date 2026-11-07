@@ -6,7 +6,7 @@ const { width, height } = Dimensions.get('window');
 export const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: Palette.linenWhite,
+    backgroundColor: Palette.canvas,
   },
   scrollContent: {
     flexGrow: 1,
@@ -39,15 +39,15 @@ export const styles = StyleSheet.create({
   title: {
     fontSize: 28,
     fontFamily: Fonts.bold,
-    color: Palette.deepObsidian,
+    color: Palette.charcoal,
     letterSpacing: -0.5,
   },
 
   // Profile Card
   profileCard: {
-  backgroundColor: Palette.white,
+  backgroundColor: Palette.surface,
   borderWidth: 1,
-  borderColor: Palette.stoneGray,
+  borderColor: '#D6D3D1',
 
   borderRadius: 16, 
   padding: 24,
@@ -80,7 +80,7 @@ export const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     borderWidth: 4,
-    borderColor: Palette.linenWhite,
+    borderColor: Palette.surface,
     shadowColor: Palette.warmCopper,
     shadowOffset: { width: 0, height: 4 },
     shadowOpacity: 0.2,
@@ -131,14 +131,14 @@ export const styles = StyleSheet.create({
   name: {
     fontSize: 26,
     fontFamily: Fonts.bold,
-    color: Palette.deepObsidian,
+    color: Palette.charcoal,
     marginBottom: 6,
     textAlign: 'center',
     letterSpacing: -0.3,
   },
   email: {
     fontSize: 16,
-    color: Palette.charcoalEspresso,
+    color: Palette.body,
     marginBottom: 28,
     textAlign: 'center',
     fontFamily: Fonts.medium,
@@ -154,7 +154,7 @@ export const styles = StyleSheet.create({
   label: {
     fontSize: 13,
     fontFamily: Fonts.bold,
-    color: Palette.charcoalEspresso,
+    color: Palette.charcoal,
     marginBottom: 8,
     textTransform: 'uppercase',
     letterSpacing: 1,
@@ -164,13 +164,13 @@ export const styles = StyleSheet.create({
   },
   input: {
     borderWidth: 1.5,
-    borderColor: Palette.stoneGray,
+    borderColor: '#A8A29E',
     borderRadius: 16,
     paddingHorizontal: 20,
     paddingVertical: 14,
     fontSize: 16,
-    backgroundColor: Palette.linenWhite,
-    color: Palette.deepObsidian,
+    backgroundColor: Palette.surface,
+    color: Palette.charcoal,
     fontFamily: Fonts.regular,
   },
   inputFocused: {
@@ -200,6 +200,8 @@ export const styles = StyleSheet.create({
   },
   editButton: {
     backgroundColor: Palette.warmCopper,
+    borderWidth: 1,
+    borderColor: '#B45309',
     paddingVertical: 16,
     paddingHorizontal: 32,
     borderRadius: 16,
@@ -214,8 +216,10 @@ export const styles = StyleSheet.create({
     shadowRadius: 8,
   },
   saveButton: {
-    backgroundColor: '#047857',
-    shadowColor: '#047857',
+    backgroundColor: '#166534',
+    borderWidth: 1,
+    borderColor: '#14532D',
+    shadowColor: Palette.leaf,
     shadowOffset: { width: 0, height: 4 },
     shadowOpacity: 0.3,
     shadowRadius: 8,
@@ -224,7 +228,7 @@ export const styles = StyleSheet.create({
   cancelButton: {
     backgroundColor: '#ffffff',
     borderWidth: 2,
-    borderColor: '#e2e8f0',
+    borderColor: '#D6D3D1',
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.05,
@@ -252,8 +256,14 @@ export const styles = StyleSheet.create({
     fontFamily: Fonts.semiBold,
     letterSpacing: 0.3,
   },
+  editButtonText: {
+    color: Palette.charcoal,
+    fontSize: 16,
+    fontFamily: Fonts.semiBold,
+    letterSpacing: 0.3,
+  },
   cancelButtonText: {
-    color: '#64748b',
+    color: Palette.charcoal,
     fontSize: 16,
     fontFamily: Fonts.semiBold,
   },
@@ -263,27 +273,27 @@ export const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: Palette.linenWhite,
+    backgroundColor: Palette.canvas,
   },
   loadingText: {
     marginTop: 16,
     fontSize: 16,
-    color: Palette.charcoalEspresso,
+    color: Palette.body,
     fontFamily: Fonts.medium,
   },
 
   // Modal
   modalOverlay: {
     flex: 1,
-    backgroundColor: 'rgba(17, 24, 39, 0.32)',
+    backgroundColor: 'rgba(28, 25, 23, 0.45)',
     justifyContent: 'center',
     alignItems: 'center',
     padding: 24,
   },
   modalContent: {
-    backgroundColor: Palette.white,
+    backgroundColor: Palette.surface,
     borderWidth: 1,
-    borderColor: Palette.stoneGray,
+    borderColor: Palette.border,
     borderRadius: 16,
     padding: 28,
     width: '100%',
@@ -291,8 +301,8 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 20 },
-    shadowOpacity: 0.08,
-    shadowRadius: 12,
+    shadowOpacity: 0.2,
+    shadowRadius: 30,
     elevation: 10,
   },
   modalHeader: {
@@ -305,7 +315,7 @@ export const styles = StyleSheet.create({
   modalTitle: {
     fontSize: 20,
     fontFamily: Fonts.bold,
-    color: Palette.deepObsidian,
+    color: Palette.charcoal,
     flex: 1,
     textAlign: 'center',
   },
@@ -330,21 +340,26 @@ export const styles = StyleSheet.create({
     elevation: 3,
   },
   modalButtonPrimary: {
-    backgroundColor: Palette.warmCopper,
+    backgroundColor: Palette.mangoDark,
   },
   modalButtonSecondary: {
-    backgroundColor: '#475569',
+    backgroundColor: Palette.sand,
   },
   modalCancelButton: {
     marginTop: 20,
     padding: 12,
+    borderWidth: 1,
+    borderColor: '#D6D3D1',
+    borderRadius: 10,
   },
 
   // Stats Section (Professional Touch)
   statsContainer: {
     flexDirection: 'row',
     justifyContent: 'space-around',
-    backgroundColor: '#FEF3C7',
+    backgroundColor: Palette.surface,
+    borderWidth: 1,
+    borderColor: '#D6D3D1',
     borderRadius: 16,
     padding: 20,
     marginBottom: 24,
@@ -356,12 +371,12 @@ export const styles = StyleSheet.create({
   statValue: {
     fontSize: 24,
     fontFamily: Fonts.bold,
-    color: Palette.deepObsidian,
+    color: Palette.charcoal,
     marginBottom: 4,
   },
   statLabel: {
     fontSize: 12,
-    color: Palette.charcoalEspresso,
+    color: Palette.body,
     fontFamily: Fonts.medium,
     textTransform: 'uppercase',
     letterSpacing: 0.5,
@@ -379,7 +394,7 @@ export const styles = StyleSheet.create({
   verifiedBadge: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: '#ECFDF5',
+    backgroundColor: Palette.honey,
     paddingHorizontal: 12,
     paddingVertical: 6,
     borderRadius: 20,
@@ -388,7 +403,7 @@ export const styles = StyleSheet.create({
   },
   verifiedText: {
     fontSize: 12,
-    color: '#047857',
+    color: Palette.honeyText,
     fontFamily: Fonts.semiBold,
     marginLeft: 4,
   },
@@ -397,7 +412,7 @@ export const styles = StyleSheet.create({
   sectionHeader: {
     fontSize: 18,
     fontFamily: Fonts.bold,
-    color: Palette.deepObsidian,
+    color: Palette.charcoal,
     marginBottom: 16,
     marginTop: 8,
   },
@@ -415,7 +430,7 @@ export const styles = StyleSheet.create({
   },
   emptyStateText: {
     fontSize: 16,
-    color: Palette.charcoalEspresso,
+    color: Palette.body,
     textAlign: 'center',
     fontFamily: Fonts.regular,
   },
@@ -424,7 +439,9 @@ statsRow: {
   flexDirection: 'row',
   alignItems: 'center',
   justifyContent: 'space-around',
-  backgroundColor: Palette.white,
+  backgroundColor: Palette.surface,
+  borderWidth: 1,
+  borderColor: '#D6D3D1',
   borderRadius: 16,
   paddingVertical: 15,
   marginVertical: 20,
@@ -440,7 +457,7 @@ statNumber: {
 statDivider: {
   width: 1,
   height: 30,
-  backgroundColor: Palette.stoneGray,
+  backgroundColor: Palette.border,
 },
 
 });

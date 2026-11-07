@@ -1,5 +1,5 @@
 """
-Durian Shape Classifier using EfficientNetB3
+Mango Size Classifier using EfficientNetB0
 """
 
 import os
@@ -12,49 +12,45 @@ import numpy as np
 from torchvision import transforms
 from PIL import Image
 
-# 🔥 IMPORTANT:
-# Must match training folder order (alphabetical order of folders inside train/)
-# Example:
-# ['elongated', 'oval', 'round']
-SHAPE_CLASSES = ['Elongated', 'Irregular', 'Round']  
+# Must match training folder order (alphabetical)
+SIZE_CLASSES = ['Large', 'Medium', 'Small']
 
-_shape_model = None
+_size_model = None
 
 BASE_DIR = Path(__file__).parent.parent.parent
 MODELS_DIR = BASE_DIR / "models"
-DEFAULT_MODEL = MODELS_DIR / "durian_shape_best.pth"
+DEFAULT_MODEL = MODELS_DIR / "durian_size_best.pth"
 
+def load_size_model(model_path: Optional[str] = None):
+    global _size_model
 
-def load_shape_model(model_path: Optional[str] = None):
-    global _shape_model
-
-    if _shape_model is not None:
-        return _shape_model
+    if _size_model is not None:
+        return _size_model
 
     if model_path is None:
         model_path = DEFAULT_MODEL
 
     if not os.path.exists(model_path):
-        raise FileNotFoundError(f"Shape model not found: {model_path}")
+        raise FileNotFoundError(f"Size model not found: {model_path}")
 
-    # Must match training architecture (EfficientNet-B3)
-    model = timm.create_model("efficientnet_b3", pretrained=False)
+    # Create same architecture used in training
+    model = timm.create_model("efficientnet_b0", pretrained=False)
     model.classifier = torch.nn.Linear(
         model.classifier.in_features,
-        len(SHAPE_CLASSES)
+        len(SIZE_CLASSES)
     )
 
     model.load_state_dict(
-        torch.load(model_path, map_location=torch.device("cpu"))
+        torch.load(model_path, map_location=torch.device('cpu'))
     )
 
     model.eval()
-    _shape_model = model
-    return _shape_model
+    _size_model = model
+    return _size_model
 
 
-def preprocess_image(img_path: str, target_size=(300, 300)):
-    img = Image.open(img_path).convert("RGB")
+def preprocess_image(img_path: str, target_size=(224, 224)):
+    img = Image.open(img_path).convert('RGB')
 
     transform = transforms.Compose([
         transforms.Resize(target_size),
@@ -69,12 +65,9 @@ def preprocess_image(img_path: str, target_size=(300, 300)):
     return x
 
 
-def get_durian_shape(
-    image_path: str,
-    model_path: Optional[str] = None
-) -> Dict[str, Any]:
+def get_mango_size(image_path: str, model_path: Optional[str] = None) -> Dict[str, Any]:
     """
-    Predict durian shape class from image using EfficientNetB3 (PyTorch)
+    Predict mango size class from image using EfficientNetB0 (PyTorch)
 
     Args:
         image_path: Path to image file
@@ -84,7 +77,7 @@ def get_durian_shape(
         Dict with prediction result
     """
     try:
-        model = load_shape_model(model_path)
+        model = load_size_model(model_path)
         img = preprocess_image(image_path)
 
         with torch.no_grad():
@@ -94,15 +87,15 @@ def get_durian_shape(
         class_idx = int(np.argmax(probs))
         confidence = float(np.max(probs))
 
-        shape_class = (
-            SHAPE_CLASSES[class_idx]
-            if class_idx < len(SHAPE_CLASSES)
+        size_class = (
+            SIZE_CLASSES[class_idx]
+            if class_idx < len(SIZE_CLASSES)
             else str(class_idx)
         )
 
         return {
             "success": True,
-            "shape_class": shape_class,
+            "size_class": size_class,
             "confidence": round(confidence, 4),
             "class_index": class_idx,
             "raw": [float(x) for x in probs.tolist()]

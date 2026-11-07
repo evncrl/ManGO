@@ -30,7 +30,7 @@ interface ScanItem {
   image_url?: string;
   thumbnail_url?: string;
   created_at?: string;
-  durian_count: number;
+  mango_count: number;
   confidence: number;
   color?: string;
   size?: string;
@@ -102,7 +102,7 @@ export default function Analytics() {
         score: calculatedScore, 
         label: 'Export Quality', 
         color: '#27AE60',
-        recommendation: 'Recommendation: This durian is suitable for Export Quality.'
+        recommendation: 'Recommendation: This mango is suitable for Export Quality.'
       };
     }
 
@@ -113,7 +113,7 @@ export default function Analytics() {
         score: calculatedScore, 
         label: 'Local Market', 
         color: '#F39C12',
-        recommendation: 'Recommendation: This durian is suitable for Local Market.'
+        recommendation: 'Recommendation: This mango is suitable for Local Market.'
       };
     }
 
@@ -196,7 +196,7 @@ export default function Analytics() {
       <View style={styles.header}>
         <View>
           <Text style={styles.headerTitle}>Analytics</Text>
-          <Text style={styles.headerSubtitle}>Durian Quality Insights</Text>
+          <Text style={styles.headerSubtitle}>Mango Quality Insights</Text>
         </View>
       </View>
 
@@ -307,7 +307,7 @@ export default function Analytics() {
           <Text style={styles.sectionTitle}>Recent Scans History</Text>
           <View style={styles.recentScansCard}>
             {recentScans.length === 0 ? (
-               <Text style={{ color: '#888', textAlign: 'center', padding: 20 }}>No scans recorded.</Text>
+               <Text style={{ color: '#57534E', textAlign: 'center', padding: 20 }}>No scans recorded.</Text>
             ) : (
               recentScans.map((scan) => {
                 const dynamic = getDynamicMetrics(scan); // ✅ Logic Match

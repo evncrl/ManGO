@@ -57,14 +57,14 @@ const ProfileContent = ({
                 value={name}
                 onChangeText={setName}
                 placeholder="Enter your full name"
-                placeholderTextColor="#94a3b8"
+                placeholderTextColor={Palette.muted}
                 style={[styles.input, focusedInput === 'name' && styles.inputFocused]}
                 onFocus={() => setFocusedInput('name')}
                 onBlur={() => setFocusedInput(null)}
                 autoCapitalize="words"
                 editable={!saving}
               />
-              {focusedInput === 'name' && <View style={styles.inputIcon}><Feather name="user" size={20} color="#1b5e20" /></View>}
+              {focusedInput === 'name' && <View style={styles.inputIcon}><Feather name="user" size={20} color={Palette.leaf} /></View>}
             </View>
           </View>
 
@@ -75,7 +75,7 @@ const ProfileContent = ({
                 value={email}
                 onChangeText={setEmail}
                 placeholder="your.email@example.com"
-                placeholderTextColor="#94a3b8"
+                placeholderTextColor={Palette.muted}
                 style={[styles.input, focusedInput === 'email' && styles.inputFocused]}
                 onFocus={() => setFocusedInput('email')}
                 onBlur={() => setFocusedInput(null)}
@@ -83,7 +83,7 @@ const ProfileContent = ({
                 autoCapitalize="none"
                 editable={!saving}
               />
-              {focusedInput === 'email' && <View style={styles.inputIcon}><MaterialIcons name="email" size={20} color="#1b5e20" /></View>}
+              {focusedInput === 'email' && <View style={styles.inputIcon}><MaterialIcons name="email" size={20} color={Palette.leaf} /></View>}
             </View>
           </View>
 
@@ -108,8 +108,8 @@ const ProfileContent = ({
             <View style={styles.statItem}><Text style={styles.statNumber}>5</Text><Text style={styles.statLabel}>Posts</Text></View>
           </View>
           <TouchableOpacity onPress={() => setIsEditing(true)} style={styles.editButton}>
-            <Ionicons name="create-outline" size={20} color={Palette.white} />
-            <Text style={styles.buttonText}>Edit Profile</Text>
+            <Ionicons name="create-outline" size={20} color={Palette.charcoal} />
+            <Text style={styles.editButtonText}>Edit Profile</Text>
           </TouchableOpacity>
         </View>
       )}
@@ -166,7 +166,7 @@ export default function Profile() {
 
   if (loading || userLoading) {
     return (
-      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: Palette.linenWhite }}>
+      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: '#020d08' }}>
         <ActivityIndicator size="large" color={Palette.warmCopper} />
       </View>
     );
@@ -180,8 +180,8 @@ export default function Profile() {
   };
 
   return (
-    <View style={{ flex: 1, backgroundColor: Palette.linenWhite }}>
-      <StatusBar barStyle="light-content" />
+    <View style={{ flex: 1, backgroundColor: Palette.canvas }}>
+      <StatusBar barStyle="dark-content" />
       
       {isLargeScreen ? (
         /* --- WEB / DESKTOP VIEW --- */
@@ -216,7 +216,7 @@ export default function Profile() {
           <View style={styles.modalContent}>
             <Text style={styles.modalTitle}>Update Photo</Text>
             <TouchableOpacity onPress={() => setPhotoModalVisible(false)} style={styles.modalCancelButton}>
-              <Text style={{color: '#fff'}}>Close</Text>
+              <Text style={{ color: Palette.charcoal }}>Close</Text>
             </TouchableOpacity>
           </View>
         </View>

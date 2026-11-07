@@ -100,7 +100,7 @@ export default function ScansManage() {
             <ScrollView style={{ flex: 1 }} contentContainerStyle={{ padding: 30 }}>
                 <View style={styles.header}>
                     <Text style={styles.title}>Scan Records</Text>
-                    <Text style={{ fontFamily: Fonts.medium, color: Palette.slate }}>Detailed logs of all durian classifications.</Text>
+                    <Text style={{ fontFamily: Fonts.medium, color: Palette.slate }}>Detailed logs of all mango classifications.</Text>
                 </View>
 
                 <View style={styles.card}>

@@ -7,7 +7,7 @@ def generate_receipt_pdf(items, total, transaction_id):
     
     # Built-in Helvetica font
     pdf.set_font("helvetica", "B", 16)
-    pdf.cell(0, 10, "Durian App Receipt", ln=True, align="C")
+    pdf.cell(0, 10, "ManGO App Receipt", ln=True, align="C")
     pdf.ln(10)
 
     # Transaction info

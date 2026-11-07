@@ -13,7 +13,7 @@ import {
 } from 'react-native';
 import Footer from '@/components/Footer';
 import { Ionicons } from '@expo/vector-icons';
-import { Fonts } from '@/constants/theme';
+import { Fonts, Palette } from '@/constants/theme';
 
 const { width } = Dimensions.get('window');
 
@@ -65,8 +65,8 @@ export default function About() {
     },
     {
       id: 4,
-      name: 'Prof. Pops V. Madriaga',
-      role: 'Professor',
+      name: 'Prof. Joan Mag-isa',
+      role: 'Technical Advisor',
       description: 'Product strategist bridging user needs with technical solutions. Drives innovation through data-driven decisions.',
       avatar: require('../../assets/images/mam.png'),
       linkedin: 'https://linkedin.com',
@@ -120,7 +120,7 @@ export default function About() {
         {/* Info */}
         <View style={styles.modernMemberInfo}>
           <Text style={styles.modernMemberName}>{member.name}</Text>
-          <View style={styles.modernRolePill}>
+          <View style={[styles.modernRolePill, { backgroundColor: member.gradient[0] }]}>
             <Text style={styles.modernRoleText}>{member.role}</Text>
           </View>
           <Text style={styles.modernMemberDesc}>{member.description}</Text>
@@ -147,7 +147,7 @@ export default function About() {
       {/* Hero Section with Mesh Gradient Effect */}
       <View style={styles.modernHero}>
         <ImageBackground
-          source={require('../../assets/images/durian-bg.jpg')}
+          source={require('../../assets/images/mango-bg.png')}
           style={styles.modernHeroImage}
           imageStyle={styles.modernHeroImageStyle}
         >
@@ -242,7 +242,7 @@ export default function About() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#FAFAF8',
+    backgroundColor: Palette.canvas,
   },
   scrollContent: {
     flexGrow: 1,
@@ -264,7 +264,7 @@ const styles = StyleSheet.create({
   },
   modernHeroOverlay: {
     ...StyleSheet.absoluteFillObject,
-    backgroundColor: 'rgba(250, 250, 248, 0.88)',
+    backgroundColor: 'rgba(253, 248, 242, 0.88)',
     justifyContent: 'center',
     alignItems: 'center',
   },
@@ -302,16 +302,16 @@ const styles = StyleSheet.create({
     zIndex: 1,
   },
   modernBadge: {
-    backgroundColor: 'rgba(245, 158, 11, 0.12)',
+    backgroundColor: 'rgba(255, 255, 255, 0.82)',
     paddingHorizontal: 20,
     paddingVertical: 8,
     borderRadius: 20,
     borderWidth: 1,
-    borderColor: '#FDE68A',
+    borderColor: Palette.border,
     marginBottom: 24,
   },
   modernBadgeText: {
-    color: '#92400E',
+    color: Palette.charcoal,
     fontSize: 12,
 
     fontFamily: Fonts.bold,
@@ -320,17 +320,17 @@ const styles = StyleSheet.create({
   modernHeroTitle: {
     fontSize: 52,
     fontFamily: Fonts.bold,
-    color: '#1F2937',
+    color: Palette.charcoal,
     textAlign: 'center',
     lineHeight: 60,
     marginBottom: 16,
   },
   modernHeroTitleAccent: {
-    color: '#C2410C',
+    color: Palette.mangoDark,
   },
   modernHeroSubtitle: {
     fontSize: 18,
-    color: '#4B5563',
+    color: Palette.body,
     textAlign: 'center',
     maxWidth: 500,
   },
@@ -349,13 +349,13 @@ const styles = StyleSheet.create({
 
   // Vision Block
   visionBlock: {
-    backgroundColor: '#FFFFFF',
+    backgroundColor: Palette.surface,
     borderRadius: 24,
     padding: 40,
     marginBottom: 40,
     alignItems: 'center',
     borderWidth: 1,
-    borderColor: '#E5E7EB',
+    borderColor: Palette.border,
     ...Platform.select({
       ios: {
         shadowColor: '#000',
@@ -375,7 +375,7 @@ const styles = StyleSheet.create({
     width: 60,
     height: 60,
     borderRadius: 30,
-    backgroundColor: '#C2410C',
+    backgroundColor: Palette.mango,
     justifyContent: 'center',
     alignItems: 'center',
     marginBottom: 20,
@@ -387,14 +387,14 @@ const styles = StyleSheet.create({
   visionTitle: {
     fontSize: 32,
     fontFamily: Fonts.bold,
-    color: '#1F2937',
+    color: Palette.charcoal,
     marginBottom: 16,
     textAlign: 'center',
   },
   visionText: {
     fontSize: 16,
     lineHeight: 28,
-    color: '#6B7280',
+    color: Palette.body,
     textAlign: 'center',
     maxWidth: 700,
   },
@@ -410,12 +410,12 @@ const styles = StyleSheet.create({
   metricBox: {
     flex: 1,
     minWidth: 180,
-    backgroundColor: '#FFFFFF',
+    backgroundColor: Palette.surface,
     borderRadius: 20,
     padding: 32,
     alignItems: 'center',
     borderWidth: 1,
-    borderColor: '#E5E7EB',
+    borderColor: Palette.border,
   },
   metricIconCircle: {
     width: 70,
@@ -431,12 +431,12 @@ const styles = StyleSheet.create({
   metricValue: {
     fontSize: 36,
     fontFamily: Fonts.bold,
-    color: '#1F2937',
+    color: Palette.charcoal,
     marginBottom: 8,
   },
   metricLabel: {
     fontSize: 13,
-    color: '#6B7280',
+    color: Palette.body,
     textAlign: 'center',
     fontFamily: Fonts.semiBold,
   },
@@ -451,16 +451,16 @@ const styles = StyleSheet.create({
   teamHeaderLine: {
     flex: 1,
     height: 2,
-    backgroundColor: '#E5E7EB',
+    backgroundColor: Palette.border,
   },
   teamHeaderText: {
     fontSize: 32,
     fontFamily: Fonts.bold,
-    color: '#1F2937',
+    color: Palette.charcoal,
   },
   teamTagline: {
     fontSize: 18,
-    color: '#6B7280',
+    color: Palette.body,
     textAlign: 'center',
     marginBottom: 40,
   },
@@ -471,12 +471,12 @@ const styles = StyleSheet.create({
     marginBottom: 60,
   },
   modernTeamCard: {
-    backgroundColor: '#FFFFFF',
+    backgroundColor: Palette.surface,
     borderRadius: 24,
     overflow: 'hidden',
     position: 'relative',
     borderWidth: 1,
-    borderColor: '#E5E7EB',
+    borderColor: Palette.border,
     ...Platform.select({
       ios: {
         shadowColor: '#000',
@@ -517,7 +517,7 @@ const styles = StyleSheet.create({
     borderRadius: 50,
     borderWidth: 4,
     padding: 4,
-    backgroundColor: '#FFFFFF',
+    backgroundColor: Palette.surface,
   },
   modernAvatar: {
     width: '100%',
@@ -532,7 +532,7 @@ const styles = StyleSheet.create({
     height: 20,
     borderRadius: 10,
     borderWidth: 3,
-    borderColor: '#FFFFFF',
+    borderColor: Palette.border,
   },
   modernMemberInfo: {
     flex: 1,
@@ -541,12 +541,11 @@ const styles = StyleSheet.create({
   modernMemberName: {
     fontSize: 24,
     fontFamily: Fonts.bold,
-    color: '#1F2937',
+    color: Palette.charcoal,
     marginBottom: 8,
   },
   modernRolePill: {
     alignSelf: 'flex-start',
-    backgroundColor: '#FEF3C7',
     paddingHorizontal: 14,
     paddingVertical: 6,
     borderRadius: 20,
@@ -555,12 +554,12 @@ const styles = StyleSheet.create({
   modernRoleText: {
     fontSize: 13,
     fontFamily: Fonts.bold,
-    color: '#92400E',
+    color: '#fff',
   },
   modernMemberDesc: {
     fontSize: 14,
     lineHeight: 22,
-    color: '#6B7280',
+    color: Palette.body,
     fontFamily: Fonts.regular,
   },
   modernSocialRow: {
@@ -569,19 +568,19 @@ const styles = StyleSheet.create({
     flexWrap: 'wrap',
     gap: 12,
     borderTopWidth: 1,
-    borderTopColor: '#E5E7EB',
+    borderTopColor: Palette.border,
     paddingTop: 20,
   },
   modernSocialButton: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: '#F9FAFB',
+    backgroundColor: Palette.surface,
     paddingHorizontal: 16,
     paddingVertical: 10,
     borderRadius: 12,
     gap: 8,
     borderWidth: 1,
-    borderColor: '#E5E7EB',
+    borderColor: Palette.border,
     ...Platform.select({
       web: {
         cursor: 'pointer',
@@ -590,8 +589,8 @@ const styles = StyleSheet.create({
     }),
   },
   modernSocialButtonHovered: {
-    backgroundColor: '#C2410C',
-    borderColor: '#C2410C',
+    backgroundColor: Palette.mango,
+    borderColor: Palette.mango,
   },
   modernSocialIcon: {
     fontSize: 16,

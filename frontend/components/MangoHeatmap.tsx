@@ -1,26 +1,15 @@
 import React, { useEffect, useRef } from 'react';
 import { View, Text, TouchableOpacity, ActivityIndicator, Platform } from 'react-native';
-import styles from './DurianHeatmap.styles';
+import styles from './MangoHeatmap.styles';
 import { useResponsive } from '@/utils/platform';
 
-// Durian production data for Philippines
-const DURIAN_DATA = [
-  { id: 1, province: "Davao City", lat: 7.1907, lon: 125.4553, production: 45000 },
-  { id: 2, province: "Davao del Sur", lat: 6.4158, lon: 125.6114, production: 18000 },
-  { id: 3, province: "Cotabato", lat: 7.2047, lon: 124.2317, production: 9500 },
-  { id: 4, province: "South Cotabato", lat: 6.2707, lon: 124.6857, production: 8800 },
-  { id: 5, province: "Davao de Oro", lat: 7.5152, lon: 125.9495, production: 8500 },
-  { id: 6, province: "Bukidnon", lat: 7.9631, lon: 125.1367, production: 6200 },
-  { id: 7, province: "Sultan Kudarat", lat: 6.5658, lon: 124.6827, production: 5700 },
-  { id: 8, province: "Maguindanao", lat: 6.9528, lon: 124.4258, production: 5100 },
-  { id: 9, province: "Zamboanga Sibugay", lat: 7.5000, lon: 122.3333, production: 4200 },
-  { id: 10, province: "Misamis Oriental", lat: 8.5042, lon: 124.6333, production: 3500 },
-  { id: 11, province: "Davao del Norte", lat: 7.3300, lon: 125.7100, production: 7800 },
-  { id: 12, province: "Davao Oriental", lat: 7.1600, lon: 126.2500, production: 4800 },
-  { id: 13, province: "Davao Occidental", lat: 6.3500, lon: 125.4000, production: 3000 },
-  { id: 14, province: "Agusan del Sur", lat: 8.9400, lon: 125.5200, production: 2500 },
-  { id: 15, province: "Lanao del Sur", lat: 7.6800, lon: 124.3000, production: 2200 },
-  { id: 16, province: "Lanao del Norte", lat: 8.0500, lon: 124.2500, production: 1800 }
+const MANGO_DATA = [
+  { id: 1, province: "Pangasinan / Ilocos Region", lat: 16.03, lon: 120.33, production: 30000 },
+  { id: 2, province: "Guimaras / Iloilo", lat: 10.55, lon: 122.60, production: 26000 },
+  { id: 3, province: "Zambales", lat: 15.32, lon: 119.98, production: 22000 },
+  { id: 4, province: "Cebu", lat: 10.31, lon: 123.89, production: 8000 },
+  { id: 5, province: "Bukidnon / Northern Mindanao", lat: 8.15, lon: 125.12, production: 7000 },
+  { id: 6, province: "General Santos / South Cotabato", lat: 6.11, lon: 125.17, production: 6000 }
 ];
 
 interface HeatmapProps {
@@ -31,7 +20,7 @@ interface HeatmapProps {
   onPlotlyLoad: () => void;
 }
 
-export default function DurianHeatmap(props: HeatmapProps) {
+export default function MangoHeatmap(props: HeatmapProps) {
   const { mapMode, onMapModeChange, onRegionSelect, plotlyLoaded, onPlotlyLoad } = props;
   const plotRef = useRef<HTMLDivElement>(null);
   const { isWeb } = useResponsive();
@@ -39,16 +28,16 @@ export default function DurianHeatmap(props: HeatmapProps) {
   // Load Plotly.js for web
   useEffect(() => {
     if (isWeb && !plotlyLoaded) {
-      console.log('[DurianHeatmap] Loading Plotly.js...');
+      console.log('[MangoHeatmap] Loading Plotly.js...');
       const script = document.createElement('script');
       script.src = 'https://cdn.plot.ly/plotly-2.24.1.min.js';
       script.onload = () => {
-        console.log('[DurianHeatmap] Plotly.js loaded');
+        console.log('[MangoHeatmap] Plotly.js loaded');
         onPlotlyLoad();
         renderMap();
       };
       script.onerror = () => {
-        console.error('[DurianHeatmap] Failed to load Plotly.js');
+        console.error('[MangoHeatmap] Failed to load Plotly.js');
       };
       document.head.appendChild(script);
       return () => {
@@ -61,18 +50,18 @@ export default function DurianHeatmap(props: HeatmapProps) {
 
   useEffect(() => {
     if (isWeb && plotlyLoaded) {
-      console.log('[DurianHeatmap] Rendering map...');
+      console.log('[MangoHeatmap] Rendering map...');
       renderMap();
     }
   }, [isWeb, plotlyLoaded, mapMode]);
 
   const renderMap = () => {
     if (!plotRef.current) {
-      console.warn('[DurianHeatmap] plotRef.current is null');
+      console.warn('[MangoHeatmap] plotRef.current is null');
       return;
     }
     if (!(window as any).Plotly) {
-      console.warn('[DurianHeatmap] Plotly not available on window');
+      console.warn('[MangoHeatmap] Plotly not available on window');
       return;
     }
 
@@ -89,13 +78,13 @@ export default function DurianHeatmap(props: HeatmapProps) {
 
     if (mapMode === 'heatmap') {
       // Heatmap mode (normalized and contrast-adjusted)
-      const maxProduction = Math.max(...DURIAN_DATA.map(d => d.production));
+      const maxProduction = Math.max(...MANGO_DATA.map(d => d.production));
       trace = {
         type: 'densitymapbox',
-        lat: DURIAN_DATA.map(d => d.lat),
-        lon: DURIAN_DATA.map(d => d.lon),
+        lat: MANGO_DATA.map(d => d.lat),
+        lon: MANGO_DATA.map(d => d.lon),
         // Normalize to 0..1 so colorscale maps consistently
-        z: DURIAN_DATA.map(d => d.production / maxProduction),
+        z: MANGO_DATA.map(d => d.production / maxProduction),
         zmin: 0,
         zmax: 1,
         radius: 60,
@@ -107,16 +96,16 @@ export default function DurianHeatmap(props: HeatmapProps) {
           [1, 'rgba(255, 0, 0, 1)']
         ],
         hoverinfo: 'text',
-        text: DURIAN_DATA.map(d =>
+        text: MANGO_DATA.map(d =>
           `<b>${d.province}</b><br>Production: ${d.production.toLocaleString()} MT<br>(${((d.production / maxProduction) * 100).toFixed(1)}% of top producer)`
         ),
         showscale: true,
         colorbar: {
           title: {
             text: 'Production (relative)',
-            font: { color: '#fff' }
+            font: { color: '#1C1917' }
           },
-          tickfont: { color: '#fff' },
+          tickfont: { color: '#1C1917' },
           titleside: 'right'
         }
       };
@@ -124,27 +113,27 @@ export default function DurianHeatmap(props: HeatmapProps) {
       // Scatter mode
       trace = {
         type: 'scattermapbox',
-        lat: DURIAN_DATA.map(d => d.lat),
-        lon: DURIAN_DATA.map(d => d.lon),
+        lat: MANGO_DATA.map(d => d.lat),
+        lon: MANGO_DATA.map(d => d.lon),
         mode: 'markers',
         marker: {
-          size: DURIAN_DATA.map(d => Math.max(10, d.production / 1500)),
-          color: DURIAN_DATA.map(d => d.production),
+          size: MANGO_DATA.map(d => Math.max(10, d.production / 1500)),
+          color: MANGO_DATA.map(d => d.production),
           colorscale: 'YlOrRd',
           showscale: true,
           colorbar: {
             title: {
               text: 'Production (MT)',
-              font: { color: '#fff' }
+              font: { color: '#1C1917' }
             },
-            tickfont: { color: '#fff' },
+            tickfont: { color: '#1C1917' },
             titleside: 'right'
           },
           opacity: 0.8
         },
-        text: DURIAN_DATA.map(d => d.province),
+        text: MANGO_DATA.map(d => d.province),
         hoverinfo: 'text',
-        customdata: DURIAN_DATA,
+        customdata: MANGO_DATA,
         hovertemplate:
           '<b>%{text}</b><br>' +
           'Production: %{customdata.production:,} MT<br>' +
@@ -154,27 +143,27 @@ export default function DurianHeatmap(props: HeatmapProps) {
 
     const layout = {
       title: {
-        text: 'Philippines Durian Production',
-        font: { size: 20, family: 'Montserrat, sans-serif', color: '#fff' }
+        text: 'Philippines Mango Production & Distribution',
+        font: { size: 20, family: 'Montserrat, sans-serif', color: '#1C1917' }
       },
       autosize: true,
       paper_bgcolor: 'rgba(0,0,0,0)',
       plot_bgcolor: 'rgba(0,0,0,0)',
       mapbox: {
         style: 'open-street-map', // Most reliable style, no token issues
-        center: { lat: 12.0, lon: 122.0 },
+        center: { lat: 12.5, lon: 122.5 },
         zoom: 4,
         minzoom: 3,
         bearing: 0,
         pitch: 0,
         bounds: {
-          west: 110.0,
-          east: 131.0,
-          south: -2.0,
-          north: 22.5
+          west: 116.5,
+          east: 127.5,
+          south: 4.0,
+          north: 21.5
         }
       },
-      margin: { t: 50, b: 20, l: 20, r: 20 },
+      margin: { t: 70, b: 20, l: 20, r: 20 },
       hovermode: 'closest',
       showlegend: false,
       dragmode: 'pan'
@@ -196,8 +185,8 @@ export default function DurianHeatmap(props: HeatmapProps) {
       (plotDiv as any).on('plotly_click', function (data: any) {
         if (data.points && data.points[0]) {
           const pointIndex = data.points[0].pointIndex;
-          if (pointIndex >= 0 && pointIndex < DURIAN_DATA.length) {
-            onRegionSelect(DURIAN_DATA[pointIndex]);
+          if (pointIndex >= 0 && pointIndex < MANGO_DATA.length) {
+            onRegionSelect(MANGO_DATA[pointIndex]);
           }
         }
       });
@@ -218,7 +207,7 @@ export default function DurianHeatmap(props: HeatmapProps) {
       {/* Map Controls */}
       <View style={styles.mapControls}>
         <View style={styles.mapTitleSection}>
-          <Text style={styles.mapTitle}>Philippines Durian Production</Text>
+          <Text style={styles.mapTitle}>Philippines Mango Production &amp; Distribution</Text>
           <Text style={styles.mapSubtitle}>
             {mapMode === 'heatmap'
               ? 'Heat map visualization of production intensity'
@@ -252,7 +241,7 @@ export default function DurianHeatmap(props: HeatmapProps) {
           ) : (
             <View style={styles.mapLoading}>
               <ActivityIndicator size="large" color="#15803d" />
-              <Text style={styles.mapLoadingText}>Loading Durian Production Map...</Text>
+              <Text style={styles.mapLoadingText}>Loading Mango Production Map...</Text>
             </View>
           )
         ) : (
@@ -294,5 +283,4 @@ export default function DurianHeatmap(props: HeatmapProps) {
 }
 
 // Export the data for use in other components
-export { DURIAN_DATA };
-
+export { MANGO_DATA };

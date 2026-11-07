@@ -1,5 +1,5 @@
 """
-Durian Disease Detector (YOLOv8)
+Mango Disease Detector (YOLOv8)
 Classes: mold, rot
 """
 
@@ -33,9 +33,9 @@ def load_disease_model(model_path: Optional[str] = None):
     return _disease_model
 
 
-def get_durian_disease(image_path: str, model_path: Optional[str] = None) -> Dict[str, Any]:
+def get_mango_disease(image_path: str, model_path: Optional[str] = None) -> Dict[str, Any]:
     """
-    Detect durian diseases using YOLOv8
+    Detect mango diseases using YOLOv8
 
     Classes:
         0 = mold

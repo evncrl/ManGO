@@ -14,7 +14,7 @@ import { Ionicons } from '@expo/vector-icons';
 const { width } = Dimensions.get('window');
 const isLargeScreen = width >= 900;
 
-export default function DurianScanResult() {
+export default function MangoScanResult() {
   const router = useRouter();
   const params = useLocalSearchParams();
 
@@ -247,7 +247,7 @@ export default function DurianScanResult() {
             <View style={styles.card}>
               <View style={styles.noDetection}>
                 <Ionicons name="alert-circle-outline" size={64} color="#E74C3C" />
-                <Text style={styles.noDetectionTitle}>No Durian Detected</Text>
+                <Text style={styles.noDetectionTitle}>No Mango Detected</Text>
               </View>
             </View>
           )}

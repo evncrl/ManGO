@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
-import { DURIAN_DATA } from './DurianHeatmap';
+import { MANGO_DATA } from './MangoHeatmap';
 import styles from './RegionDetails.styles';
 
 interface RegionDetailProps {
@@ -47,7 +47,7 @@ interface TopProducersProps {
 }
 
 export function TopProducers({ onRegionSelect }: TopProducersProps) {
-  const topProducers = [...DURIAN_DATA]
+  const topProducers = [...MANGO_DATA]
     .sort((a, b) => b.production - a.production)
     .slice(0, 5);
 

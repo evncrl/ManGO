@@ -18,7 +18,7 @@ load_dotenv()
 # ---------------------------
 MONGO_URI = os.getenv("MONGO_URI")
 client = MongoClient(MONGO_URI, serverSelectionTimeoutMS=5000)
-db = client["durianapp"]
+db = client["mangoapp"]
 users_collection = db["users"]
 orders_collection = db["orders"]
 comments_collection = db["comments"]
@@ -609,7 +609,7 @@ def save_scan(
             "quality_score": quality_score,
             "confidence": confidence,
             "status": status,
-            "durian_count": total_count,
+            "mango_count": total_count,
             "detection": detection_result,
             "analysis": analysis_result,
             "created_at": datetime.utcnow(),
@@ -928,7 +928,7 @@ def get_global_analytics():
                 "topPosters": [{"name": p["_id"] or "Unknown", "count": p["count"]} for p in top_posters],
                 "recentScans": [{
                     "username": s.get("username", "Unknown"),
-                    "variety": s.get("variety", "Durian"),
+                    "variety": s.get("variety", "Mango"),
                     "status": s.get("status", "Unknown"),
                     "confidence": round(s.get("confidence", 0) * 100, 1),
                     "time": s.get("created_at").isoformat() if s.get("created_at") else ""
@@ -949,7 +949,7 @@ def get_all_scans_data():
             scans_data.append({
                 "id": str(s["_id"]),
                 "username": s.get("username", "Unknown"),
-                "variety": s.get("variety", "Durian"),
+                "variety": s.get("variety", "Mango"),
                 "status": s.get("status", "Unknown"),
                 "confidence": round(s.get("confidence", 0) * 100, 1),
                 "color": s.get("color_classification"),
@@ -1008,11 +1008,11 @@ def save_scan(user_id, image_url, thumbnail_url, cloudinary_public_id, detection
             "image_url": image_url,
             "thumbnail_url": thumbnail_url,
             "cloudinary_public_id": cloudinary_public_id,
-            "variety": analysis_result.get("primary_class", "Durian"),
+            "variety": analysis_result.get("primary_class", "Mango"),
             "quality_score": round(quality_score, 1),
             "confidence": round(conf * 100, 1),
             "status": status,
-            "durian_count": analysis_result.get("total_count", 0),
+            "mango_count": analysis_result.get("total_count", 0),
             "detection": detection_result,
             "analysis": analysis_result,
             "created_at": datetime.utcnow(),

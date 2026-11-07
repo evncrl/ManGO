@@ -3,11 +3,12 @@ import { Fonts, Palette } from '@/constants/theme';
 
 const styles = StyleSheet.create({
   mapCard: {
-    backgroundColor: 'rgba(255, 255, 255, 0.96)',
+    backgroundColor: Palette.surface,
     borderRadius: 24,
     padding: 24,
     margin: 16,
-    // Removed border for clean look
+    borderWidth: 1,
+    borderColor: Palette.border,
     elevation: 5,
   },
   mapControls: {
@@ -19,12 +20,12 @@ const styles = StyleSheet.create({
   mapTitle: {
     fontSize: 22,
     fontFamily: Fonts.bold,
-    color: Palette.warmCopper,
+    color: Palette.charcoal,
   },
   mapSubtitle: {
     fontSize: 14,
     fontFamily: Fonts.regular,
-    color: Palette.charcoalEspresso,
+    color: Palette.body,
   },
   controlButtons: {
     flexDirection: 'row',
@@ -34,14 +35,14 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
     paddingHorizontal: 16,
     borderRadius: 12,
-    backgroundColor: '#F3F4F6',
+    backgroundColor: Palette.sand,
     marginRight: 8,
   },
   controlButtonActive: {
     backgroundColor: Palette.warmCopper,
   },
   controlButtonText: {
-    color: Palette.deepObsidian,
+    color: Palette.charcoal,
     fontFamily: Fonts.semiBold,
   },
   mapViewport: {
@@ -49,7 +50,7 @@ const styles = StyleSheet.create({
     borderRadius: 12,
     overflow: 'hidden',
     marginBottom: 16,
-    backgroundColor: '#F3F4F6',
+    backgroundColor: Palette.canvas,
   },
   mapLoading: {
     flex: 1,
@@ -68,7 +69,7 @@ const styles = StyleSheet.create({
     padding: 24,
   },
   mapPlaceholderText: {
-    color: '#888',
+    color: Palette.body,
     fontSize: 15,
     textAlign: 'center',
     marginBottom: 8,
@@ -77,12 +78,12 @@ const styles = StyleSheet.create({
     marginTop: 20,
     padding: 16,
     borderRadius: 16,
-    backgroundColor: Palette.white,
+    backgroundColor: Palette.sand,
   },
   legendTitle: {
     fontSize: 15,
     fontFamily: Fonts.semiBold,
-    color: Palette.deepObsidian,
+    color: Palette.charcoal,
     marginBottom: 10,
   },
   legendItems: {
@@ -102,7 +103,7 @@ const styles = StyleSheet.create({
   },
   legendText: {
     fontSize: 13,
-    color: Palette.charcoalEspresso,
+    color: Palette.body,
   },
 });
 

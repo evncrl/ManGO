@@ -3,36 +3,37 @@ import { StyleSheet, Dimensions, Platform } from 'react-native';
 import { useResponsive } from '@/utils/platform';
 import { Fonts, Palette } from '@/constants/theme';
 
+// Modern Earthy 2.0 Refined Palette
 const colors = {
-  primary: Palette.warmCopper,
-  primaryDark: Palette.deepObsidian,
-  primaryLight: Palette.mutedSage,
-  primaryGlow: Palette.charcoalEspresso,
+  primary: Palette.mangoDark,
+  primaryDark: Palette.charcoal,
+  primaryLight: Palette.leaf,
+  primaryGlow: Palette.body,
 
   // Accent Colors
-  accent: Palette.warmCopper,
-  accentLight: Palette.stoneGray,
-  accentDark: Palette.deepObsidian,
+  accent: Palette.charcoal,
+  accentLight: Palette.sand,
+  accentDark: Palette.body,
 
   // Secondary Colors
-  secondary: Palette.mutedSage,
-  secondaryLight: Palette.linenWhite,
+  secondary: Palette.leaf,
+  secondaryLight: Palette.sand,
 
   // Modern Neutral Palette
-  bgLight: Palette.linenWhite,
-  bgWhite: Palette.white,
-  bgGray: Palette.stoneGray,
+  bgLight: Palette.canvas,
+  bgWhite: Palette.surface,
+  bgGray: Palette.sand,
 
   // Refined Text Colors
-  textDark: Palette.charcoalEspresso,
-  textMedium: Palette.charcoalEspresso,
-  textLight: Palette.slate,
+  textDark: Palette.charcoal,
+  textMedium: Palette.body,
+  textLight: Palette.muted,
   textWhite: Palette.white,
 
   // Border Colors
-  borderLight: '#F3F4F6',
-  borderMedium: Palette.stoneGray,
-  borderDark: Palette.mutedSage,
+  borderLight: Palette.border,
+  borderMedium: Palette.border,
+  borderDark: Palette.sand,
 };
 
 
@@ -68,7 +69,7 @@ export const useLandingStyles = () => {
       maxWidth: 600,
       alignSelf: 'center',
       borderRadius: 20,
-      backgroundColor: '#f5f5f5',
+      backgroundColor: Palette.canvas,
       marginTop: 12,
       paddingVertical: 12,
       paddingHorizontal: 0,
@@ -79,12 +80,12 @@ export const useLandingStyles = () => {
     },
     safeArea: {
       flex: 1,
-      backgroundColor: colors.bgLight,
+      backgroundColor: Palette.canvas,
     },
 
     container: {
       flex: 1,
-      backgroundColor: colors.bgLight,
+      backgroundColor: Palette.canvas,
     },
 
     scrollContainer: {
@@ -99,14 +100,14 @@ export const useLandingStyles = () => {
       alignItems: 'center',
       paddingHorizontal: isSmall ? 12 : isWebPlatform && isLarge ? 40 : 20,
       paddingVertical: isSmall ? 14 : 18,
-      backgroundColor: colors.bgWhite,
+      backgroundColor: Palette.surface,
       borderBottomWidth: 1,
-      borderBottomColor: colors.borderLight,
-      elevation: 1,
-      shadowColor: '#111827',
-      shadowOffset: { width: 0, height: 1 },
-      shadowOpacity: 0.06,
-      shadowRadius: 3,
+      borderBottomColor: Palette.border,
+      elevation: 2,
+      shadowColor: '#000',
+      shadowOffset: { width: 0, height: 2 },
+      shadowOpacity: 0.05,
+      shadowRadius: 4,
       zIndex: 10,
     },
 
@@ -128,7 +129,7 @@ export const useLandingStyles = () => {
     headerTitle: {
       fontFamily: Fonts.bold,
       fontSize: isSmall ? 17 : isWebPlatform && isLarge ? 24 : 20,
-      color: colors.primary,
+      color: Palette.charcoal,
       letterSpacing: -0.5,
     },
 
@@ -140,12 +141,12 @@ export const useLandingStyles = () => {
 
     // ========== NAVIGATION ==========
     nav: {
-      backgroundColor: colors.bgWhite,
+      backgroundColor: colors.bgLight,
       borderBottomWidth: 1,
       borderBottomColor: colors.borderMedium,
       paddingVertical: isSmall ? 10 : 14,
       elevation: 4,
-      boxShadow: '0 1px 3px rgba(17,24,39,0.05)',
+      boxShadow: '0 2px 6px rgba(28, 25, 23, 0.05)',
     },
 
     navScroll: {
@@ -159,19 +160,19 @@ export const useLandingStyles = () => {
       paddingHorizontal: isSmall ? 8 : 12,
       borderRadius: 20,
       backgroundColor: colors.bgWhite,
-      elevation: 1,
-      boxShadow: '0 1px 3px rgba(17,24,39,0.05)',
+      elevation: 2,
+      boxShadow: '0 1px 3px rgba(28, 25, 23, 0.06)',
     },
 
     navText: {
       fontSize: isSmall ? 14 : 15,
       fontFamily: Fonts.bold,
-      color: colors.primary,
+      color: Palette.charcoal,
     },
 
     // ========== HERO SECTION ==========
     heroSection: {
-      backgroundColor: colors.bgWhite,
+      backgroundColor: Palette.canvas,
       width: '100%',
     },
 
@@ -197,7 +198,7 @@ export const useLandingStyles = () => {
     heroTitle: {
       fontFamily: Fonts.bold,
       fontSize: isSmall ? 28 : isWebPlatform && isLarge ? 56 : 40,
-      color: Palette.deepObsidian,
+      color: Palette.charcoal,
       marginBottom: 12,
       textAlign: 'left',
       letterSpacing: -1,
@@ -207,7 +208,7 @@ export const useLandingStyles = () => {
     heroSubtitle: {
       fontFamily: Fonts.regular,
       fontSize: isSmall ? 15 : isWebPlatform && isLarge ? 20 : 18,
-      color: colors.textMedium,
+      color: Palette.body,
       lineHeight: isSmall ? 22 : isWebPlatform && isLarge ? 30 : 26,
       textAlign: 'left',
     },
@@ -218,14 +219,14 @@ export const useLandingStyles = () => {
       alignItems: 'center',
       paddingVertical: isSmall ? 16 : 20,
       gap: 10,
-      backgroundColor: colors.bgWhite,
+      backgroundColor: Palette.canvas,
     },
 
     indicator: {
       height: 10,
       borderRadius: 5,
       elevation: 2,
-      boxShadow: '0 1px 3px rgba(17,24,39,0.06)',
+      boxShadow: '0 1px 2px rgba(28, 25, 23, 0.12)',
     },
 
     heroButtons: {
@@ -236,7 +237,7 @@ export const useLandingStyles = () => {
       paddingHorizontal: isSmall ? 16 : isWebPlatform && isLarge ? 40 : 24,
       paddingBottom: verticalScale(28),
       paddingTop: verticalScale(12),
-      backgroundColor: colors.bgLight,
+      backgroundColor: Palette.canvas,
     },
 
     // ========== BUTTONS ==========
@@ -248,7 +249,7 @@ export const useLandingStyles = () => {
       alignItems: 'center',
       justifyContent: 'center',
       elevation: 6,
-      boxShadow: '0 2px 6px rgba(17,24,39,0.12)',
+      boxShadow: '0 4px 8px rgba(217, 119, 6, 0.2)',
       transform: [{ scale: 1 }],
     },
 
@@ -274,11 +275,11 @@ export const useLandingStyles = () => {
     },
 
     primaryButtonText: {
-      color: colors.textWhite,
+      color: Palette.charcoal,
     },
 
     secondaryButtonText: {
-      color: colors.primary,
+      color: Palette.charcoal,
       fontFamily: Fonts.bold,
     },
 
@@ -292,7 +293,7 @@ export const useLandingStyles = () => {
     sectionTitle: {
       fontFamily: Fonts.bold,
       fontSize: isSmall ? 24 : isWebPlatform && isLarge ? 42 : 32,
-      color: Palette.warmCopper,
+      color: Palette.charcoal,
       marginBottom: verticalScale(12),
       textAlign: 'center',
       letterSpacing: -0.5,
@@ -323,8 +324,8 @@ export const useLandingStyles = () => {
       borderRadius: 20,
       overflow: 'hidden',
       elevation: 8,
-      boxShadow: '0 2px 8px rgba(17,24,39,0.06)',
-      borderWidth: 1,
+      boxShadow: '0 4px 10px rgba(28, 25, 23, 0.06)',
+      borderWidth: 3,
       borderColor: colors.borderMedium,
       marginBottom: isSmall ? 16 : 0,
     },
@@ -334,7 +335,7 @@ export const useLandingStyles = () => {
       height: isSmall ? 240 : isWebPlatform && isLarge ? 280 : 260,
       overflow: 'hidden',
       backgroundColor: colors.bgLight,
-      borderBottomWidth: 1,
+      borderBottomWidth: 3,
       borderBottomColor: colors.primaryLight,
     },
 
@@ -347,7 +348,7 @@ export const useLandingStyles = () => {
     teamName: {
       fontFamily: Fonts.bold,
       fontSize: isSmall ? 17 : 18,
-      color: colors.primary,
+      color: Palette.charcoal,
       textAlign: 'center',
       marginTop: 16,
       paddingHorizontal: 12,
@@ -387,13 +388,13 @@ export const useLandingStyles = () => {
       justifyContent: 'center',
       alignItems: 'center',
       elevation: 6,
-      boxShadow: '0 2px 6px rgba(17,24,39,0.12)',
-      borderWidth: 1,
+      boxShadow: '0 4px 6px rgba(6, 78, 59, 0.25)',
+      borderWidth: 2,
       borderColor: colors.primaryLight,
     },
 
     scrollTopButtonText: {
-      color: colors.textWhite,
+      color: Palette.charcoal,
       fontSize: isSmall ? 18 : 22,
       fontFamily: Fonts.bold,
       marginTop: -2,
@@ -417,10 +418,10 @@ export const useLandingStyles = () => {
       right: 0,
       backgroundColor: colors.bgWhite,
       borderRadius: 12,
-      borderWidth: 1,
+      borderWidth: 2,
       borderColor: colors.primaryLight,
       elevation: 8,
-      boxShadow: '0 2px 6px rgba(17,24,39,0.08)',
+      boxShadow: '0 4px 6px rgba(28, 25, 23, 0.06)',
       overflow: 'hidden',
       minWidth: 120,
     },
@@ -436,7 +437,7 @@ export const useLandingStyles = () => {
     authDropdownText: {
       fontSize: 14,
       fontFamily: Fonts.bold,
-      color: colors.primary,
+      color: Palette.charcoal,
       textAlign: 'left',
     },
 
@@ -478,7 +479,7 @@ export const useLandingStyles = () => {
     contactSection: {
       paddingHorizontal: isSmall ? 16 : isWebPlatform && isLarge ? 80 : 24,
       paddingVertical: verticalScale(40),
-      backgroundColor: colors.primary,
+      backgroundColor: Palette.charcoal,
       alignItems: 'center',
     },
 
@@ -505,7 +506,7 @@ export const useLandingStyles = () => {
     // ========== MODAL ==========
     modalOverlay: {
       flex: 1,
-      backgroundColor: 'rgba(17, 24, 39, 0.35)',
+      backgroundColor: 'rgba(27, 94, 32, 0.75)',
       justifyContent: 'center',
       alignItems: 'center',
       padding: isSmall ? 16 : 20,
@@ -519,15 +520,15 @@ export const useLandingStyles = () => {
       maxWidth: isWebPlatform && isLarge ? 520 : 420,
       maxHeight: isSmall ? '90%' : '85%',
       elevation: 12,
-      boxShadow: '0 2px 8px rgba(17,24,39,0.08)',
-      borderWidth: 1,
+      boxShadow: '0 8px 16px rgba(28, 25, 23, 0.12)',
+      borderWidth: 3,
       borderColor: colors.primaryLight,
     },
 
     modalTitle: {
       fontFamily: Fonts.bold,
       fontSize: isSmall ? 26 : isWebPlatform && isLarge ? 32 : 28,
-      color: colors.primary,
+      color: Palette.charcoal,
       marginBottom: verticalScale(24),
       textAlign: 'center',
       letterSpacing: -0.5,
@@ -544,7 +545,7 @@ export const useLandingStyles = () => {
       backgroundColor: colors.bgLight,
       color: colors.textDark,
       elevation: 2,
-      boxShadow: '0 1px 3px rgba(17,24,39,0.05)',
+      boxShadow: '0 2px 4px rgba(28, 25, 23, 0.06)',
     },
 
     // ========== PROFILE PICTURE SECTION ==========
@@ -561,7 +562,7 @@ export const useLandingStyles = () => {
     sectionLabel: {
       fontFamily: Fonts.semiBold,
       fontSize: isSmall ? 15 : 16,
-      color: colors.primary,
+      color: Palette.charcoal,
       marginBottom: 16,
       alignSelf: 'flex-start',
       width: '100%',
@@ -580,7 +581,7 @@ export const useLandingStyles = () => {
       borderWidth: 4,
       borderColor: colors.primaryLight,
       elevation: 6,
-      boxShadow: '0 2px 6px rgba(17,24,39,0.08)',
+      boxShadow: '0 4px 8px rgba(28, 25, 23, 0.08)',
     },
 
     placeholderImage: {
@@ -605,7 +606,7 @@ export const useLandingStyles = () => {
       position: 'absolute',
       top: -8,
       right: -8,
-      backgroundColor: '#DC2626',
+      backgroundColor: colors.primaryDark,
       width: 32,
       height: 32,
       borderRadius: 16,
@@ -659,7 +660,7 @@ export const useLandingStyles = () => {
 
     imageButtonText: {
       fontFamily: Fonts.semiBold,
-      color: colors.textWhite,
+      color: Palette.charcoal,
       fontSize: isSmall ? 14 : 15,
     },
 
@@ -676,6 +677,18 @@ export const useLandingStyles = () => {
       marginBottom: 4,
       letterSpacing: -0.2,
     },
+    articleCategory: {
+      alignSelf: 'flex-start',
+      marginBottom: 10,
+      paddingHorizontal: 10,
+      paddingVertical: 4,
+      borderRadius: 12,
+      overflow: 'hidden',
+      backgroundColor: Palette.honey,
+      color: Palette.charcoal,
+      fontFamily: Fonts.semiBold,
+      fontSize: 12,
+    },
     articleDesc: {
       fontFamily: Fonts.regular,
       fontSize: isSmall ? 13 : 15,
@@ -687,14 +700,14 @@ export const useLandingStyles = () => {
     videoSection: {
       paddingHorizontal: 0, // Full width for video
       paddingVertical: 0,
-      backgroundColor: colors.bgLight,
+      backgroundColor: Palette.canvas,
       alignItems: 'center',
       marginBottom: 40,
     },
     missionSection: {
       paddingHorizontal: isWebPlatform && isLarge ? 80 : 24,
       paddingVertical: 80,
-      backgroundColor: colors.bgLight,
+      backgroundColor: Palette.canvas,
     },
     missionCardsContainer: {
       flexDirection: 'row',
@@ -707,23 +720,24 @@ export const useLandingStyles = () => {
       width: 64,
       height: 64,
       borderRadius: 18,
-      backgroundColor: '#FEF3C7',
+      backgroundColor: Palette.honey,
       justifyContent: 'center',
       alignItems: 'center',
       marginBottom: 20,
     },
     card: {
       width: isWebPlatform && isLarge ? '30%' : '100%',
-      backgroundColor: colors.bgWhite,
+      backgroundColor: Palette.surface,
       borderRadius: 24,
       padding: 32,
-      // Removed border for a clean borderless look
+      borderWidth: 1,
+      borderColor: Palette.border,
       elevation: 5,
     },
     cardTitle: {
       fontFamily: Fonts.bold,
       fontSize: 22,
-      color: colors.primary,
+      color: Palette.charcoal,
       marginBottom: 12,
     },
     cardDesc: {
@@ -735,7 +749,7 @@ export const useLandingStyles = () => {
     },
     featuredArticlesSection: {
       paddingVertical: 80,
-      backgroundColor: Palette.mutedSage, // Earthy sage background
+      backgroundColor: Palette.sand,
     },
     articlesScrollContainer: {
       paddingHorizontal: isWebPlatform && isLarge ? 80 : 24,
@@ -744,7 +758,9 @@ export const useLandingStyles = () => {
     articleCard: {
       width: 320,
       marginRight: 24,
-      backgroundColor: Palette.linenWhite,
+      backgroundColor: Palette.surface,
+      borderWidth: 1,
+      borderColor: Palette.border,
       borderRadius: 24,
       overflow: 'hidden',
       elevation: 4,

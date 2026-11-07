@@ -7,17 +7,17 @@ const isLarge = width > 1024;
 const isMedium = width > 768;
 
 export const colors = {
-    primary: Palette.warmCopper,
-    primaryDark: Palette.deepObsidian,
-    primaryLight: Palette.mutedSage,
-    accent: Palette.warmCopper,
-    bgLight: Palette.linenWhite,
-    bgWhite: Palette.white,
-    textDark: Palette.deepObsidian,
-    textMedium: Palette.charcoalEspresso,
-    textLight: Palette.slate,
-    borderLight: '#F3F4F6',
-    borderMedium: Palette.stoneGray,
+    primary: Palette.mangoDark,
+    primaryDark: Palette.charcoal,
+    primaryLight: Palette.leaf,
+    accent: Palette.mango,
+    bgLight: Palette.canvas,
+    bgWhite: Palette.surface,
+    textDark: Palette.charcoal,
+    textMedium: Palette.body,
+    textLight: Palette.muted,
+    borderLight: Palette.border,
+    borderMedium: Palette.border,
 };
 
 export const shopStyles = StyleSheet.create({
@@ -40,7 +40,7 @@ export const shopStyles = StyleSheet.create({
     title: {
         fontFamily: Fonts.bold,
         fontSize: isLarge ? 42 : 32,
-        color: colors.primaryDark,
+        color: colors.textDark,
         textAlign: 'center',
         letterSpacing: -1,
     },
@@ -67,18 +67,20 @@ export const shopStyles = StyleSheet.create({
         marginBottom: 24,
         backgroundColor: colors.bgWhite,
         borderRadius: 24,
+        borderWidth: 1,
+        borderColor: Palette.border,
         overflow: 'hidden',
         ...Platform.select({
             web: {
-                boxShadow: '0 1px 3px rgba(17,24,39,0.06)',
+                boxShadow: '0 4px 14px rgba(28,25,23,0.06)',
                 transition: 'transform 0.3s ease',
             },
             default: {
-                elevation: 2,
+                elevation: 8,
                 shadowColor: '#000',
                 shadowOffset: { width: 0, height: 4 },
-                shadowOpacity: 0.06,
-                shadowRadius: 8,
+                shadowOpacity: 0.1,
+                shadowRadius: 12,
             }
         }),
     },
@@ -150,7 +152,7 @@ export const shopStyles = StyleSheet.create({
     price: {
         fontFamily: Fonts.bold,
         fontSize: 20,
-        color: colors.primaryDark,
+        color: colors.primary,
     },
     buyButton: {
         backgroundColor: colors.primary,

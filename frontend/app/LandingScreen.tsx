@@ -25,7 +25,8 @@ import { useResponsive } from '@/utils/platform';
 // import * as ImagePicker from 'expo-image-picker';
 import Footer from '@/components/Footer';
 import { useUser } from '@/contexts/UserContext';
-import DurianHeatmap from '@/components/DurianHeatmap';
+import MangoHeatmap from '@/components/MangoHeatmap';
+import { API_URL } from '@/config/appconf';
 import { LinearGradient } from 'expo-linear-gradient';
 import { useAuthUI } from '@/contexts/AuthUIContext';
 import { Ionicons } from '@expo/vector-icons';
@@ -39,6 +40,132 @@ import { ScrollReveal } from '@/components/ui/ScrollReveal';
 import { AnimatedImage } from '@/components/ui/AnimatedImage';
 import { VideoSection } from '@/components/VideoSection';
 import { interpolate, useDerivedValue, withRepeat, withSequence, withDelay, withTiming } from "react-native-reanimated";
+
+interface LandingArticle {
+  id: string;
+  title: string;
+  desc: string;
+  image_url: string;
+  icon: keyof typeof Ionicons.glyphMap;
+  source_url: string;
+  published_date?: string | null;
+  category: string;
+  source?: string;
+}
+
+const MANGO_IMAGE_URL =
+  'https://images.unsplash.com/photo-1553279768-865429fa0078?auto=format&fit=crop&w=1200&q=85';
+
+const FALLBACK_ARTICLES: LandingArticle[] = [
+  {
+    id: 'da-bafs-mango-standards',
+    title: 'Enhancing the Philippine Mango Industry through S&T Interventions',
+    desc: 'DOST-PCAARRD highlights science and technology interventions to strengthen the Philippine mango industry.',
+    image_url: MANGO_IMAGE_URL,
+    icon: 'flask-outline',
+    source_url: 'https://www.pcaarrd.dost.gov.ph/index.php/quick-information-dispatch/3313-enhancing-the-philippine-mango-industry-through-s-t-interventions',
+    category: 'Research',
+    source: 'DOST-PCAARRD',
+  },
+  {
+    id: 'pcaarrd-mango-research',
+    title: 'Philippine National Standard for Fresh Mangoes (PNS/BAFS 07:2021)',
+    desc: 'DA-BAFS grading and quality specifications for fresh mangoes.',
+    image_url: MANGO_IMAGE_URL,
+    icon: 'shield-checkmark-outline',
+    source_url: 'https://bafs.da.gov.ph/bafs_admin/admin_page/pns_file/PNS%20BAFS%2007-2021%20-%20Fresh%20Mangoes%20-%20Grading%20and%20Quality%20Specifications.pdf',
+    category: 'Standards & Export',
+    source: 'DA-BAFS',
+  },
+  {
+    id: 'da-mango-industry-boost',
+    title: 'DA initiatives to revive and boost Philippine mango exports',
+    desc: 'Department of Agriculture initiatives to strengthen mango production and exports in the Philippines.',
+    image_url: MANGO_IMAGE_URL,
+    icon: 'leaf-outline',
+    source_url: 'https://www.da.gov.ph/da-leads-initiatives-to-boost-mango-industry/',
+    category: 'Markets',
+    source: 'Department of Agriculture',
+  },
+];
+
+const isRecord = (value: unknown): value is Record<string, unknown> =>
+  typeof value === 'object' && value !== null;
+
+const isExternalUrl = (value: unknown): value is string => {
+  if (typeof value !== 'string') return false;
+  try {
+    const protocol = new URL(value).protocol;
+    return protocol === 'https:';
+  } catch {
+    return false;
+  }
+};
+
+const handleOpenArticle = async (url?: string) => {
+  if (!isExternalUrl(url)) return;
+
+  try {
+    if (Platform.OS === 'web') {
+      window.open(url, '_blank', 'noopener,noreferrer');
+      return;
+    }
+
+    if (await Linking.canOpenURL(url)) {
+      await Linking.openURL(url);
+    }
+  } catch (error) {
+    console.error('Failed to open article URL:', error);
+  }
+};
+
+const parseArticles = (payload: unknown): LandingArticle[] => {
+  const records = Array.isArray(payload)
+    ? payload
+    : isRecord(payload) && Array.isArray(payload.articles)
+      ? payload.articles
+      : [];
+
+  return records.flatMap((record, index) => {
+    if (!isRecord(record) || typeof record.title !== 'string' || !record.title.trim()) {
+      return [];
+    }
+
+    const description =
+      typeof record.description === 'string'
+        ? record.description
+        : typeof record.desc === 'string'
+          ? record.desc
+          : '';
+    const imageValue = record.image_url ?? record.imageUrl ?? record.image;
+    const imageUrl =
+      typeof imageValue === 'string'
+        ? imageValue
+        : isRecord(imageValue) && typeof imageValue.url === 'string'
+          ? imageValue.url
+          : MANGO_IMAGE_URL;
+    const safeImageUrl = isExternalUrl(imageUrl) ? imageUrl : MANGO_IMAGE_URL;
+    const sourceUrl = isExternalUrl(record.source_url)
+      ? record.source_url
+      : isExternalUrl(record.url)
+        ? record.url
+        : undefined;
+    if (!sourceUrl) return [];
+
+    return [{
+      id: String(record.id ?? `article-${index}`),
+      title: record.title.trim(),
+      desc: description,
+      image_url: safeImageUrl,
+      icon: 'newspaper-outline',
+      source_url: sourceUrl,
+      published_date:
+        typeof record.published_date === 'string' ? record.published_date : null,
+      category: typeof record.category === 'string' ? record.category : 'Mango News',
+      ...(typeof record.source === 'string' ? { source: record.source } : {}),
+    }];
+  });
+};
 
 const AnimatedIndicator = ({ index, currentIndex }: { index: number, currentIndex: number }) => {
   const animatedStyle = useAnimatedStyle(() => {
@@ -100,7 +227,7 @@ const HeroItem = ({ item, scrollY, width, floatStyle }: any) => {
   });
 
   return (
-    <View style={{ width, backgroundColor: Palette.linenWhite, overflow: 'hidden' }}>
+    <View style={{ width, backgroundColor: Palette.canvas, overflow: 'hidden' }}>
       <View style={{ position: "relative" }}>
         <Animated.View style={parallaxStyle}>
           <AnimatedImage
@@ -110,7 +237,7 @@ const HeroItem = ({ item, scrollY, width, floatStyle }: any) => {
           />
         </Animated.View>
         <LinearGradient
-          colors={['rgba(250, 250, 248, 0)', 'rgba(250, 250, 248, 0.72)', 'rgba(250, 250, 248, 0.98)']}
+          colors={['rgba(253, 248, 242, 0.08)', 'rgba(253, 248, 242, 0.78)', Palette.canvas]}
           style={styles.heroTextOverlay}
           start={{ x: 0, y: 0 }}
           end={{ x: 0, y: 1 }}
@@ -118,13 +245,13 @@ const HeroItem = ({ item, scrollY, width, floatStyle }: any) => {
           <Animated.View style={floatStyle}>
             <Animated.Text
               entering={FadeInDown.duration(800).delay(400)}
-              style={[styles.heroTitle, { color: Palette.deepObsidian }]}
+              style={[styles.heroTitle, { color: Palette.charcoal }]}
             >
               {item.title}
             </Animated.Text>
             <Animated.Text
               entering={FadeInDown.duration(800).delay(600)}
-              style={[styles.heroSubtitle, { color: Palette.charcoalEspresso }]}
+              style={[styles.heroSubtitle, { color: Palette.body }]}
             >
               {item.subtitle}
             </Animated.Text>
@@ -229,17 +356,22 @@ const DynamicSection = ({ section, scrollY, width, plotlyLoaded, setPlotlyLoaded
           {section.data.map((article: any, index: number) => (
             <ScrollReveal key={article.id} scrollY={scrollY} index={index}>
               <InteractiveCard
-                style={styles.articleCard}
-                onPress={() => article.url && Linking.openURL(article.url)}
+                style={[
+                  styles.articleCard,
+                  Platform.OS === 'web' && { cursor: 'pointer' },
+                ]}
+                onPress={() => handleOpenArticle(article.source_url)}
               >
                 <AnimatedImage
-                  source={article.image}
+                  source={{ uri: article.image_url }}
                   style={styles.articleImage}
                   entering={FadeInDown.duration(600).delay(200 + index * 100)}
+                  onPress={() => handleOpenArticle(article.source_url)}
                 />
                 <View style={styles.articleContent}>
+                  <Text style={styles.articleCategory}>{article.category}</Text>
                   <View style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 8 }}>
-                    <Ionicons name={article.icon} size={16} color={Palette.warmCopper} style={{ marginRight: 6 }} />
+                    <Ionicons name={article.icon} size={16} color={Palette.charcoal} style={{ marginRight: 6 }} />
                     <Text style={styles.articleTitle} numberOfLines={1}>{article.title}</Text>
                   </View>
                   <Text style={styles.articleDesc} numberOfLines={3}>{article.desc}</Text>
@@ -262,7 +394,7 @@ const DynamicSection = ({ section, scrollY, width, plotlyLoaded, setPlotlyLoaded
           }}
         >
           <View style={width < 600 ? { width: '100%', marginTop: 24 } : { flex: 1, minWidth: 320, maxWidth: 600 }}>
-            <DurianHeatmap
+            <MangoHeatmap
               mapMode={'heatmap'}
               onMapModeChange={() => { }}
               onRegionSelect={() => { }}
@@ -291,6 +423,7 @@ function Landing({ }: any) {
   const { openAuthModal } = useAuthUI();
   const [plotlyLoaded, setPlotlyLoaded] = useState(false);
   const [showScrollTop, setShowScrollTop] = useState(false);
+  const [articles, setArticles] = useState<LandingArticle[]>(FALLBACK_ARTICLES);
 
   // Animation Values
   const scrollY = useSharedValue(0);
@@ -323,6 +456,27 @@ function Landing({ }: any) {
   const floatStyle = useAnimatedStyle(() => ({
     transform: [{ translateY: interpolate(floatValue.value, [0, 1], [0, -10]) }],
   }));
+
+  useEffect(() => {
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), 12000);
+
+    fetch(`${API_URL}/news/mango-articles?limit=6`, { signal: controller.signal })
+      .then(async (response) => {
+        if (!response.ok) return;
+        const fetchedArticles = parseArticles(await response.json());
+        if (fetchedArticles.length > 0) setArticles(fetchedArticles);
+      })
+      .catch(() => {
+        // Keep the local mango article cards when the optional endpoint is unavailable.
+      })
+      .finally(() => clearTimeout(timeout));
+
+    return () => {
+      clearTimeout(timeout);
+      controller.abort();
+    };
+  }, []);
   // Remove all local modal/auth state and handlers
 
 
@@ -331,19 +485,19 @@ function Landing({ }: any) {
       id: "1",
       title: "Know Your Mango Instantly",
       subtitle: "AI-powered quality analysis for damage, disease & export standards",
-      image: require("../assets/images/durian-bg.jpg"),
+      image: { uri: MANGO_IMAGE_URL },
     },
     {
       id: "2",
       title: "Fast & Accurate Analysis",
       subtitle: "Get instant AI-powered quality assessment in seconds",
-      image: require("../assets/images/durian-bg1.jpg"),
+      image: { uri: MANGO_IMAGE_URL },
     },
     {
       id: "3",
       title: "Early Detection Matters",
       subtitle: "Identify damage and disease before it's too late",
-      image: require("../assets/images/durian-bg2.jpg"),
+      image: { uri: MANGO_IMAGE_URL },
     },
   ];
 
@@ -365,9 +519,9 @@ function Landing({ }: any) {
       videoId: 'EXK6yQCQ93Q',
       styleName: 'videoSection', // Ensure this style exists or use inline
       title: "Watch Our Story",
-      subtitle: "Discover the journey behind our durian quality assurance.",
-      titleStyle: { color: '#F0F0F0', textAlign: 'center', marginTop: 40 },
-      subtitleStyle: { color: '#F0F0F0', textAlign: 'center', marginBottom: 20 },
+      subtitle: "Discover the journey behind our mango quality assurance and AI grading.",
+      titleStyle: { color: '#1C1917', textAlign: 'center', marginTop: 40 },
+      subtitleStyle: { color: '#57534E', textAlign: 'center', marginBottom: 20 },
     },
     {
       id: 'mission',
@@ -375,8 +529,8 @@ function Landing({ }: any) {
       title: "Our Mission",
       subtitle: "Empowering mango farmers with cutting-edge AI for quality assurance and sustainable practices.",
       styleName: 'missionSection',
-      titleStyle: { color: Palette.warmCopper },
-      subtitleStyle: { color: Palette.linenWhite },
+      titleStyle: { color: Palette.charcoal },
+      subtitleStyle: { color: Palette.body },
       data: [
         { title: "Precision Analysis", desc: "Our AI models are trained on thousands of samples for pinpoint accuracy.", icon: "flask-outline" },
         { title: "Farmer Empowerment", desc: "Supporting local growers with data-driven insights and fair market standards.", icon: "people-outline" },
@@ -390,33 +544,8 @@ function Landing({ }: any) {
       subtitle: "Stay informed with the newest trends and research in mango cultivation and AI.",
       styleName: 'featuredArticlesSection',
       titleStyle: { color: Palette.deepObsidian },
-      subtitleStyle: { color: Palette.charcoalEspresso, opacity: 0.8, fontStyle: 'italic' },
-      data: [
-        {
-          id: "1",
-          title: "Detection of Mango using Zero-Shot Models",
-          image: require("../assets/images/feature1.jpg"),
-          desc: "Detailed study on computerized automated detection of mango fruits.",
-          icon: "scan-outline",
-          url: "https://ijtech.eng.ui.ac.id/article/view/6640"
-        },
-        {
-          id: "2",
-          title: "AI-Based Mango Disease Detection",
-          image: require("../assets/images/feature2.jpg"),
-          desc: "Identification of mango leaf disease using Convolutional Neural Networks.",
-          icon: "flask-outline",
-          url: "https://www.researchgate.net/publication/370517327_Identification_of_Durian_Leaf_Disease_Using_Convolutional_Neural_Network"
-        },
-        {
-          id: "3",
-          title: "Non-Destructive Fruit Quality Assessment",
-          image: require("../assets/images/feature3.jpg"),
-          desc: "Evaluating post-harvest traits to set quality standards for international markets.",
-          icon: "shield-checkmark-outline",
-          url: "https://www.researchgate.net/publication/370517328_Computer_Vision-Based_Non-invasive_Sweetness_Assessment_of_Mangifera_Indica_L_Fruit_Using_K-means_Clustering_and_CNN"
-        },
-      ]
+      subtitleStyle: { color: Palette.charcoalEspresso, fontStyle: 'italic' },
+      data: articles,
     },
     {
       id: 'heatmap',

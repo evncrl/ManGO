@@ -12,7 +12,7 @@ import { Fonts, Palette } from '@/constants/theme';
 
 const COLORS = {
   primary: Palette.warmCopper, // Warm Copper
-  primaryDark: Palette.deepObsidian, // Deep Obsidian
+  primaryDark: Palette.mangoDark,
   primaryLight: Palette.mutedSage, // Muted Sage
   accent: Palette.warmCopper,
   white: Palette.white,

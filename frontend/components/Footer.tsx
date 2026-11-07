@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, Linking, Platform } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
-import { Fonts, Palette } from '@/constants/theme';
+import { Fonts, Palette, Colors } from '@/constants/theme';
 import { useResponsive } from '@/utils/platform';
 
 interface FooterProps {
@@ -23,7 +23,7 @@ const Footer: React.FC<FooterProps> = ({
   };
 
   const socialLinks = [
-    { icon: 'logo-facebook', url: 'https://facebook.com', label: 'Facebook' },
+    { icon: 'logo-facebook', url: 'https://www.facebook.com/lolit.gumapos', label: 'Facebook' },
     { icon: 'logo-twitter', url: 'https://twitter.com', label: 'Twitter' },
     { icon: 'logo-instagram', url: 'https://instagram.com', label: 'Instagram' },
     { icon: 'logo-linkedin', url: 'https://linkedin.com', label: 'LinkedIn' },
@@ -40,7 +40,7 @@ const Footer: React.FC<FooterProps> = ({
     return (
       <View style={styles.compactContainer}>
         <Text style={styles.compactText}>
-          © {currentYear} DurianApp. All rights reserved.
+          © {currentYear} ManGO. All rights reserved.
         </Text>
       </View>
     );
@@ -53,11 +53,11 @@ const Footer: React.FC<FooterProps> = ({
         {/* Brand */}
         <View style={[styles.brandSection, isWeb && { maxWidth: 300 }]}>
           <View style={styles.logoContainer}>
-            <Ionicons name="leaf" size={28} color={Palette.deepObsidian} />
+            <Ionicons name="leaf" size={28} color={Palette.leaf} />
             <Text style={styles.brandName}>ManGO</Text>
           </View>
           <Text style={styles.brandTagline}>
-            Quality Durian Detection & Export Management
+            Philippine Mango Quality Detection & Export Management
           </Text>
         </View>
 
@@ -112,7 +112,7 @@ const Footer: React.FC<FooterProps> = ({
                 onPress={() => handleLink(social.url)}
                 accessibilityLabel={social.label}
               >
-                <Ionicons name={social.icon as any} size={20} color={Palette.deepObsidian} />
+                <Ionicons name={social.icon as any} size={20} color={Palette.charcoal} />
               </TouchableOpacity>
             ))}
           </View>
@@ -125,7 +125,7 @@ const Footer: React.FC<FooterProps> = ({
 
         {/* Legal */}
         <Text style={styles.legalText}>
-          Empowering Philippine Durian Farmers & Exporters
+          Empowering Philippine Mango Farmers & Exporters
         </Text>
       </View>
     </View>
@@ -134,19 +134,19 @@ const Footer: React.FC<FooterProps> = ({
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#F3F4F6',
+    backgroundColor: Palette.sand,
     paddingTop: 40,
     paddingBottom: 24,
     paddingHorizontal: 24,
   },
   compactContainer: {
-    backgroundColor: '#F3F4F6',
+    backgroundColor: Palette.sand,
     paddingVertical: 16,
     paddingHorizontal: 24,
     alignItems: 'center',
   },
   compactText: {
-    color: Palette.deepObsidian,
+    color: Palette.body,
     fontSize: 12,
     fontFamily: Fonts.medium,
   },
@@ -168,13 +168,12 @@ const styles = StyleSheet.create({
   brandName: {
     fontSize: 24,
     fontFamily: Fonts.bold,
-    color: Palette.deepObsidian,
+    color: Palette.charcoal,
     letterSpacing: 0.5,
   },
   brandTagline: {
     fontSize: 14,
-    color: Palette.deepObsidian,
-    opacity: 0.8,
+    color: Palette.body,
     lineHeight: 20,
     fontFamily: Fonts.regular,
   },
@@ -185,7 +184,7 @@ const styles = StyleSheet.create({
   sectionTitle: {
     fontSize: 16,
     fontFamily: Fonts.bold,
-    color: Palette.deepObsidian,
+    color: Palette.charcoal,
     marginBottom: 16,
     textTransform: 'uppercase',
     letterSpacing: 1,
@@ -198,7 +197,7 @@ const styles = StyleSheet.create({
   },
   linkText: {
     fontSize: 14,
-    color: Palette.deepObsidian,
+    color: Palette.body,
     fontFamily: Fonts.medium,
   },
   contactSection: {
@@ -213,12 +212,12 @@ const styles = StyleSheet.create({
   },
   contactText: {
     fontSize: 14,
-    color: Palette.deepObsidian,
+    color: Palette.body,
     fontFamily: Fonts.regular,
   },
   divider: {
     height: 1,
-    backgroundColor: Palette.deepObsidian,
+    backgroundColor: Palette.border,
     opacity: 0.1,
     marginVertical: 24,
   },
@@ -234,21 +233,20 @@ const styles = StyleSheet.create({
     width: 40,
     height: 40,
     borderRadius: 20,
-    backgroundColor: '#FEF3C7',
+    backgroundColor: Palette.surface,
     alignItems: 'center',
     justifyContent: 'center',
     borderWidth: 1,
-    borderColor: Palette.stoneGray,
+    borderColor: Palette.border,
   },
   copyright: {
     fontSize: 14,
-    color: Palette.deepObsidian,
+    color: Palette.body,
     fontFamily: Fonts.semiBold,
   },
   legalText: {
     fontSize: 12,
-    color: Palette.deepObsidian,
-    opacity: 0.6,
+    color: Palette.body,
     textAlign: 'center',
     fontFamily: Fonts.regular,
   },

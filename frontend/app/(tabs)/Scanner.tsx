@@ -77,7 +77,7 @@ export default function Scanner() {
       <View style={styles.center}>
         <Ionicons name="camera-outline" size={64} color="#27AE60" />
         <Text style={styles.permissionText}>
-          Camera access is required to scan durians
+          Camera access is required to scan mangoes
         </Text>
         <TouchableOpacity style={styles.button} onPress={requestPermission}>
           <Text style={styles.buttonText}>Grant Permission</Text>
@@ -141,10 +141,10 @@ export default function Scanner() {
         // For web, fetch the blob
         const response = await fetch(imageUri);
         const blob = await response.blob();
-        formData.append('image', blob, 'durian_scan.jpg');
+        formData.append('image', blob, 'mango_scan.jpg');
       } else {
         // For mobile
-        const filename = imageUri.split('/').pop() || 'durian_scan.jpg';
+        const filename = imageUri.split('/').pop() || 'mango_scan.jpg';
         const match = /\.(\w+)$/.exec(filename);
         const type = match ? `image/${match[1]}` : 'image/jpeg';
 
@@ -190,9 +190,9 @@ export default function Scanner() {
           if (Platform.OS === 'web') {
             const response = await fetch(imageUri);
             const blob = await response.blob();
-            diseaseForm.append('image', blob, 'durian_scan.jpg');
+            diseaseForm.append('image', blob, 'mango_scan.jpg');
           } else {
-            const filename = imageUri.split('/').pop() || 'durian_scan.jpg';
+            const filename = imageUri.split('/').pop() || 'mango_scan.jpg';
             const match = /\.(\w+)$/.exec(filename);
             const type = match ? `image/${match[1]}` : 'image/jpeg';
 
@@ -239,7 +239,7 @@ export default function Scanner() {
 
         // Navigate to results screen with merged data
         router.push({
-          pathname: '/DurianScanResult',
+          pathname: '/MangoScanResult',
           params: {
             imageUri: displayImageUri,
             localImageUri: imageUri,
@@ -340,7 +340,7 @@ export default function Scanner() {
               style={styles.instructionsContainer}
             >
               <Text style={styles.instructionsText}>
-                <Ionicons name="scan-circle-outline" size={20} color="#fff" /> Position durian in frame
+                <Ionicons name="scan-circle-outline" size={20} color="#fff" /> Position mango in frame
               </Text>
               <Text style={styles.instructionsSubtext}>
                 Ensure good lighting for best results
@@ -408,7 +408,7 @@ export default function Scanner() {
               ) : (
                 <>
                   <Ionicons name="scan" size={20} color="#fff" style={{ marginRight: 8 }} />
-                  <Text style={styles.captureText}>Analyze Durian</Text>
+                  <Text style={styles.captureText}>Analyze Mango</Text>
                 </>
               )}
             </TouchableOpacity>
@@ -446,7 +446,7 @@ export default function Scanner() {
         }}>
           <ActivityIndicator size="large" color="#27AE60" />
           <Text style={{ color: '#fff', marginTop: 16, fontSize: 18, fontFamily: Fonts.semiBold }}>
-            🔍 Analyzing durian...
+            🔍 Analyzing mango...
           </Text>
           <Text style={{ color: '#ccc', marginTop: 8, fontSize: 14 }}>
             Please wait while AI processes the image
@@ -456,4 +456,3 @@ export default function Scanner() {
     </View>
   );
 }
-

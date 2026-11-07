@@ -77,7 +77,7 @@ export default function Shop() {
                     name: p.name,
                     category: p.category,
                     price: p.price,
-                    image: p.image_url ? { uri: p.image_url } : require("../../assets/images/durian-bg.jpg"),
+                    image: p.image_url ? { uri: p.image_url } : require("../../assets/images/mango-bg.png"),
                     description: p.description,
                     isNew: p.isNew || false,
                     avgRating: p.rating || 0,
@@ -137,7 +137,7 @@ export default function Shop() {
 
     if (loading) {
         return (
-            <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: Palette.linenWhite }}>
+            <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: Palette.canvas }}>
                 <ActivityIndicator size="large" color={Palette.warmCopper} />
                 <Text style={{ marginTop: 16, color: Palette.slate, fontFamily: Fonts.regular }}>Curating selection...</Text>
             </View>
@@ -154,7 +154,7 @@ export default function Shop() {
                 scrollEventThrottle={16}
             >
                 <View style={shopStyles.header}>
-                    <Text style={[shopStyles.title, { color: Palette.deepObsidian }]}>ManGO Shop</Text>
+                    <Text style={[shopStyles.title, { color: Palette.charcoal }]}>ManGO Shop</Text>
                     <Text style={[shopStyles.subtitle, { color: Palette.slate }]}>Premium mango varieties and artisan products.</Text>
                 </View>
 
@@ -207,7 +207,7 @@ export default function Shop() {
                 <View style={modalStyles.overlay}>
                     <View style={modalStyles.content}>
                         <TouchableOpacity style={modalStyles.closeBtn} onPress={() => setShowModal(false)}>
-                            <Ionicons name="close" size={24} color={Palette.deepObsidian} />
+                            <Ionicons name="close" size={24} color={Palette.slate} />
                         </TouchableOpacity>
 
                         <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={{ paddingBottom: 20 }}>
@@ -253,32 +253,32 @@ export default function Shop() {
 const modalStyles = StyleSheet.create({
     overlay: { 
         flex: 1, 
-        backgroundColor: 'rgba(17,24,39,0.4)',
+        backgroundColor: 'rgba(0,0,0,0.85)', 
         justifyContent: 'center', 
         alignItems: 'center' 
     },
     content: { 
-        backgroundColor: Palette.white,
+        backgroundColor: Palette.surface,
+        borderWidth: 1,
+        borderColor: Palette.border,
         borderRadius: 24, 
         width: Platform.OS === 'web' ? 450 : SCREEN_WIDTH * 0.85, 
         maxHeight: SCREEN_HEIGHT * 0.65, // ✅ REDUCED HEIGHT FOR COMPACT LOOK
         overflow: 'hidden',
-        borderWidth: 1,
-        borderColor: Palette.stoneGray
     },
-    closeBtn: { position: 'absolute', top: 15, right: 15, zIndex: 10, backgroundColor: Palette.white, borderRadius: 20, padding: 6 },
+    closeBtn: { position: 'absolute', top: 15, right: 15, zIndex: 10, backgroundColor: Palette.surface, borderRadius: 20, padding: 6 },
     headerImage: { width: '100%', height: 180 }, // Slightly smaller image
-    infoSection: { padding: 20, borderBottomWidth: 1, borderBottomColor: Palette.stoneGray },
+    infoSection: { padding: 20, borderBottomWidth: 1, borderBottomColor: Palette.border },
     modalCategory: { color: Palette.warmCopper, fontFamily: Fonts.bold, textTransform: 'uppercase', letterSpacing: 1, fontSize: 11 },
-    modalName: { color: Palette.deepObsidian, fontFamily: Fonts.bold, fontSize: 20, marginTop: 4 },
+    modalName: { color: Palette.charcoal, fontFamily: Fonts.bold, fontSize: 20, marginTop: 4 },
     modalPrice: { color: Palette.warmCopper, fontFamily: Fonts.bold, fontSize: 16, marginTop: 4 },
-    modalDesc: { color: Palette.slate, fontFamily: Fonts.regular, fontSize: 13, marginTop: 10, lineHeight: 18 },
+    modalDesc: { color: Palette.body, fontFamily: Fonts.regular, fontSize: 13, marginTop: 10, lineHeight: 18 },
     reviewSection: { padding: 20 },
-    reviewTitle: { color: Palette.deepObsidian, fontFamily: Fonts.bold, fontSize: 16, marginBottom: 12 },
+    reviewTitle: { color: Palette.charcoal, fontFamily: Fonts.bold, fontSize: 16, marginBottom: 12 },
     noReviewsContainer: { alignItems: 'center', paddingVertical: 15, gap: 8 },
     noReviews: { color: Palette.slate, fontStyle: 'italic', fontSize: 12 },
-    reviewCard: { backgroundColor: '#F9FAFB', padding: 12, borderRadius: 12, marginBottom: 8 },
+    reviewCard: { backgroundColor: 'rgba(255,255,255,0.03)', padding: 12, borderRadius: 12, marginBottom: 8 },
     reviewHeader: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: 4 },
-    reviewerName: { color: Palette.deepObsidian, fontFamily: Fonts.semiBold, fontSize: 13 },
-    reviewText: { color: Palette.slate, fontSize: 12, lineHeight: 18 },
+    reviewerName: { color: Palette.charcoal, fontFamily: Fonts.semiBold, fontSize: 13 },
+    reviewText: { color: Palette.body, fontSize: 12, lineHeight: 18 },
 });

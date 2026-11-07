@@ -15,10 +15,10 @@ import { useRouter, usePathname } from 'expo-router';
 import { useUser } from '@/contexts/UserContext';
 import { useAuthUI } from '@/contexts/AuthUIContext';
 import { Ionicons } from '@expo/vector-icons';
-import { Fonts, Palette } from '@/constants/theme';
+import { Fonts, Colors, Palette } from '@/constants/theme';
 import { useCart } from '@/contexts/CartContext';
 
-// ✅ 1. STYLES DEFINITION
+// ✅ 1. STYLES DEFINITION (Dapat mauna para kilala ng components sa baba)
 const styles = StyleSheet.create({
     wrapper: {
         zIndex: 100,
@@ -29,17 +29,17 @@ const styles = StyleSheet.create({
     topbar: {
         flexDirection: 'row',
         alignItems: 'center',
-        backgroundColor: Palette.white,
+        backgroundColor: Palette.surface,
         paddingHorizontal: 16,
         paddingVertical: 10,
         height: 64,
         ...Platform.select({
             web: {
-                boxShadow: '0 1px 3px rgba(17,24,39,0.06)',
+                boxShadow: '0 2px 8px rgba(28,25,23,0.06)',
             },
             default: {
-                elevation: 1,
-                boxShadow: '0 1px 3px rgba(17,24,39,0.06)',
+                elevation: 3,
+                boxShadow: '0 2px 8px rgba(0,0,0,0.08)',
             },
         }),
     },
@@ -56,7 +56,7 @@ const styles = StyleSheet.create({
     },
     brandText: {
         fontFamily: Fonts.bold,
-        color: Palette.warmCopper,
+        color: Palette.mangoDark,
         fontSize: 20,
         letterSpacing: -0.6,
     },
@@ -73,16 +73,16 @@ const styles = StyleSheet.create({
         borderRadius: 12,
     },
     navItemActive: {
-        backgroundColor: '#FEF3C7',
+        backgroundColor: Palette.honey,
     },
     navLabel: {
         fontFamily: Fonts.medium,
-        color: Palette.slate,
+        color: Palette.body,
         fontSize: 14,
     },
     navLabelActive: {
         fontFamily: Fonts.bold,
-        color: Palette.deepObsidian,
+        color: Palette.charcoal,
     },
     rightSection: {
         flexDirection: 'row',
@@ -115,7 +115,7 @@ const styles = StyleSheet.create({
         width: 36,
         height: 36,
         borderRadius: 18,
-        backgroundColor: Palette.mutedSage,
+        backgroundColor: Palette.leaf,
         justifyContent: 'center',
         alignItems: 'center',
         borderWidth: 2,
@@ -129,22 +129,22 @@ const styles = StyleSheet.create({
     hamburger: {
         padding: 8,
         borderRadius: 12,
-        backgroundColor: '#F3F4F6',
+        backgroundColor: Palette.sand,
     },
     hamburgerIcon: {
-        color: Palette.deepObsidian,
+        color: Palette.charcoal,
         fontSize: 20,
         fontFamily: Fonts.bold,
     },
     mobileMenu: {
-        backgroundColor: Palette.white,
+        backgroundColor: Palette.surface,
         paddingHorizontal: 12,
         paddingVertical: 12,
         borderTopWidth: 1,
-        borderTopColor: '#F3F4F6',
+        borderTopColor: Palette.border,
         ...Platform.select({
             web: {
-                boxShadow: '0 8px 16px rgba(17,24,39,0.08)',
+                boxShadow: '0 8px 16px rgba(28,25,23,0.12)',
             },
             default: {
                 elevation: 10,
@@ -160,10 +160,10 @@ const styles = StyleSheet.create({
         marginBottom: 4,
     },
     mobileItemActive: {
-        backgroundColor: '#FEF3C7',
+        backgroundColor: Palette.honey,
     },
     mobileItemLabel: {
-        color: Palette.slate,
+        color: Palette.body,
         fontSize: 16,
         fontFamily: Fonts.medium,
     },
@@ -190,11 +190,11 @@ const styles = StyleSheet.create({
         paddingVertical: 16,
         paddingHorizontal: 16,
         borderTopWidth: 1,
-        borderTopColor: '#E5E7EB',
+        borderTopColor: Palette.border,
         marginTop: 8,
     },
     mobileProfileName: {
-        color: Palette.deepObsidian,
+        color: Palette.charcoal,
         fontSize: 16,
         fontFamily: Fonts.semiBold,
         marginLeft: 12,
@@ -225,7 +225,7 @@ const styles = StyleSheet.create({
         borderRadius: 4,
         backgroundColor: '#ef4444',
         borderWidth: 1,
-        borderColor: Palette.white,
+        borderColor: Palette.surface,
     }
 });
 
@@ -270,7 +270,7 @@ const NavItem = ({ item, isActive, onPress, isMobile = false }: any) => {
                     <Ionicons
                         name={(isActive ? item.activeIcon : item.icon) as any}
                         size={isMobile ? 22 : 18}
-                        color={isActive ? Palette.warmCopper : Palette.slate}
+                        color={isActive ? Palette.mangoDark : Palette.body}
                         style={{ marginRight: isMobile ? 16 : 8 }}
                     />
                     
@@ -322,7 +322,7 @@ export default function UniversalTopbar({ }: UniversalTopbarProps) {
     };
 
     return (
-        <View style={[styles.wrapper, { paddingTop: Platform.OS === 'web' ? 0 : insets.top, backgroundColor: Palette.white }]}>
+        <View style={[styles.wrapper, { paddingTop: Platform.OS === 'web' ? 0 : insets.top, backgroundColor: Palette.surface, borderBottomWidth: 1, borderBottomColor: Palette.border }]}>
             <View style={styles.topbar}>
                 {/* Brand */}
                 <TouchableOpacity

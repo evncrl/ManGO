@@ -44,22 +44,22 @@ export default function TabsLayout() {
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, flexDirection: 'column', backgroundColor: Palette.linenWhite },
+  container: { flex: 1, flexDirection: 'column', backgroundColor: Palette.canvas },
   content: { flex: 1 },
   notificationToast: {
     position: 'absolute',
     top: 80, 
     left: 20,
     right: 20,
-    backgroundColor: '#059669',
+    backgroundColor: '#16a34a', 
     borderRadius: 12,
     padding: 16,
     zIndex: 999,
     elevation: 10,
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 4 },
-    shadowOpacity: 0.12,
-    shadowRadius: 12,
+    shadowOpacity: 0.3,
+    shadowRadius: 4,
   },
   toastContent: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' },
   toastText: { color: '#fff', fontWeight: 'bold', fontSize: 14 },
