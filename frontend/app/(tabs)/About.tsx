@@ -65,8 +65,8 @@ export default function About() {
     },
     {
       id: 4,
-      name: 'Prof. Pops V. Madriaga',
-      role: 'Professor',
+      name: 'Prof. Joan Mag-isa',
+      role: 'Technical Advisor',
       description: 'Product strategist bridging user needs with technical solutions. Drives innovation through data-driven decisions.',
       avatar: require('../../assets/images/mam.png'),
       linkedin: 'https://linkedin.com',
