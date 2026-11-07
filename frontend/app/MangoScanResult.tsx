@@ -14,7 +14,7 @@ import { Ionicons } from '@expo/vector-icons';
 const { width } = Dimensions.get('window');
 const isLargeScreen = width >= 900;
 
-export default function DurianScanResult() {
+export default function MangoScanResult() {
   const router = useRouter();
   const params = useLocalSearchParams();
 

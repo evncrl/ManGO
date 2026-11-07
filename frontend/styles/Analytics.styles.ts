@@ -221,7 +221,7 @@ export const useAnalyticsStyles = () => {
     metricValue: {
       fontSize: isSmallScreen ? 28 : 32,
       fontFamily: Fonts.bold,
-      color: COLORS.white,
+      color: COLORS.primaryDark,
       marginBottom: SPACING.xs,
       letterSpacing: 0.5,
     },
@@ -236,7 +236,7 @@ export const useAnalyticsStyles = () => {
     metricSubtext: {
       fontSize: 12,
       fontFamily: Fonts.regular,
-      color: COLORS.gray500,
+      color: COLORS.gray400,
     },
 
     /* Progress Bar */
@@ -276,7 +276,7 @@ export const useAnalyticsStyles = () => {
     sectionTitle: {
       fontSize: isSmallScreen ? 18 : 20,
       fontFamily: Fonts.bold,
-      color: COLORS.white,
+      color: COLORS.primaryDark,
       marginBottom: SPACING.lg,
       letterSpacing: 0.3,
     },
@@ -340,7 +340,7 @@ export const useAnalyticsStyles = () => {
     chartBarLabel: {
       fontSize: 11,
       fontFamily: Fonts.semiBold,
-      color: COLORS.gray500,
+      color: COLORS.gray400,
       marginTop: SPACING.sm,
     },
 
@@ -395,13 +395,13 @@ export const useAnalyticsStyles = () => {
     distributionRange: {
       fontSize: isSmallScreen ? 14 : 15,
       fontFamily: Fonts.bold,
-      color: COLORS.white,
+      color: COLORS.primaryDark,
     },
 
     distributionCount: {
       fontSize: 13,
       fontFamily: Fonts.medium,
-      color: COLORS.gray400,
+      color: COLORS.gray700,
     },
 
     distributionBarContainer: {
@@ -420,7 +420,7 @@ export const useAnalyticsStyles = () => {
     distributionPercentage: {
       fontSize: 12,
       fontFamily: Fonts.semiBold,
-      color: COLORS.gray500,
+      color: COLORS.gray400,
     },
 
     /* =====================
@@ -465,14 +465,14 @@ export const useAnalyticsStyles = () => {
     scanVariety: {
       fontSize: isSmallScreen ? 14 : 15,
       fontFamily: Fonts.semiBold,
-      color: COLORS.white,
+      color: COLORS.primaryDark,
       marginBottom: 2,
     },
 
     scanTime: {
       fontSize: 12,
       fontFamily: Fonts.regular,
-      color: COLORS.gray500,
+      color: COLORS.gray400,
     },
 
     scanMetrics: {

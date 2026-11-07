@@ -1,7 +1,7 @@
 # backend/authapi/ai/yolo_detector.py
 """
 Local YOLO Detector using trained model
-Uses the custom-trained YOLOv8 model for durian detection
+Uses the custom-trained YOLOv8 model for mango detection
 """
 
 import os
@@ -18,7 +18,7 @@ DEFAULT_MODEL = "durian_detector_durian_detection_20260212_220446.pt"
 
 
 class YOLODetector:
-    """Local YOLO-based durian detector using trained model"""
+    """Local YOLO-based mango detector using trained model"""
     
     def __init__(self, model_path: Optional[str] = None):
         """
@@ -176,7 +176,7 @@ class YOLODetector:
         if not detections:
             return {
                 "found": False,
-                "message": "No durians detected in image",
+                "message": "No mangoes detected in image",
                 "recommendation": "Try taking a clearer photo with better lighting"
             }
         
@@ -264,7 +264,7 @@ if __name__ == "__main__":
         print(f"✅ Model loaded: {detector.model_path.name}")
         
         # Test on sample image if available
-        test_images = ["test_durian.jpg", "sample.jpg", "durian.jpg"]
+        test_images = ["test_mango.jpg", "sample.jpg", "mango.jpg"]
         for img in test_images:
             if os.path.exists(img):
                 print(f"\n📷 Testing on: {img}")

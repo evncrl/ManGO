@@ -1,4 +1,4 @@
-# Durian Detection Training Requirements
+# Mango Detection Training Requirements
 # Install with: pip install -r requirements.txt
 
 # Core ML Framework

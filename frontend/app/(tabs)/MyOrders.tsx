@@ -38,7 +38,7 @@ export default function MyOrders() {
     useEffect(() => { fetchMyOrders(); }, [user]);
 
     const submitReview = async () => {
-        if (!comment.trim()) return Alert.alert("Wait", "Please write a short comment about your durian.");
+        if (!comment.trim()) return Alert.alert("Wait", "Please write a short comment about your mango order.");
         try {
             const res = await axios.post(`${API_URL}/shop/reviews`, {
                 user_id: user?.id,
@@ -126,7 +126,7 @@ export default function MyOrders() {
                         <TextInput 
                             style={styles.input} 
                             multiline 
-                            placeholder="How was your durian experience? Share your thoughts!" 
+                            placeholder="How was your mango order? Share your thoughts!"
                             placeholderTextColor="#999"
                             value={comment}
                             onChangeText={setComment} 

@@ -1,6 +1,6 @@
 
 """
-Durian Color Classifier using EfficientNetB0
+Mango Color Classifier using EfficientNetB0
 """
 
 import os
@@ -47,9 +47,9 @@ def preprocess_image(img_path: str, target_size=(224, 224)):
 	x = transform(img).unsqueeze(0)  # Add batch dim
 	return x
 
-def get_durian_color(image_path: str, model_path: Optional[str] = None) -> Dict[str, Any]:
+def get_mango_color(image_path: str, model_path: Optional[str] = None) -> Dict[str, Any]:
 	"""
-	Predict durian color class from image using EfficientNetB0 (PyTorch)
+	Predict mango color class from image using EfficientNetB0 (PyTorch)
 	Args:
 		image_path: Path to image file
 		model_path: Optional path to .pth model

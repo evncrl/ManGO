@@ -28,8 +28,8 @@ app.config['MAIL_TIMEOUT'] = 10
 app.config['MAIL_USERNAME'] = os.getenv("MAIL_USERNAME")
 app.config['MAIL_PASSWORD'] = os.getenv("MAIL_PASSWORD")
 app.config['MAIL_DEFAULT_SENDER'] = (
-    os.getenv("MAIL_FROM_NAME", "DurianSupport"),
-    os.getenv("MAIL_FROM_ADDRESS", "duriansupport@durianapp.com")
+    os.getenv("MAIL_FROM_NAME", "ManGOSupport"),
+    os.getenv("MAIL_FROM_ADDRESS", "support@mangoapp.com")
 )
 
 # 2. INITIALIZE MAIL

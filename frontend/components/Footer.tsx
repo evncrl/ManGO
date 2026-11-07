@@ -23,7 +23,7 @@ const Footer: React.FC<FooterProps> = ({
   };
 
   const socialLinks = [
-    { icon: 'logo-facebook', url: 'https://facebook.com', label: 'Facebook' },
+    { icon: 'logo-facebook', url: 'https://www.facebook.com/lolit.gumapos', label: 'Facebook' },
     { icon: 'logo-twitter', url: 'https://twitter.com', label: 'Twitter' },
     { icon: 'logo-instagram', url: 'https://instagram.com', label: 'Instagram' },
     { icon: 'logo-linkedin', url: 'https://linkedin.com', label: 'LinkedIn' },

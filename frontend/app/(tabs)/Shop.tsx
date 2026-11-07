@@ -77,7 +77,7 @@ export default function Shop() {
                     name: p.name,
                     category: p.category,
                     price: p.price,
-                    image: p.image_url ? { uri: p.image_url } : require("../../assets/images/durian-bg.jpg"),
+                    image: p.image_url ? { uri: p.image_url } : require("../../assets/images/mango-bg.png"),
                     description: p.description,
                     isNew: p.isNew || false,
                     avgRating: p.rating || 0,

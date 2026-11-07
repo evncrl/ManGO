@@ -141,7 +141,7 @@ class CloudinaryScan:
         scan_id: str
     ) -> Dict[str, Any]:
         """
-        Upload durian scan image to Cloudinary
+        Upload mango scan image to Cloudinary
         
         Args:
             image_data: Image bytes

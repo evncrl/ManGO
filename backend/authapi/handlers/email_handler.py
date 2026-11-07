@@ -404,7 +404,7 @@ def send_order_status_email(user_email: str, status: str, transaction_id: str, i
 
         # --- 🎨 DYNAMIC THEME ---
         if status == "Shipped":
-            s_color, s_bg, s_note = "#1e40af", "#dbeafe", "ON THE WAY! Your durian treats are now with our courier."
+            s_color, s_bg, s_note = "#1e40af", "#dbeafe", "ON THE WAY! Your mango treats are now with our courier."
         elif status == "Delivered":
             s_color, s_bg, s_note = "#166534", "#dcfce7", "SUCCESS! Order has been delivered. Enjoy!"
         else: # Pending

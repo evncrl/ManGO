@@ -147,7 +147,7 @@ export default function About() {
       {/* Hero Section with Mesh Gradient Effect */}
       <View style={styles.modernHero}>
         <ImageBackground
-          source={require('../../assets/images/durian-bg.jpg')}
+          source={require('../../assets/images/mango-bg.png')}
           style={styles.modernHeroImage}
           imageStyle={styles.modernHeroImageStyle}
         >

@@ -89,7 +89,7 @@ def generate_analytics_pdf(data):
     elements.append(summary_table)
 
     elements.append(Paragraph("AI Classification Breakdown", section_title))
-    elements.append(Paragraph("Distribution of detected durian characteristics used for grading and quality assessment.", desc_style))
+    elements.append(Paragraph("Distribution of detected mango characteristics used for grading and quality assessment.", desc_style))
     
     def create_bar_table(label, count, total, color):
         pct = (count / total) if total > 0 else 0
@@ -121,7 +121,7 @@ def generate_analytics_pdf(data):
     ]
     elements.append(Table(class_grid_data, colWidths=[3.6*inch, 3.6*inch]))
     
-    elements.append(Paragraph("<b>AI Classification:</b> Distribution metrics identify harvest quality trends where 'Healthy' and 'Greenish' detections serve as the primary indicators for export-grade durian standards.", insight_style))
+    elements.append(Paragraph("<b>AI Classification:</b> Distribution metrics identify harvest quality trends where 'Healthy' and 'Greenish' detections serve as the primary indicators for export-grade mango standards.", insight_style))
 
     elements.append(PageBreak())
     elements.append(Paragraph("Marketplace Performance", section_title))
@@ -192,7 +192,7 @@ def generate_analytics_pdf(data):
                          style=[('BACKGROUND', (0, 0), (-1, 0), text_dark), ('TEXTCOLOR', (0, 0), (-1, 0), colors.whitesmoke),
                                 ('GRID', (0, 0), (-1, -1), 0.2, colors.lightgrey), ('FONTSIZE', (0, 0), (-1, -1), 8), ('BOTTOMPADDING', (0, 0), (-1, -1), 8)]))
     
-    elements.append(Paragraph("<b>Recent Scans:</b> The activity log provides an audit trail used to monitor the operational consistency and field reliability of the durian classification engine.", insight_style))
+    elements.append(Paragraph("<b>Recent Scans:</b> The activity log provides an audit trail used to monitor the operational consistency and field reliability of the mango classification engine.", insight_style))
 
     doc.build(elements, onFirstPage=draw_header, onLaterPages=draw_header)
     buffer.seek(0)

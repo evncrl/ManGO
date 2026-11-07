@@ -25,7 +25,7 @@ import { useResponsive } from '@/utils/platform';
 // import * as ImagePicker from 'expo-image-picker';
 import Footer from '@/components/Footer';
 import { useUser } from '@/contexts/UserContext';
-import DurianHeatmap from '@/components/DurianHeatmap';
+import MangoHeatmap from '@/components/MangoHeatmap';
 import { API_URL } from '@/config/appconf';
 import { LinearGradient } from 'expo-linear-gradient';
 import { useAuthUI } from '@/contexts/AuthUIContext';
@@ -394,7 +394,7 @@ const DynamicSection = ({ section, scrollY, width, plotlyLoaded, setPlotlyLoaded
           }}
         >
           <View style={width < 600 ? { width: '100%', marginTop: 24 } : { flex: 1, minWidth: 320, maxWidth: 600 }}>
-            <DurianHeatmap
+            <MangoHeatmap
               mapMode={'heatmap'}
               onMapModeChange={() => { }}
               onRegionSelect={() => { }}

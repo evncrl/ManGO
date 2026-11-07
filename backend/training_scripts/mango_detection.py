@@ -1,9 +1,9 @@
 """
-Durian Detection Model Training Script
+Mango Detection Model Training Script
 Downloads dataset from Roboflow and trains YOLOv8 model
 
 Usage:
-    python durian_detection.py
+    python mango_detection.py
 
 Requirements:
     pip install roboflow ultralytics torch torchvision
@@ -43,7 +43,7 @@ load_dotenv(Path(__file__).parent / ".env")
 # Roboflow Configuration (reads from .env)
 ROBOFLOW_API_KEY = os.getenv("ROBOFLOW_API_KEY")
 ROBOFLOW_WORKSPACE = os.getenv("ROBOFLOW_WORKSPACE", "towppys-nest")
-ROBOFLOW_PROJECT = os.getenv("ROBOFLOW_PROJECT", "duriandetect")
+ROBOFLOW_PROJECT = os.getenv("ROBOFLOW_PROJECT", "mangodetect")
 ROBOFLOW_VERSION = int(os.getenv("ROBOFLOW_VERSION", "7"))
 
 # Training Configuration
@@ -132,7 +132,7 @@ def train_model(dataset_path: Path):
     
     # Train the model
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-    run_name = f"durian_detection_{timestamp}"
+    run_name = f"mango_detection_{timestamp}"
     
     results = model.train(
         data=str(data_yaml),
@@ -191,7 +191,7 @@ def export_model(model, run_name: str):
     
     # Save best model to models directory
     best_model_src = RUNS_DIR / run_name / "weights" / "best.pt"
-    best_model_dst = MODELS_DIR / f"durian_detector_{run_name}.pt"
+    best_model_dst = MODELS_DIR / f"mango_detector_{run_name}.pt"
     
     if best_model_src.exists():
         import shutil
@@ -249,7 +249,7 @@ def test_inference(model, dataset_path: Path):
 def main():
     """Main training pipeline"""
     print("\n" + "="*60)
-    print("🍈 DURIAN DETECTION MODEL TRAINING PIPELINE 🍈")
+    print("MANGO DETECTION MODEL TRAINING PIPELINE")
     print("="*60)
     print(f"📅 Started at: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
     

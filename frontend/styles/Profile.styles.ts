@@ -47,7 +47,7 @@ export const styles = StyleSheet.create({
   profileCard: {
   backgroundColor: Palette.surface,
   borderWidth: 1,
-  borderColor: Palette.border,
+  borderColor: '#D6D3D1',
 
   borderRadius: 16, 
   padding: 24,
@@ -139,7 +139,6 @@ export const styles = StyleSheet.create({
   email: {
     fontSize: 16,
     color: Palette.body,
-    opacity: 0.8,
     marginBottom: 28,
     textAlign: 'center',
     fontFamily: Fonts.medium,
@@ -165,7 +164,7 @@ export const styles = StyleSheet.create({
   },
   input: {
     borderWidth: 1.5,
-    borderColor: Palette.stoneGray,
+    borderColor: '#A8A29E',
     borderRadius: 16,
     paddingHorizontal: 20,
     paddingVertical: 14,
@@ -201,6 +200,8 @@ export const styles = StyleSheet.create({
   },
   editButton: {
     backgroundColor: Palette.warmCopper,
+    borderWidth: 1,
+    borderColor: '#B45309',
     paddingVertical: 16,
     paddingHorizontal: 32,
     borderRadius: 16,
@@ -215,7 +216,9 @@ export const styles = StyleSheet.create({
     shadowRadius: 8,
   },
   saveButton: {
-    backgroundColor: Palette.leaf,
+    backgroundColor: '#166534',
+    borderWidth: 1,
+    borderColor: '#14532D',
     shadowColor: Palette.leaf,
     shadowOffset: { width: 0, height: 4 },
     shadowOpacity: 0.3,
@@ -225,7 +228,7 @@ export const styles = StyleSheet.create({
   cancelButton: {
     backgroundColor: '#ffffff',
     borderWidth: 2,
-    borderColor: Palette.border,
+    borderColor: '#D6D3D1',
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.05,
@@ -253,8 +256,14 @@ export const styles = StyleSheet.create({
     fontFamily: Fonts.semiBold,
     letterSpacing: 0.3,
   },
+  editButtonText: {
+    color: Palette.charcoal,
+    fontSize: 16,
+    fontFamily: Fonts.semiBold,
+    letterSpacing: 0.3,
+  },
   cancelButtonText: {
-    color: '#64748b',
+    color: Palette.charcoal,
     fontSize: 16,
     fontFamily: Fonts.semiBold,
   },
@@ -339,6 +348,9 @@ export const styles = StyleSheet.create({
   modalCancelButton: {
     marginTop: 20,
     padding: 12,
+    borderWidth: 1,
+    borderColor: '#D6D3D1',
+    borderRadius: 10,
   },
 
   // Stats Section (Professional Touch)
@@ -346,6 +358,8 @@ export const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-around',
     backgroundColor: Palette.surface,
+    borderWidth: 1,
+    borderColor: '#D6D3D1',
     borderRadius: 16,
     padding: 20,
     marginBottom: 24,
@@ -363,7 +377,6 @@ export const styles = StyleSheet.create({
   statLabel: {
     fontSize: 12,
     color: Palette.body,
-    opacity: 0.7,
     fontFamily: Fonts.medium,
     textTransform: 'uppercase',
     letterSpacing: 0.5,
@@ -418,7 +431,6 @@ export const styles = StyleSheet.create({
   emptyStateText: {
     fontSize: 16,
     color: Palette.body,
-    opacity: 0.6,
     textAlign: 'center',
     fontFamily: Fonts.regular,
   },
@@ -428,6 +440,8 @@ statsRow: {
   alignItems: 'center',
   justifyContent: 'space-around',
   backgroundColor: Palette.surface,
+  borderWidth: 1,
+  borderColor: '#D6D3D1',
   borderRadius: 16,
   paddingVertical: 15,
   marginVertical: 20,
