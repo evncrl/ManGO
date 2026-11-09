@@ -17,8 +17,8 @@ argon2-cffi==25.1.0
 bcrypt==5.0.0
 
 # YOLOv8 and PyTorch image classifiers
-torch==2.5.1
-torchvision==0.20.1
+torch
+torchvision
 ultralytics==8.4.10
 timm==1.0.24
 opencv-python-headless==4.10.0.84
