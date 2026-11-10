@@ -12,7 +12,7 @@ import {
 } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { Ionicons } from '@expo/vector-icons';
-import { API_URL } from '@/config/appconf';
+import { API_URL, apiFetch } from '@/config/appconf';
 import { Fonts, Palette } from '@/constants/theme';
 
 interface Message {
@@ -55,7 +55,7 @@ export default function AIChatbot() {
     setIsLoading(true);
 
     try {
-      const response = await fetch(`${API_URL}/chatbot/chat`, {
+      const response = await apiFetch(`${API_URL}/chatbot/chat`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

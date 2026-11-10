@@ -18,6 +18,7 @@ import { useAdminStyles } from '@/styles/admin_styles/index.styles';
 import { useResponsive } from '@/utils/platform';
 import { Fonts, Palette } from '@/constants/theme';
 import { Ionicons } from '@expo/vector-icons';
+import { API_URL, apiFetch } from '@/config/appconf';
 
 interface Product {
   _id: string;
@@ -28,8 +29,6 @@ interface Product {
   image: string;
   isNew?: boolean;
 }
-
-const API_URL = 'https://unacademic-amusingly-vernie.ngrok-free.dev'; // Update with your actual API URL
 
 export default function ProductManagement() {
   const styles = useAdminStyles();
@@ -53,7 +52,7 @@ export default function ProductManagement() {
   const fetchProducts = async () => {
     setLoading(true);
     try {
-      const res = await fetch(`${API_URL}/shop/products`, {
+      const res = await apiFetch(`${API_URL}/shop/products`, {
         headers: { 'ngrok-skip-browser-warning': 'true' }
       });
       const data = await res.json();
@@ -88,7 +87,7 @@ export default function ProductManagement() {
         isNew: form.isNew
       };
 
-      const res = await fetch(url, {
+      const res = await apiFetch(url, {
         method,
         headers: { 
           'Content-Type': 'application/json',
@@ -128,7 +127,7 @@ export default function ProductManagement() {
     const performDelete = async () => {
       setLoading(true);
       try {
-        const res = await fetch(`${API_URL}/shop/products/${id}`, { 
+        const res = await apiFetch(`${API_URL}/shop/products/${id}`, {
           method: 'DELETE',
           headers: { 
             'ngrok-skip-browser-warning': 'true',

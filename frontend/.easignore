@@ -1,8 +1,17 @@
 node_modules/
 .expo/
+.eas/
 dist/
+build/
+android/
+ios/
 web-build/
 .git/
+*.apk
+*.aab
+*.env
+.env
+.env.*
 *.h5
 *.mp4
 *.zip

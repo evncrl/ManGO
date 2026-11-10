@@ -16,7 +16,7 @@ import {
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { router } from 'expo-router';
 import { Picker } from '@react-native-picker/picker';
-import { API_URL } from '@/config/appconf';
+import { API_URL, apiFetch } from '@/config/appconf';
 import { useAdminStyles } from '@/styles/admin_styles/index.styles';
 import AdminSidebar from '@/components/admin/AdminSidebar';
 import { Fonts, Palette } from '@/constants/theme';
@@ -158,7 +158,7 @@ export default function Admin() {
   // Fetch backend status
   const fetchStatus = () => {
     setLoading(true);
-    fetch(`${API_URL}/status`, {
+    apiFetch(`${API_URL}/status`, {
       headers: {
         'ngrok-skip-browser-warning': 'true',
         'Accept': 'application/json',
@@ -182,7 +182,7 @@ export default function Admin() {
   // Fetch users from backend
   const fetchUsers = () => {
     setLoading(true);
-    fetch(`${API_URL}/admin/users`, {
+    apiFetch(`${API_URL}/admin/users`, {
       headers: {
         'ngrok-skip-browser-warning': 'true',
         'Accept': 'application/json',
@@ -220,7 +220,7 @@ export default function Admin() {
 
   // Update user role
   const updateUserRole = (userId: string, newRole: string) => {
-    fetch(`${API_URL}/admin/users/${userId}/role`, {
+    apiFetch(`${API_URL}/admin/users/${userId}/role`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
@@ -270,7 +270,7 @@ export default function Admin() {
       return;
     }
     setDeactivating(true);
-    fetch(`${API_URL}/admin/users/${userToDeactivate._id}/deactivate`, {
+    apiFetch(`${API_URL}/admin/users/${userToDeactivate._id}/deactivate`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
@@ -297,7 +297,7 @@ export default function Admin() {
 
   // Reactivate user
   const reactivateUser = (userId: string) => {
-    fetch(`${API_URL}/admin/users/${userId}/activate`, {
+    apiFetch(`${API_URL}/admin/users/${userId}/activate`, {
       method: 'PUT',
       headers: {
         'ngrok-skip-browser-warning': 'true',

@@ -13,7 +13,7 @@ import {
 import { useUser } from '@/contexts/UserContext';
 import { useResponsive } from '@/utils/platform';
 import { Picker } from '@react-native-picker/picker';
-import { API_URL } from '@/config/appconf';
+import { API_URL, apiFetch } from '@/config/appconf';
 import { useAdminStyles } from '@/styles/admin_styles/index.styles';
 import AdminSidebar from '@/components/admin/AdminSidebar';
 import { Fonts, Palette } from '@/constants/theme';
@@ -61,7 +61,7 @@ export default function UserManage() {
     // Fetch users from backend
     const fetchUsers = () => {
         setLoading(true);
-        fetch(`${API_URL}/admin/users`, {
+        apiFetch(`${API_URL}/admin/users`, {
             headers: {
                 'ngrok-skip-browser-warning': 'true',
                 'Accept': 'application/json',
@@ -87,7 +87,7 @@ export default function UserManage() {
 
     // Update user role
     const updateUserRole = (userId: string, newRole: string) => {
-        fetch(`${API_URL}/admin/users/${userId}/role`, {
+        apiFetch(`${API_URL}/admin/users/${userId}/role`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
@@ -128,7 +128,7 @@ export default function UserManage() {
         
         setDeactivating(true);
         // ✅ Ipapadala ang 'reason' sa backend para maisama sa email
-        fetch(`${API_URL}/admin/users/${userToDeactivate._id}/deactivate`, {
+        apiFetch(`${API_URL}/admin/users/${userToDeactivate._id}/deactivate`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
@@ -159,7 +159,7 @@ export default function UserManage() {
 
     // Reactivate user
     const reactivateUser = (userId: string) => {
-        fetch(`${API_URL}/admin/users/${userId}/activate`, {
+        apiFetch(`${API_URL}/admin/users/${userId}/activate`, {
             method: 'PUT',
             headers: {
                 'ngrok-skip-browser-warning': 'true',

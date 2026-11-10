@@ -3,7 +3,7 @@ import { View, Text, ScrollView, ActivityIndicator, TouchableOpacity, Image, Mod
 import AdminSidebar from '@/components/admin/AdminSidebar';
 import { useAdminStyles } from '@/styles/admin_styles/index.styles';
 import { Fonts, Palette } from '@/constants/theme';
-import { API_URL } from '@/config/appconf';
+import { API_URL, apiFetch } from '@/config/appconf';
 import { Ionicons } from '@expo/vector-icons';
 import { useResponsive } from '@/utils/platform';
 
@@ -17,7 +17,7 @@ export default function ScansManage() {
     const fetchScans = async () => {
         setLoading(true);
         try {
-            const res = await fetch(`${API_URL}/admin/scans/all`, {
+            const res = await apiFetch(`${API_URL}/admin/scans/all`, {
                 headers: { 'ngrok-skip-browser-warning': 'true' }
             });
             const json = await res.json();

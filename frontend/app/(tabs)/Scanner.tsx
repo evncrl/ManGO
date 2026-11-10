@@ -16,7 +16,7 @@ import * as ImagePicker from 'expo-image-picker';
 import { Ionicons } from '@expo/vector-icons';
 import { useRouter } from 'expo-router';
 import { useScannerStyles } from '@/styles/Scanner.styles';
-import { API_URL } from '@/config/appconf';
+import { API_URL, apiFetch } from '@/config/appconf';
 import { useUser } from '@/contexts/UserContext';
 import { Fonts } from '@/constants/theme';
 
@@ -171,7 +171,7 @@ export default function Scanner() {
         headers['X-User-Id'] = user.id;
       }
 
-      const response = await fetch(`${API_URL}/scanner/detect`, {
+      const response = await apiFetch(`${API_URL}/scanner/detect`, {
         method: 'POST',
         headers,
         body: formData,
@@ -213,7 +213,7 @@ export default function Scanner() {
             diseaseHeaders['X-User-Id'] = user.id;
           }
 
-          const diseaseResponse = await fetch(
+          const diseaseResponse = await apiFetch(
             `${API_URL}/scanner/classify/disease`,
             {
               method: 'POST',

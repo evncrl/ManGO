@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { View, Text, ScrollView, ActivityIndicator, StyleSheet, Platform, StatusBar, TouchableOpacity } from 'react-native';
 import AdminSidebar from '@/components/admin/AdminSidebar';
 import { Fonts, Palette } from '@/constants/theme';
-import { API_URL } from '@/config/appconf';
+import { API_URL, apiFetch } from '@/config/appconf';
 import { Ionicons, MaterialCommunityIcons } from '@expo/vector-icons';
 import * as FileSystem from 'expo-file-system';
 import * as Sharing from 'expo-sharing';
@@ -27,7 +27,7 @@ export default function GenAnalytics() {
     const fetchAnalytics = async () => {
         setLoading(true);
         try {
-            const res = await fetch(`${API_URL}/admin/analytics/overview`, {
+            const res = await apiFetch(`${API_URL}/admin/analytics/overview`, {
                 headers: { 'ngrok-skip-browser-warning': 'true', 'Accept': 'application/json' }
             });
             const json = await res.json();
@@ -94,7 +94,7 @@ export default function GenAnalytics() {
         setExporting(true);
         const reportUrl = `${API_URL}/admin/analytics/report`;
         try {
-            const response = await fetch(reportUrl, { headers: { 'ngrok-skip-browser-warning': 'true' } });
+            const response = await apiFetch(reportUrl, { headers: { 'ngrok-skip-browser-warning': 'true' } });
             const blob = await response.blob();
             if (Platform.OS === 'web') {
                 const url = window.URL.createObjectURL(blob);

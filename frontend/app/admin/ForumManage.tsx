@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { View, Text, ScrollView, TouchableOpacity, StyleSheet, ActivityIndicator, Alert, Platform } from 'react-native';
 import AdminSidebar from '@/components/admin/AdminSidebar';
 import { Fonts, Palette } from '@/constants/theme';
-import { API_URL } from '@/config/appconf';
+import { API_URL, apiFetch } from '@/config/appconf';
 import { Ionicons } from '@expo/vector-icons';
 
 export default function ForumManage() {
@@ -13,7 +13,7 @@ export default function ForumManage() {
         setLoading(true);
         try {
             // ✅ Dito kukuha ng posts, siguraduhin na may route ka na ganito sa backend
-            const res = await fetch(`${API_URL}/admin/forum/posts`, {
+            const res = await apiFetch(`${API_URL}/admin/forum/posts`, {
                 headers: { 'ngrok-skip-browser-warning': 'true', 'Accept': 'application/json' }
             });
             const json = await res.json();
@@ -32,7 +32,7 @@ export default function ForumManage() {
     const handleDelete = (postId: string) => {
         const deleteAction = async () => {
             try {
-                const res = await fetch(`${API_URL}/admin/forum/post/${postId}`, {
+                const res = await apiFetch(`${API_URL}/admin/forum/post/${postId}`, {
                     method: 'DELETE',
                     headers: { 'ngrok-skip-browser-warning': 'true' }
                 });

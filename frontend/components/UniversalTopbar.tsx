@@ -329,7 +329,7 @@ export default function UniversalTopbar({ }: UniversalTopbarProps) {
                     style={[styles.brand, isCompact && { marginRight: 0, flex: 1, justifyContent: 'center' }]}
                     onPress={() => handleNav('Landing')}
                 >
-                    <Image source={require('../assets/images/icon.png')} style={styles.logo} />
+                    <Image source={require('../assets/images/LOGO.jpg')} style={styles.logo} />
                     <Text style={styles.brandText}>ManGO</Text>
                 </TouchableOpacity>
 

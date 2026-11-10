@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { API_URL } from '@/config/appconf';
+import { API_URL, apiFetch } from '@/config/appconf';
 
 interface User {
   id: string;
@@ -33,7 +33,7 @@ export function UserProvider({ children }: UserProviderProps) {
 
   const checkForNewPosts = async () => {
     try {
-      const response = await fetch(`${API_URL}/forum/posts?category=All`, {
+      const response = await apiFetch(`${API_URL}/forum/posts?category=All`, {
         headers: { 'ngrok-skip-browser-warning': 'true', 'Accept': 'application/json' }
       });
       const data = await response.json();

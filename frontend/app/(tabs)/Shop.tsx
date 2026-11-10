@@ -20,6 +20,7 @@ import { AnimatedImage } from '@/components/ui/AnimatedImage';
 import { useAuthUI } from '@/contexts/AuthUIContext';
 import { useUser } from '@/contexts/UserContext';
 import { useCart } from '@/contexts/CartContext';
+import { API_URL, apiFetch } from '@/config/appconf';
 
 const { width: SCREEN_WIDTH, height: SCREEN_HEIGHT } = Dimensions.get('window');
 
@@ -42,8 +43,6 @@ type Product = {
     avgRating?: number;
 };
 
-const API_URL = 'https://unacademic-amusingly-vernie.ngrok-free.dev'; 
-
 export default function Shop() {
     const [loading, setLoading] = useState(true);
     const [products, setProducts] = useState<Product[]>([]);
@@ -64,7 +63,7 @@ export default function Shop() {
     const fetchProducts = async () => {
         setLoading(true);
         try {
-            const res = await fetch(`${API_URL}/shop/products`, {
+            const res = await apiFetch(`${API_URL}/shop/products`, {
                 headers: { 
                     'ngrok-skip-browser-warning': 'true',
                     'Accept': 'application/json'
@@ -95,7 +94,7 @@ export default function Shop() {
         setLoadingReviews(true);
         setReviews([]); 
         try {
-            const res = await fetch(`${API_URL}/shop/products/${productId}/reviews`, {
+            const res = await apiFetch(`${API_URL}/shop/products/${productId}/reviews`, {
                 headers: { 
                     'ngrok-skip-browser-warning': 'true',
                     'Accept': 'application/json'

@@ -15,7 +15,7 @@ import {
 import { router } from 'expo-router';
 import { Ionicons } from '@expo/vector-icons';
 import { useAnalyticsStyles } from '@/styles/Analytics.styles';
-import { API_URL } from '@/config/appconf';
+import { API_URL, apiFetch } from '@/config/appconf';
 import { useUser } from '@/contexts/UserContext';
 import { Fonts } from '@/constants/theme';
 
@@ -146,7 +146,7 @@ export default function Analytics() {
       return;
     }
     try {
-      const response = await fetch(`${API_URL}/scanner/analytics/${user.id}?time_range=${timeRange}`, {
+      const response = await apiFetch(`${API_URL}/scanner/analytics/${user.id}?time_range=${timeRange}`, {
         headers: { 'Accept': 'application/json', 'ngrok-skip-browser-warning': 'true' },
       });
       const data = await response.json();

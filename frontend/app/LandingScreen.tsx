@@ -26,7 +26,7 @@ import { useResponsive } from '@/utils/platform';
 import Footer from '@/components/Footer';
 import { useUser } from '@/contexts/UserContext';
 import MangoHeatmap from '@/components/MangoHeatmap';
-import { API_URL } from '@/config/appconf';
+import { API_URL, apiFetch } from '@/config/appconf';
 import { LinearGradient } from 'expo-linear-gradient';
 import { useAuthUI } from '@/contexts/AuthUIContext';
 import { Ionicons } from '@expo/vector-icons';
@@ -461,7 +461,7 @@ function Landing({ }: any) {
     const controller = new AbortController();
     const timeout = setTimeout(() => controller.abort(), 12000);
 
-    fetch(`${API_URL}/news/mango-articles?limit=6`, { signal: controller.signal })
+    apiFetch(`${API_URL}/news/mango-articles?limit=6`, { signal: controller.signal })
       .then(async (response) => {
         if (!response.ok) return;
         const fetchedArticles = parseArticles(await response.json());

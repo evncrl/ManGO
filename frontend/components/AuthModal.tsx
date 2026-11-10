@@ -20,6 +20,7 @@ import { Ionicons } from '@expo/vector-icons';
 import axios from 'axios';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useUser } from '@/contexts/UserContext';
+import { API_URL } from '@/config/appconf';
 
 interface AuthModalProps {
   visible: boolean;
@@ -104,7 +105,7 @@ export default function AuthModal({ visible, mode, onClose }: AuthModalProps) {
     try {
       // 2. Define the URL based on the mode
       const endpoint = authMode === 'login' ? '/auth/login' : '/auth/signup';
-      const url = `http://192.168.100.242:8000${endpoint}`;
+      const url = `${API_URL}${endpoint}`;
 
       // 3. THIS DEFINES 'response' - The actual API call
       const response = await axios.post(url, {

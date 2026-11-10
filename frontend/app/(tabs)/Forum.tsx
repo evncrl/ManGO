@@ -18,7 +18,7 @@ import Animated, { FadeInDown, FadeInUp, Layout, ZoomIn } from 'react-native-rea
 
 import { useResponsive } from '@/utils/platform';
 import styles from "@/styles/Forum.styles";
-import { API_URL } from "@/config/appconf";
+import { API_URL, apiFetch } from "@/config/appconf";
 import { useUser } from '@/contexts/UserContext';
 
 interface ForumPost {
@@ -94,7 +94,7 @@ export default function Forum({ embedded = false }: ForumProps) {
       const url = `${API_URL}/forum/posts?category=${selectedCategory}&search=${searchQuery}`;
       console.log('[CLIENT] fetchPosts url:', url);
 
-      const response = await fetch(url, {
+      const response = await apiFetch(url, {
         headers: {
           'ngrok-skip-browser-warning': 'true',
           'Accept': 'application/json',
@@ -138,7 +138,7 @@ export default function Forum({ embedded = false }: ForumProps) {
   const fetchComments = async (postId: string) => {
     try {
       setLoadingComments(true);
-      const response = await fetch(`${API_URL}/forum/posts/${postId}/comments`, {
+      const response = await apiFetch(`${API_URL}/forum/posts/${postId}/comments`, {
         headers: {
           'ngrok-skip-browser-warning': 'true',
           'Accept': 'application/json',
@@ -174,7 +174,7 @@ export default function Forum({ embedded = false }: ForumProps) {
     setInputError(null);
     try {
       setSubmittingComment(true);
-      const response = await fetch(`${API_URL}/forum/comments`, {
+      const response = await apiFetch(`${API_URL}/forum/comments`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -233,7 +233,7 @@ export default function Forum({ embedded = false }: ForumProps) {
         user_id: userId,
       };
       console.log('[CLIENT] submitNewPost ->', url, payload);
-      const response = await fetch(url, {
+      const response = await apiFetch(url, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -276,7 +276,7 @@ export default function Forum({ embedded = false }: ForumProps) {
     }
 
     try {
-      const response = await fetch(`${API_URL}/forum/posts/${postId}/like`, {
+      const response = await apiFetch(`${API_URL}/forum/posts/${postId}/like`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -308,7 +308,7 @@ export default function Forum({ embedded = false }: ForumProps) {
     }
 
     try {
-      const response = await fetch(`${API_URL}/forum/comments/${commentId}/like`, {
+      const response = await apiFetch(`${API_URL}/forum/comments/${commentId}/like`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
